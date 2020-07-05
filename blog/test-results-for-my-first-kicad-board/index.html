@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="I talked last time about my move to KiCad and the eight-channel analog-to-digital convertor (ADC) board I used for an initial test of the design software. I submitted the Gerber files to Itead on March 24th and received twenty-four PCBs on April 4th for a total charge of $14 USD.">
+<title>Test Results for My First KiCad Board! | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li class="active">Test Results for My First KiCad Board!</li>
+</ul>
+
+<h1>
+Test Results for My First KiCad Board!
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="../author/devbisme/index.html">Dave Vandenbout</a>
+    
+    6 years, 2 months ago
+</h6>
+
+
+
+<p>
+    
+        (<a href="index.html#comments">1 comment</a>)
+        
+    
+</p>
+
+
+
+
+
+
+
+
+
+
+<p><img class="float-it-left thumbnail-it" src="http://www.alphabetics.info/international/wp-content/uploads/2010/03/nuclear-weapon.jpg"> I talked last time about <a href="../my-first-kicad-board/index.html">my move to KiCad</a> and the eight-channel analog-to-digital convertor (ADC) board I used for an initial test of the design software. I submitted the Gerber files to Itead on March 24th and received twenty-four PCBs on April 4th for a total charge of $14 USD.</p>
+<p>The boards look good. (I had them fabbed as pairs since two PCBs would fit within the 2" x 2" panel that Itead allows.) The silkscreen is OK and the drill holes are pretty much in the center of the via pads. I couldn't see any shorts between the copper planes and the pads, and continuity tests confirmed this. (I used 8-mil trace/space, so I wasn't expecting any problems.) Overall, it looks like I correctly used KiCad to generate Gerber files that a PCB manufacturer could fabricate.</p>
+<p><img alt="StickIt! ADC108S PCBs" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/ADC_PCBs.jpg" style="width: 66%;"></p>
+<p>But would they work? With the PCBs in hand, it was time to build a test unit and see. I ordered some samples of the ICs I needed from Texas Instruments: the LM2660 voltage doubler, the LP2950 5V regulator, and the ADC108S102 eight-channel ADC. This was where I noticed my first mistake: the LP2950 is only available in a TO-92 package, not the MSOP-8 package I used for U1 on the PCB. In my haste, I had only given the following figure a cursory examination and just assumed all the regulators were offered in each package. That was <em>so</em> not true! </p>
+<p><img alt="LP2950 Packages" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/LP2950_packages.jpg" style="width: 66%;"></p>
+<p>Since I didn't want to delay my test by re-fabbing the boards, I just ordered the LP2950 in the TO-92 package and stitched it onto the board as you can see below. (That was my second try at mounting the LP2950. In my first, I soldered it in backwards.) Applying 3.3V to the board, the LM2660 kicked it up to 6.6V and the LP2950 regulated that down to 5.0V with a tolerance of 0.5% for use as a reference by the ADC chip. So that seemed to be working.</p>
+<p><img alt="Assembled StickIt! ADC108S Prototype" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/assembled_ADC_board.jpg" style="width: 66%;"></p>
+<p>It wasn't possible to test much more of the board without configuring the FPGA with a circuit to read data from the ADC108S chip.  To do that, I wrote some <a href="https://github.com/xesscorp/StickIt/blob/master/modules/OctalAdc/FPGA/DataSampler/DataSampler.vhd">VHDL for a simple data sampler</a> based on the architecture shown in the block diagram below. The <a href="https://github.com/xesscorp/VHDL_Lib/blob/master/AdcInterfaces.vhd">ADC interface</a> gets digitized samples of analog signals from the ADC board at a rate of 1 Msamples/second over an SPI communication bus. Each sample is written to the next free address location in the SDRAM of the <a href="../../prods/prod055.php">XuLA2 board</a> and then the address is incremented. The host PC can enable, disable and monitor a sampling run through the <a href="https://github.com/xesscorp/VHDL_Lib/blob/master/HostIo.vhd">HostIoToDut interface</a>. After a sampling run is completed, the PC uploads the samples from the SDRAM through the <a href="https://github.com/xesscorp/VHDL_Lib/blob/master/HostIo.vhd">HostIoToRam interface</a>.</p>
+<p><img alt="FPGA Design Block Diagram" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/ADC_FPGA_block_diag.jpg" style="width: 66%;"></p>
+<p><img alt="My Old Signal Generator" class="float-it-left thumbnail-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/signal_gen.jpg"> Now I had to find some way to apply waveforms to the ADC board and observe the results. The ADC board works with unipolar voltages between 0 and 5V. Unfortunately, my old signal generator only has a single bipolar output and the DC offset has stopped working, so it wasn't up to the task. Now what?</p>
+<p>Well, with an FPGA, what you don't have you can build. To generate test signals, I augmented my FPGA design with three, independent <a href="https://github.com/xesscorp/VHDL_Lib/blob/master/PatternGen.vhd">sine-wave generators</a> having individually-adjustable frequencies, amplitudes and DC-offsets. Then I could pump the digital outputs of the sine-wave generators into a <a href="../../prods/prod054.php">StickIt! VGA board</a> which has three digital-to-analog converters (DACs) that output analog signals in the range 0 to 3.3V. From there, it's a simple matter to connect the red, green and blue signals from the VGA connector to channels 0, 1 and 2 of the ADC board like so:</p>
+<p><img alt="Connections from the VGA to the ADC Board." class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/RGB_connections.jpg" style="width: 66%;"></p>
+<p>With the circuitry and FPGA design pretty much in hand, I turned my attention to the software that runs on the PC. I wrote a <a href="https://github.com/xesscorp/StickIt/blob/master/modules/OctalAdc/FPGA/DataSampler/datasampler.py">50-line Python program</a> that controls the sampling, uploading, and display of the red, green and blue signal waveforms as follows:</p>
+<ol>
+<li>
+<p>Two interface objects are created: one to monitor and control the ADC sampling, and another to upload samples from SDRAM.</p>
+</li>
+<li>
+<p>The ADC control object is used to raise the <code>run</code> control signal to start the sampling and then monitor the <code>done</code> status signal that goes high when all the samples are stored in the SDRAM. (In the current implementation, the sampler is hardwired to collect a million samples. It would be pretty easy to change the ADC control interface so that the number of samples collected could range from 1 to 16,777,216, but I haven't done that yet.)</p>
+</li>
+<li>
+<p>Using the SDRAM interface object, the first 9,999 samples are uploaded from the SDRAM and stored in an array. A second array is also created containing the time each sample was taken, which is pretty simple since the samples are taken at regular one-microsecond intervals.</p>
+</li>
+<li>
+<p>Because the ADC interface circuit rotates through multiple analog channels, getting and storing a sample from each, that means the samples for the red, green and blue signals are interleaved in the SDRAM: the red signal is stored at addresses [0, 3, 6, 9, ...], the green signal at [1, 4, 7, 10, ...], and the blue at [2, 5, 8, 11, ...]. The sample array is pulled apart to create three separate arrays, one for each of the red, green and blue signals. At the same time, the samples are converted from the digital code output by the ADC into an analog value in the range [0V, 5V].</p>
+</li>
+<li>
+<p>Finally, a plot of each of the red, green and blue signal waveforms is created and displayed using the <a href="http://matplotlib.org/">matplotlib Python plotting library</a>. matplotlib makes it easy to interactively zoom in/out and pan across the waveforms.</p>
+</li>
+</ol>
+<p>Just to tie everything together, here's a video of how the data sampler hardware is snapped together and used to capture the sine waves:</p>
+<iframe class="center-it" height="402" src="http://www.youtube.com/embed/THdycRRxGfE" width="536"></iframe>
+
+<p>Once I had the system working, I looked at the sampled waveforms and noticed a problem: where it should have been flat, the red sinusoid had significant "bowing" at its peaks and troughs. Now what?</p>
+<p><img alt="Sampled Waveform Showing Bowing" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/bowed_waveform.png" style="width: 66%;"></p>
+<p>I thought this might be caused by some external interference coupling in through the wire loops connecting the VGA outputs to the ADC inputs, but changing the orientation of the wires or wrapping them with a ground wire didn't remove the bowing. In addition, the bowing was extremely consistent, always occurring in the same location and always by the same amount. That indicated it was caused by some signal generated by my boards and not by some external noise source. To get a better look at the distortion, I zeroed the amplitude and DC offset of the red sinusoid generator and took another sample:</p>
+<p><img alt="Sampled Waveforms with Red Sinusoid Zero'ed" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/zeroed_red_waveform.png" style="width: 66%;"></p>
+<p>This made it pretty clear that the blue signal was coupling into the red, somehow. I thought it might be crosstalk between the traces on the PCB, so I removed the wire carrying the green signal and grounded that input channel of the ADC board. This essentially put a guard wire between the PCB traces carrying the red and blue signals, which I hoped would absorb any crosstalk. Nevertheless, I saw no reduction in the bowing. I also noticed there didn't seem to be any coupling of the blue signal into the green signal, though the green trace on the PCB is even closer to the blue trace than the red trace is. So that seemed to eliminate crosstalk as the culprit, thus leaving me with nothing.</p>
+<p>Finally, I started thinking about the sampling process itself. To sample multiple inputs, the ADC108S interleaves its sampling of the waveforms like so: red - green - blue - red - green - blue - ... The interleaving is done in the chip by switching an analog multiplexer feeding into a track-and-hold (T&amp;H) circuit. When the blue signal was sampled, possibly it was leaving a remnant of itself in the T&amp;H circuit that offset the sample value of the red signal that followed. To test this, I returned the signal generators to their original configurations but only sampled the red signal so the multiplexer never switched. The resulting waveform had no apparent bowing:</p>
+<p><img alt="Sampled Waveform of Only the Red Sinusoid" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-04-21/single_red_waveform.png" style="width: 66%;"></p>
+<p>So the problem was caused by the multiplexer in the ADC chip. I looked for a possible solution in the <a href="http://www.ti.com/lit/ds/symlink/adc108s102.pdf">ADC108S datasheet</a> and found this:</p>
+<blockquote>
+<p>Resistor R1 is the on resistance of the multiplexer and track/hold switch and is typically 500 ohms. Capacitor C2 is the ADC108S102 sampling capacitor, and is typically 30 pF. The ADC108S102 will deliver best performance when driven by a low-impedance source (less than 100 ohms). This is especially important when using the ADC108S102 to sample dynamic signals.  </p>
+</blockquote>
+<p>The output impedance of the StickIt! VGA board red, green and blue outputs is around 300 ohms, so that explained why there was cross-signal distortion. Placing unity-gain amplifiers on the analog inputs would lower the impedance seen by the ADC108S and solve the problem. Or just don't connect the board to high-impedance sources. Quite frankly, I'm starting to lean toward solution #2.</p>
+<p>That's the current status of the ADC board. <a href="https://github.com/xesscorp/StickIt/tree/master/modules/OctalAdc">The KiCad and FPGA design files are stored on Github.</a> My next task is to replace the LP2950 with an LP2980AIM5 in an SOT-23 package and have the board fabbed again. There goes another $14!</p>
+
+
+
+
+
+
+
+
+
+
+<div class="panel rating">
+
+<p id="rating-56">
+    
+    Current rating: 5
+    
+</p>
+
+
+<form method="post" action="http://www.xess.com/rating/">
+    
+    <input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+    
+    <ul><li> <ul>
+<li><label for="id_value_0"><input id="id_value_0" name="value" type="radio" value="1" /> 1</label></li>
+<li><label for="id_value_1"><input id="id_value_1" name="value" type="radio" value="2" /> 2</label></li>
+<li><label for="id_value_2"><input id="id_value_2" name="value" type="radio" value="3" /> 3</label></li>
+<li><label for="id_value_3"><input id="id_value_3" name="value" type="radio" value="4" /> 4</label></li>
+<li><label for="id_value_4"><input id="id_value_4" name="value" type="radio" value="5" /> 5</label></li>
+</ul><input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" /><input id="id_object_pk" name="object_pk" type="hidden" value="56" /><input id="id_timestamp" name="timestamp" type="hidden" value="1593966357" /><input id="id_security_hash" name="security_hash" type="hidden" value="0ab806fd107375a6695c89e479b011dbe0db9407" /></li></ul>
+    <input type="submit" class="btn" value="Rate"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+
+
+<br style="clear:both">
+
+</div>
+
+
+
+
+<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status=http%3A//www.xess.com/blog/test-results-for-my-first-kicad-board/%20Test%20Results%20for%20My%20First%20KiCad%20Board%21">Share on Twitter</a>
+<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u=http://www.xess.com/blog/test-results-for-my-first-kicad-board/&amp;t=Test%20Results%20for%20My%20First%20KiCad%20Board%21">Share on Facebook</a>
+<a class="btn small primary share-reddit" target="_blank" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">Share on Reddit</a>
+
+
+
+<ul class="pager">
+
+
+<li class="previous">
+    <a href="../my-first-kicad-board/index.html">&larr; My First KiCad Board!</a>
+</li>
+
+
+
+
+<li class="next">
+    <a href="../playing-around-with-sound/index.html">Playing Around with Sound! &rarr;</a>
+</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+<div id="comments">
+<h3>Comments</h3>
+
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.reply-form').hide();
+        $(this).next('.reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+
+
+<ul class="unstyled">
+    
+
+    <li id="comment-178"
+        >
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/ebb12961e1f76e0f60a3e65f424179b3?s=32&amp;d=identicon&amp;r=PG">
+            Alan Campbell
+            
+        </strong>
+        <span class="timespan">6 years, 2 months ago</span>
+        <p>I hope this success means the Xula schematic &amp; PCB will be re-done in Kicad format. Even better would be PDF versions - everyone seems to have a PDF  reader these days.<br /><br />I&#39;d like to add / modify a Xula-2 with an 80 MHz oscillator...</p>
+
+        <a href="index.html#comment-178">Link</a> /
+        <a href="index.html#reply-178" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-178"
+            action="http://www.xess.com/comment/#reply-178"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="56" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966357" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="0ab806fd107375a6695c89e479b011dbe0db9407" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="178">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+<h3>New Comment</h3>
+<form method="post" id="comment" action="http://www.xess.com/comment/#comment">
+    
+    
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="56" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966357" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="0ab806fd107375a6695c89e479b011dbe0db9407" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+    
+    <div class="form-actions">
+        <input class="btn btn-primary btn-large" type="submit" value="Comment">
+    </div>
+</form>
+
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fblog%252Ftest-results-for-my-first-kicad-board%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fblog%252Ftest-results-for-my-first-kicad-board%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="../are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="../walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="../colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="../extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="../esp8266-re-reflash-dance/index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="../archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="../archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="../archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="../archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="../archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="../archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="../archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="../archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="../category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="../category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="../author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="../feeds/rss/index.html">RSS</a> /
+    <a href="../feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

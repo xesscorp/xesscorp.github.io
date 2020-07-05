@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="Over a year ago, I posted about how I reflashed an ESP-01 module with new firmware.That post has been very popular and I got the idea in my head that I was some sort of expert on doing this.But when I recently tried to do the same for an ESP-201 module, I found out I wasn&#39;t!">
+<title>ESP8266: Re-Reflash Dance! | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li class="active">ESP8266: Re-Reflash Dance!</li>
+</ul>
+
+<h1>
+ESP8266: Re-Reflash Dance!
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="../author/devbisme/index.html">Dave Vandenbout</a>
+    
+    4 years, 3 months ago
+</h6>
+
+
+
+<p>
+    
+        (<a href="index.html#comments">0 comments</a>)
+        
+    
+</p>
+
+
+
+
+
+
+
+
+
+
+<p><img class="thumbnail-it float-it-left" src="../../static/media/uploads/blog/devbisme/2016-03-22/jbeals_again.png">
+Over a year ago, I posted about <a href="../esp8266-reflash/index.html">how I reflashed an ESP-01 module with new firmware</a>.
+That post has been very popular and I got the idea in my head that I was some sort of expert on doing this.
+But when I recently tried to do the same for an ESP-201 module, <em>I found out I wasn't!</em></p>
+<p><a href="index.html#reflash_video">Note: If you would rather watch than read, there is a video at the end of this post that goes 
+through the ESP-201 flash reprogramming process.</a></p>
+<p>Backing up a bit, about a year ago I bought ten of the -201 modules on Aliexpress for $33.
+(Now you can <a href="http://www.aliexpress.com/item/10pcs-lot-ESP8266-Serial-Port-WIFI-Wireless-Transceiver-Send-Receive-Module-IO-Lead-Out-ESP-201/32401815422.html?ws_ab_test=searchweb201556_6,searchweb201602_1_505_506_503_504_10034_10032_10020_502_10001_10014_10002_10017_10005_10010_10006_10011_10003_10021_10004_10022_10009_10008_10018_10019,searchweb201603_2&amp;btsid=8bc51a7e-4656-48c1-9087-f3864c8f4cb8">get the same thing for $26</a>.)
+I was going to do something with them; I've quite forgotten what that was.</p>
+<p>But I've become interested in integrating the ESP8266 chip in another project so I thought I'd
+pull these out and get reacquainted.
+The ESP8266 has been integrated into the Arduino environment since I last looked, and that
+would be an easy way for me to reprogram the chip.</p>
+<p>The first thing I did was connect some resistors, buttons, jumpers and my 
+<a href="http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf">C232HM cable</a>
+to the pins of the ESP-201 module in a manner similar to what I did 
+<a href="../../static/media/uploads/blog/devbisme/2014-12-09/esp8266_flash_prog_board_sch.png">previously for the ESP-01 module</a>:</p>
+<p><img alt="Non-working ESP-201 module connections" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/esp-201_no_work.png" style="width: 400px;"></p>
+<p>(Note that in the photo above, the <code>RX</code> and <code>TX</code> labels apply to the serial 
+receiver and transmitter pins <em>of the -201 module</em>.<br>
+The attached C232HM cable leads have the opposite functions.)</p>
+<p>I put the ESP8266-201 module into flash reprogramming mode using the
+same procedure as for the ESP-01 module: </p>
+<ol>
+<li>press and hold the <code>PROG</code> button,</li>
+<li>press and release the <code>RESET</code> button, </li>
+<li>release the <code>PROG</code> button.</li>
+</ol>
+<p>Next, I downloaded and installed the <a href="http://www.arduino.cc/en/Main/Software">latest Ardunio IDE</a>.
+It doesn't support the ESP8266 out of the box, so I opened the <code>File =&gt; Preferences</code> 
+dialog box and entered <code>http://arduino.esp8266.com/stable/package_esp8266com_index.json</code>
+into the <code>Additional Boards Manager URLs</code> field.</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/rereflash_url.png" style="width: 600px;"></p>
+<p>Then I clicked on <code>Tools =&gt; Board: =&gt; Boards Manager...</code>.
+At the bottom of the <code>Boards Manager</code> window that appeared, I found the <code>esp8266</code> entry and clicked on it.
+Then I clicked on the <code>Install</code> button which downloaded and installed the
+appropriate compiler &amp; linker (plus code samples).</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/brd_manager.png" style="width: 600px;"></p>
+<p>In order to work with the ESP-201 module, I selected the <code>Generic ESP8266 Module</code> entry from the list of boards:</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/brd_select.png" style="width: 600px;"></p>
+<p>Selecting this entry reconfigures the <code>Tools</code> menu with new options having default values.
+The only thing I changed was the port for my C232HM cable:</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/port_select.png" style="width: 600px;"></p>
+<p>Now that I had my environment set up, I needed something to compile and run to test my board.
+I selected the <code>WiFiWebServer</code>: an application that turns an LED on and off
+when a particular web page served by the ESP8266 is accessed.</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/wifiwebsrv_open.png" style="width: 600px;"></p>
+<p>Once the project loaded, I just selected <code>Sketch =&gt; Upload</code> to see if it would
+compile and get programmed into my -201 module.
+Naturally, it failed:</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/wifi_load_fail.png" style="width: 600px;"></p>
+<p>OK, that's not surprising: the -201 module may need a different set up than the -01 module.
+After searching for a while, I found this 
+<a href="http://adlerweb.deviantart.com/art/ESP8266-ESP-201-Module-Pinout-Diagram-Cheat-Sheet-575951137">handy ESP-201 cheat sheet</a>.
+It indicated that for the ESP-201 to enter the flash mode, the GPIO2 and GPIO15
+pins had to be attached to +3.3V and ground, respectively.
+I added a few jumpers to do that, repeated the steps for putting the ESP-201 into programming mode, and tried another upload...</p>
+<p>Failure.</p>
+<p>From there, I tried various combinations of options under the <code>Tools</code> menu:
+different upload speeds, different COM ports, different board frequencies,
+different flash settings...</p>
+<p>Failure.
+Failure.
+Failure.
+Failure.</p>
+<p>My next thought was that maybe the AT firmware in my modules was too old to work with
+the Arduino uploader.
+I installed the <a href="http://bbs.espressif.com/viewtopic.php?f=57&amp;t=433">ESP Flash Download Tool by Espressif</a> and then
+downloaded a <a href="http://bbs.espressif.com/viewtopic.php?f=46&amp;t=1123">fresher version of the AT firmware that would fit into the 4 Mb flash</a>
+on my -201 modules.
+But when I tried the tool, it wouldn't link to my module, either.</p>
+<p>So I went looking for another program to update the firmware.
+I decided to try
+<a href="https://github.com/themadinventor/esptool/">esptool.py</a> since it is mentioned frequently.
+There, halfway down its README page, I found this:</p>
+<pre><code>The following ESP8266 pins must be pulled high/low for either normal or serial 
+bootloader operation. Most development boards or modules make these connections
+already, internally:
+
+| GPIO | Must Be Pulled |
+--------------------------
+| 15    | Low/GND (directly, or with a resistor) |
+| 2     | High/VCC (always use a resistor) |
+
+If these pins are set differently to shown, nothing on the ESP8266 will work as expected.
+</code></pre>
+<p>There was my problem: I had tied GPIO2 to +3.3 directly rather than through a resistor.
+So I replaced the jumpers on the GPIO2 and GPIO15 pins with 1K resistors as shown below:</p>
+<p><img alt="Working ESP-201 module connections" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/esp-201_work.png" style="width: 400px;"></p>
+<p>Then I tried the Arduino uploader again:</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/wifi_load_success.png" style="width: 600px;"></p>
+<p>Success!</p>
+<p>OK, now I could upload to my ESP-201 module.
+I edited the web server code to enter the SSID and password for my local WiFi network
+and then recompiled and uploaded it to my board.
+Then I clicked on <code>Tools =&gt; Serial Monitor</code> to bring up a window that would show
+status messages output by the web server.
+Pressing the <code>RESET</code> button (<em>without pressing</em> the <code>PROG</code> button) initiated
+the web server and it put out the following information:</p>
+<p><img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2016-03-22/wifiwebsrv_msgs.png" style="width: 600px;"></p>
+<p>These indicated that the web server had started and connected to the local WiFi
+with the displayed IP address.</p>
+<p>The web server outputs a high or low level on the <code>GPIO2</code> pin depending upon the
+web page that's accessed.
+To observe the output level, I connected an LED plus a current-limiting resistor
+from the <code>GPIO2</code> pin to ground.
+Then I just opened a web browser and went to the pages shown below to turn the LED on and off.</p>
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <img alt="Web server page for GPIO2 set high." src="../../static/media/uploads/blog/devbisme/2016-03-22/gpio_1.png">
+        </div>
+        <div class="span1"></div>
+        <div class="span4">
+            <img alt="GPIO LED on." src="../../static/media/uploads/blog/devbisme/2016-03-22/led_on.jpg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+             
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9 text-center">
+            <strong>Web page result and LED state from accessing web address 192.168.0.104/gpio/1.</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+             
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+             
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <img alt="Web server page for GPIO2 set low." src="../../static/media/uploads/blog/devbisme/2016-03-22/gpio_0.png">
+        </div>
+        <div class="span1"></div>
+        <div class="span4">
+            <img alt="GPIO LED off." src="../../static/media/uploads/blog/devbisme/2016-03-22/led_off.jpg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+             
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9 text-center">
+            <strong>Web page result and LED state from accessing web address 192.168.0.104/gpio/0.</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+             
+        </div>
+    </div>
+</div>
+
+<p>So after a lot of effort and a few dead ends, I had my ESP-201 boards working with the Arduino IDE.
+In order to make it easier in the future to program the modules, I used the schematic shown below
+and added the necessary sockets and components to
+<a href="../../static/media/uploads/blog/devbisme/2014-12-09/esp8266_flash_prog_board.jpg">a programming board I previously built for the ESP-01</a>:</p>
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <img alt="ESP-201 flash programming board schematic." src="../../static/media/uploads/blog/devbisme/2016-03-22/esp8266_flash_prog_board_sch.png">
+        </div>
+        <div class="span1"></div>
+        <div class="span4">
+            <img alt="ESP-201 flash programming board." src="../../static/media/uploads/blog/devbisme/2016-03-22/esp8266_flash_prog_board1.jpg">
+            <p> </p>
+            <img alt="ESP-201 flash programming board." src="../../static/media/uploads/blog/devbisme/2016-03-22/esp8266_flash_prog_board2.jpg">
+        </div>
+    </div>
+</div>
+
+<p>I hope this post will help you get started with using your own ESP-201 modules.
+Even if you use a different programming environment than the Arduino IDE,
+the steps for building the programming hardware may still save you from the
+mistakes I made.</p>
+<p><a name="reflash_video"></a>Finally, if you're someone who would rather watch than read, 
+then here's a video showing the entire process of building the hardware for the 
+ESP-201 and reprogramming it with the Arduino IDE:</p>
+<iframe class="center-it" height="315" src="https://www.youtube.com/embed/fsPZPv76gvw" width="560"></iframe>
+
+
+
+
+
+
+
+
+
+
+<div class="panel rating">
+
+<p id="rating-85">
+    
+    Current rating: 4.8
+    
+</p>
+
+
+<form method="post" action="http://www.xess.com/rating/">
+    
+    <input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+    
+    <ul><li> <ul>
+<li><label for="id_value_0"><input id="id_value_0" name="value" type="radio" value="1" /> 1</label></li>
+<li><label for="id_value_1"><input id="id_value_1" name="value" type="radio" value="2" /> 2</label></li>
+<li><label for="id_value_2"><input id="id_value_2" name="value" type="radio" value="3" /> 3</label></li>
+<li><label for="id_value_3"><input id="id_value_3" name="value" type="radio" value="4" /> 4</label></li>
+<li><label for="id_value_4"><input id="id_value_4" name="value" type="radio" value="5" /> 5</label></li>
+</ul><input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" /><input id="id_object_pk" name="object_pk" type="hidden" value="85" /><input id="id_timestamp" name="timestamp" type="hidden" value="1593966325" /><input id="id_security_hash" name="security_hash" type="hidden" value="e0d27a1cbb8c3fd0530cb07731127f3023a5a92b" /></li></ul>
+    <input type="submit" class="btn" value="Rate"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+
+
+<br style="clear:both">
+
+</div>
+
+
+
+
+<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status=http%3A//www.xess.com/blog/esp8266-re-reflash-dance/%20ESP8266%3A%20Re-Reflash%20Dance%21">Share on Twitter</a>
+<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u=http://www.xess.com/blog/esp8266-re-reflash-dance/&amp;t=ESP8266%3A%20Re-Reflash%20Dance%21">Share on Facebook</a>
+<a class="btn small primary share-reddit" target="_blank" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">Share on Reddit</a>
+
+
+
+<ul class="pager">
+
+
+<li class="previous">
+    <a href="../random-number-generators-and-hardware-sorters/index.html">&larr; Random Number Generators and Hardware Sorters</a>
+</li>
+
+
+
+
+<li class="next">
+    <a href="../extinction-level-event/index.html">Extinction Level Event &rarr;</a>
+</li>
+
+
+</ul>
+
+
+
+
+<div id="related-posts">
+<h3>Related posts</h3>
+<ul class="unstyled">
+
+     <li><a href="../esp8266-reflash/index.html">ESP8266: Reflash Dance!</a></li>
+
+</ul>
+</div>
+
+
+
+
+
+<div id="comments">
+<h3>Comments</h3>
+
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.reply-form').hide();
+        $(this).next('.reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+
+
+<ul class="unstyled">
+    
+    
+    <li>There are currently no comments</li>
+    
+</ul>
+
+
+<h3>New Comment</h3>
+<form method="post" id="comment" action="http://www.xess.com/comment/#comment">
+    
+    
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/category/announcements/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="85" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966325" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="e0d27a1cbb8c3fd0530cb07731127f3023a5a92b" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+    
+    <div class="form-actions">
+        <input class="btn btn-primary btn-large" type="submit" value="Comment">
+    </div>
+</form>
+
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fblog%252Fesp8266-re-reflash-dance%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fblog%252Fesp8266-re-reflash-dance%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="../are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="../walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="../colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="../extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="../archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="../archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="../archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="../archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="../archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="../archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="../archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="../archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="../category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="../category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="../author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="../feeds/rss/index.html">RSS</a> /
+    <a href="../feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

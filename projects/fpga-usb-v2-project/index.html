@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="Controller-less USB Core from Johns Hopkins University talks to a PC USB port using just a pair of FPGA I/O pins.">
+<title>Project Asset | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../blog/feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../blog/feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown active"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li 
+                                    class="active  dropdown-submenu"
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li 
+                                    class="active  dropdown-submenu"
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../../blog/category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../../blog/index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li id="breadcrumb-menu-learn"><a href="../../learn/index.html">Learn</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu-projects"><a href="../../design_examples.php">Design Examples</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu-projects-others-"><a href="../others/index.html">Others</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu-projects-fpga-usb-v2-project"
+        class="active">FPGA-USB-V2 Project</li>
+</ul>
+
+<h1>
+FPGA-USB-V2 Project
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+    <div>
+        <div class="assetfield-label">Date:</div>
+        <div class="assetfield-content">08/31/2009</div>
+    </div>
+
+
+
+    <div>
+        <div class="assetfield-label">Categories:</div>
+        
+            <div class="assetfield-content">
+                3rdparty, 
+            </div>
+        
+            <div class="assetfield-content">
+                obsolete, 
+            </div>
+        
+            <div class="assetfield-content">
+                project
+            </div>
+        
+    </div>
+
+
+
+    <div>
+        <div class="assetfield-label">Link:</div>
+        <div class="assetfield-content">
+            <a href="../FPGA-USB-V2.zip">
+                /static/media/projects/FPGA-USB-V2.zip
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+        <div class="assetfield-label">Authors:</div>
+            
+                <div class="assetfield-content">
+                    <a href="../../people/robertjenkins/index.html">
+                        Robert Jenkins
+                    </a>
+                </div>
+        
+    </div>
+
+
+
+
+
+<h2>Description</h2>
+
+<div class="StdPageBody">
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+<ul>
+<li><a href="index.html#fpgabased_usb_interface">FPGA-BASED USB INTERFACE</a></li>
+<li><a href="index.html#introduction">INTRODUCTION</a></li>
+<li><a href="index.html#basic_architecture">BASIC ARCHITECTURE</a></li>
+<li><a href="index.html#design_files">DESIGN FILES</a></li>
+<li><a href="index.html#running_the_usb_interface_demo">RUNNING THE USB INTERFACE DEMO</a></li>
+<li><a href="index.html#bugs_and_caveats">BUGS AND CAVEATS</a></li>
+<li><a href="index.html#environment">ENVIRONMENT</a></li>
+<li><a href="index.html#source_files">SOURCE FILES</a></li>
+<li><a href="index.html#supporting_material">SUPPORTING MATERIAL</a></li>
+<li><a href="index.html#disclaimer">DISCLAIMER</a></li>
+<li><a href="index.html#author">AUTHOR</a></li>
+<li><a href="index.html#copyright_and_license">COPYRIGHT AND LICENSE</a></li>
+<li><a href="index.html#history">HISTORY</a></li>
+</ul>
+<!-- INDEX END --><hr>
+<p></p>
+<hr>
+<h1><a name="fpgabased_usb_interface"></a>FPGA-BASED USB INTERFACE</h1>
+<p></p>
+<hr>
+<h1><a name="introduction"></a>INTRODUCTION</h1>
+<p>This package contains all the elements needed to test and demonstrate a USB HID communication interface on an XESS XSA-3S1000 board mounted on an XST-3 or XST-4 board. We started this project for use in our FPGA Synthesis Lab classes, and hope it will be a start toward an open source USB interface for FPGAs that requires no external controller chip.</p>
+<p>Our USB interface component acts as a peripheral controller and contains a transceiver component that directly drives the USB differential data lines through two FPGA 3.3V IO pins. Using our USBF_IFC core, you can attach an FPGA to a USB port as easily as this:</p>
+<img class="center-it" src="../../static/media/projects/FPGA-USB-V2/FPGA-USB-V2-4.gif">
+<p>The advantages of using this component in an FPGA are:</p>
+<ul>
+<li>
+<p>It requires no external USB controller or PHY chips.</p>
+</li>
+<li>
+<p>It requires only two FPGA pins to interface to a USB port.</p>
+</li>
+<li>
+<p>It consumes only 7% of the LUTs and 3% of the flip-flops of a XILINX XC3S1000 FPGA.</p>
+</li>
+<li>
+<p>Multiple, independent USB interfaces can be housed in a single FPGA.</p>
+</li>
+<li>
+<p>It is written completely in VHDL for easy porting to different applications / FPGAs / development boards.</p>
+</li>
+</ul>
+<p></p>
+<hr>
+<h1><a name="basic_architecture"></a>BASIC ARCHITECTURE</h1>
+<p>The USBF_IFC is the top-level interface component, serving a similar function to what is frequently implemented in firmware with a microprocessor. It has a state machine that waits for interrupts from the transceiver to load data needed to service IN requests from the host and latch data received as OUT packets. It has an advantage over firmware because of its speed. The state machine operates at 50 MHz, so it takes much less than one bit time to analyze a setup request, load the output buffer, and have the data ready to send. For this reason it doesn't need more than one endpoint input or output buffer. It is fast enough to use the same buffers for EP0 or EP1 since only one is used in a transaction at a time. Consequently, a lot of the logic found in typical firmware for managing requests and pre-loading buffers isn't needed. The interface state machine just responds to the current interrupt in less than one bit-clock and then waits for the interrupt to be cleared by the transceiver.</p>
+<p>Inside USBF_IFC, a USB_DRVR component is instantiated to act as the transceiver driving the USB differential data lines. (This component serves a function similar to USB PHY chips.) It sits and waits for tokens and packets to arrive from the host, interrupts the interface when setup requests or data are ready, and sends whatever data is loaded or requested by the interface. This component handles the following things:</p>
+<ul>
+<li>
+<p>It synthesizes the USB bit clock from the 100 MHz master clock on the XSA-3S1000 board and phase locks it to the NRZI signal changes in the incoming USB data.</p>
+</li>
+<li>
+<p>It receives all transmissions from the host, determines whether it is a bus reset, a start-of-frame, or a token/data/status packet, stores the content, and tells the interface about content via interrupt signals.</p>
+</li>
+<li>
+<p>It sends data packets or status replies (ACK, NAK or STALL) as requested by the interface.</p>
+</li>
+<li>
+<p>It handles the NRZI data encoding/decoding, CRC bit checking/generation, PID checking, and screens packets for the correct USB address.</p>
+</li>
+</ul>
+<p>In the USB_DRVR there are two state machine running at the USB bit rate, one for receiving and one for sending data. The state machines tri-state the D+/D- line drivers as appropriate when sending and receiving. The two state machine work together, but in a sense the receive state machine is the master and the send state machine is the slave. This is because all USB transactions are initated by the host. The receive state machine detects the start of a transaction, receives the packets, signals the interface to prepare a response, then launches the send state machine to send the response, and waits for it to finish sending the packet.</p>
+<p></p>
+<hr>
+<h1><a name="design_files"></a>DESIGN FILES</h1>
+<p>This project contains several VHDL modules along with a Visual Basic Program that allows communication with the FPGA to test and demonstrate the USB interface. The various modules are described below. We rely mainly on the comments in the source code as detailed documentation and explanation for anyone interested in using and modifying the code for their own applications.</p>
+<ul>
+<li><strong><a name="item_usbf_declares_2evhd"></a><em>USBF_Declares.vhd</em></strong>
+<p>This package declares constants, arrays, and signal types used in the USB interface and transceiver. It must be added to any FPGA project that includes the USB interface. All of the USB descriptor arrays in the file are for devices, configurations, etc. of the HID that is described in Jan Axelson's book, <em>USB Complete, 3rd Edition</em>. These descriptors will have to be changed if you want to apply this interface to another class of USB device.</p>
+</li>
+<li><strong><a name="item_usb_intf_2evhd"></a><em>USB_INTF.vhd</em></strong>
+<p>This file describes the USB interface component, USB_IFC, and the USB transceiver component, USB_DRVR.</p>
+<p>The USB_IFC component acts as a USB HID class peripheral. The USB spec limits transaction packets for an HID to eight bytes in low-speed mode and 64 bytes in full-speed mode, but we have stuck with eight-byte packets for both modes so we could easily test at both bit rates. Hence, the main port input and output of the interface are arrays of type EIGHT_BYTES, which is <code>array(1 to 8) of std_logic_vector(7 downto 0)</code>. The use of eight-byte IN and OUT transactions is hard-coded into the VHDL because of the history of how we got to this point. Introducing 64-byte packets and making this an easy switchover from eight bytes requires more than trivial changes, so we have put this modification off while we tested what we have.</p>
+<p>The input array to USB_IFC is PCIn, which holds the values to be written from the FPGA to the PC host when the host executes a get_report transaction. The port output signal rd_req goes high while the PCIn array is being sent by the transceiver. The output array is PCOut, which contains the packet just written to the FPGA by the PC host via either a control transfer on EP0_OUT or an interrupt transfer on EP1_OUT. Both methods work, but the control transfers are faster when the USB hub is not busy. A port output signal new_dat pulses high when a new PCOut array is latched by the interface.</p>
+<p>The USB_DRVR component is instantiated inside USBF_IFC and provides communication with the USB hub over the D+/D- data lines. There are two state machines inside the USB_DRVR - one to read the USB data lines and recover packets from the host, the other to drive the USB data lines and send packets to the host. The transceiver signals the interface via interrupt signals about packets received and clears the interrupts when the resulting action is completed.</p>
+</li>
+<li><strong><a name="item_usb_demo_2evhd"></a><em>USB_Demo.vhd</em></strong>
+<p>This file contains the top-level module of an ISE project designed to test the USB interface in conjunction with the FPGA-USB.exe Visual Basic program on the host PC. This module shows how to instantiate the USBF_IFC, how to use its input and ouput arrays, and also how to use the mode byte sent as a feature report.</p>
+<p>This module also contains the XESS DRAM interface module and a state machine that lets the PC read and write the XSA-3S1000 DRAM through the USB interface. We designed the DRAM access state machine to use the interface outputs, rd_req and new_dat, to coordinate with the program running on the PC. We rely on the FPGA being much faster than the PC program, so the memory access state machine has to pause and wait for the PC to either prepare and write the next packet for loading the DRAM or read the last packet read from the DRAM.</p>
+<p>We also note that the interface makes use of the set_feature capability of an HID class peripheral to send a mode byte to the FPGA project that can control the project operation. This serves a purpose similar to setting dip switches on the XST board, but it is much more powerful and easy to use. As an example, we make use of the mode byte to activate the DRAM access state machine when doing memory write or read operations.</p>
+<p>The USB interface module outputs a debug vector that is connected to the LEDs on the XST-3 board. Once everything is working correctly, this port signal can be left open and logic trimming during the synthesis process will eliminate the debug vector from the final circuit.</p>
+</li>
+<li><strong><a name="item_sdramj_2evhd"></a><em>SDRAMJ.vhd</em></strong>
+<p>This is our modification of the XESS packages to support the DRAM interface. We have consolidated everything needed for the DRAM interface, including all declarations of FPGA-side signals, into a single package file that also includes the interface. This was done to make it a bit easier to use the XSA DRAM in our student projects.</p>
+</li>
+<li><strong><a name="item_usbf_2d3s_2eucf"></a><em>USBF-3S.ucf</em></strong>
+<p>This is the UCF file for building the USB_Demo.vhd project for the XSA-3S1000 board mounted on the XST-3. If one desires to re-build the project bit file for a different board combination, a new UCF file would have to be used. The pins used for the USB data lines were arbitrarily selected for easy plug-in to the XST-3 header.</p>
+</li>
+<li><strong><a name="item_fpga_2dusb_2eexe"></a><em>FPGA-USB.exe</em></strong>
+<p>This is the Visual Basic executable for FPGA communications. The entire VB Project is included with all the source code and the executable. Our program is based on Jan Axelson's HIDIO version 2 code for Visual Basic 6.0 from <em>USB Complete, 3rd Edition</em>.</p>
+<p>The FPGA-USB program maintains a SendBuffer whose contents appear in the FPGA PCOut array after a set_report or WriteFile operation. Similarly, the contents of the FPGA PCIn array appears in the ReadBuffer of FPGA-USB after a get_report operation. Thus in the demo program, clicking the <code>Send hex Bytes</code> button sends 8 bytes from the window to the PCOut array in the FPGA, and displays what was sent. Clicking the <code>Read Byte Packet</code> button receives into the ReadBuffer whatever std_logic hex values are tied to the PCIn array in the FPGA. In the FPGA demo project, we have tied the first 5 PCIn bytes to the PCOut bytes, and bytes 6 and 7 are tied to a 16 hz counter. This lets you try out the Continuous Read mode, where the get_report is executed 5 times per second, to observe real-time changes in the FPGA values. This makes the eight-byte display act similar to LEDs.</p>
+<p>In the FPGA-USB.exe program, the SendBuffer and ReadBuffer used for USB reports are allocated as global static byte arrays. Thus, once they are filled, they will hold those values for the next report. This makes it easy to change, say a single byte in a report and just re-send the whole 8-byte report, rather than change the report size. We opted for this approach for simplicity at both ends of a transaction. In the FPGA, the USB PCOut and PCIn arrays are simliarly latched and maintain their values until rewritten.</p>
+</li>
+</ul>
+<p></p>
+<hr>
+<h1><a name="running_the_usb_interface_demo"></a>RUNNING THE USB INTERFACE DEMO</h1>
+<ul>
+<li><strong><a name="item_step_1_3a"></a>Step 1:</strong>
+<p>Insert the XSA-3S1000 board into the socket on the XST-3 Board.</p>
+</li>
+<li><strong><a name="item_step_2_3a"></a>Step 2:</strong>
+<p>Set jumper J9 on the XSA-3S1000 Board to XS.</p>
+</li>
+<li><strong><a name="item_step_3_3a"></a>Step 3:</strong>
+<p>Download the default parallel port interface into the XSA-3S1000 (<em>\XSTOOLS\XSA\3S1000\dwnldpar.svf</em>) if it is not already present. (Running GXSTEST will do this automatically.)</p>
+</li>
+<li><strong><a name="item_step_4_3a"></a>Step 4:</strong>
+<p>Take a standard USB AB cable and cut off the B connector (the one that doesn't attach to the PC). Strip off a few inches of insulation to reveal the individual wires. Connect the D+/D- data signals (green wire / white wire) to the D16/E14 pins of the XSA-3S1000 board (use the J4 connector of the XST-3 board to make the connections). Connect a 1.5K resistor between FPGA pin D16 and +3.3V to enable full-speed USB mode. Connect the black ground wire to a ground pin on the XSA-3S1000 or XST-3 board. Leave the red power wire disconnected.</p>
+<p>Here is a picture of the connections to the XSA-3S1000 and XST-3 boards. The B connector was removed from a short USB cable and the individual wires were then soldered to the XST-3 board. Then a USB extender cable was used to extend a PC USB port within reach of the A connector of the modified cable.</p>
+<img class="center-it" src="../../static/media/projects/FPGA-USB-V2/FPGA-USB-V2-1.jpg">
+<p>The next picture shows the details of the connections of the USB wires to the XST-3 board. The green D+ wire connects to FPGA pin D16, the white D- wire connects to pin E14, and the blue wire connects +3.3V through a 1.5K resistor to D16.</p>
+<img class="center-it" src="../../static/media/projects/FPGA-USB-V2/FPGA-USB-V2-2.jpg">
+</li>
+<li><strong><a name="item_step_5_3a"></a>Step 5:</strong>
+<p>Download the <em>usb_demo.bit</em> file to the XSA Board. Make sure the USB cable is not attached to the PC when the bit file is downloaded.</p>
+</li>
+<li><strong><a name="item_step_6_3a"></a>Step 6:</strong>
+<p>Attach the A connector of the USB cable to an unused port on your PC. Within a few seconds, the PC should report the presence of a new USB peripheral.</p>
+</li>
+<li><strong><a name="item_step_7_3a"></a>Step 7:</strong>
+<p>Start the FPGA-USB.exe program. The following window should appear:</p>
+<img class="center-it" src="../../static/media/projects/FPGA-USB-V2/FPGA-USB-V2-3.gif">
+<p>When it starts up, the FPGA-USB program searches the USB devices connected to the PC to find the FPGA. So it expects the FPGA circuit to be active and successfully enumerated when it starts. There is a debug window that indicates the progress in finding the FPGA device and maintaining connectivity. If the FPGA-USB program is running and the FPGA is reloaded with the <em>usb_demo.bit</em> file, then you have to disconnect and reconnect the USB cable and then click on the <code>Try Re-Connecting</code> button to re-establish communications.</p>
+<p>There are various command buttons and options widgets in the program window that are more or less self-explanatory. To exercise the USB link, type a string of hexadecimal numbers (e.g. <code>1 2 3 4 5 6 7 8</code>) into the first field in the window and click on the <code>Send hex Bytes</code> button. The numbers should appear in the <code>Hex Bytes Received</code> fields.</p>
+<p>Next, click the <code>Receive Continuous Packets Start</code> button. You should see increasing values from a 16-bit, 5-Hz counter in the FPGA displayed in fields <code>D6</code> and <code>D7</code>.</p>
+<p>The FPGA-USB program also has facilities for downloading data into the XSA-3S1000 DRAM and for reading data back from the DRAM to the PC.</p>
+</li>
+</ul>
+<p></p>
+<hr>
+<h1><a name="bugs_and_caveats"></a>BUGS AND CAVEATS</h1>
+<p>For reasons not yet understood, there is a problem with rapid, sustained read requests. The problem occurs for both interrupt reads on EP1 and control reads on EP0. After a certain number of successful read reports, the host API software gets repeated packet errors and doesn't recover until the program does a write. This generally isn't a problem except when dumping a large block of DRAM memory from the XSA board to the PC. To make this work in the FPGA-USB program, we make a write request for every read request when dumping the DRAM. There is no problem with the sustained packet writes for loading the DRAM. We suspect this may have to do with buffers in the host hubs for handling split transactions with USB 2.0. All the PCs we tested had USB 2.0 hardware.</p>
+<p>The 12 Mbps full speed mode worked on all 3 computers we tested it on. However, it may not work in all environments because it is difficult to synthesize and phase lock a 12 Mhz clock from the 100 MHz clock available on the XSA board. We use a 32-bit DDS accumulator for clock division and phase locking and can't avoid a 10 nsec jitter in the 12 Mhz since 100 MHz is not an integer multiple of 12 MHz. A 10 ns jitter is not comfortably within the USB spec on the full speed bit clock. (For the USB low speed of 1.5 MHz, a 10 nsec jitter is well within spec.) This is not an issue when using a different host board having a master clock that is a multiple of 12 Mhz (e.g. 96 Mhz).</p>
+<p>Although the USB HID standard calls for an Interrupt IN endpoint, our interface works without it. The FPGA interface and transceiver HDL code allows for an interrupt EP1. Interrupt reads at repeated 1 msec intervals were tested for dumping the DRAM memory on the XESS XSA board. However, it had poorer performance than control reads and also didn't solve the read packet error problem described below. Since most of the interrupt read requests were getting NAK'ed and wasting hub bandwidth, we just left EP1 out of the Configuration Descriptor for this version of the package. This means you cannot use the API function ReadFile for read reports in the Visual Basic Program; EP0 IN and EP0 OUT are the only endpoints supported. If your application needs interrupt EP1 support, it is easy enough to add by changing the number of endpoints in the descriptor array in the HDL code.</p>
+<p>Note that the USB cable should be unattached before your project bit file is loaded, and then attached after the download is complete. At that point, the project is held in reset until (1) the DLLs in the SDRAM interface achieve lock, and then (2) until the USBF_IFC completes enumeration. The config_done output signal from the interface goes high when enumeration is complete and the USB device driver on the PC has accepted the FPGA as an HID class peripheral. We tie config_done to bargraph LED segment 10 so we know when the FPGA is ready for USB communications. Sometimes, depending on the state of things, enumeration may not complete when the USB cable is attached. In this case the XST <code>reset</code> pushbutton needs to be pushed to reset the FPGA interface after the cable is disconnected, and then the USB cable needs to be re-inserted to restart enumeration. This always works for us, but you can always reload the bit file with the cable disconnected.</p>
+<p></p>
+<hr>
+<h1><a name="environment"></a>ENVIRONMENT</h1>
+<p>This example design was developed using the following version of software:</p>
+<pre>   Xilinx WebPACK       : 8.2.03i</pre>
+<p></p>
+<hr>
+<h1><a name="source_files"></a>SOURCE FILES</h1>
+<p>You can download the source files for this example design from the XESS website at <a href="../FPGA-USB-V2.zip">http://www.xess.com/projects/FPGA-USB-V2.zip</a> .</p>
+<p></p>
+<hr>
+<h1><a name="supporting_material"></a>SUPPORTING MATERIAL</h1>
+<p>If you intend to use this package and are not an expert in USB, please get this book: <em>USB Complete, 3rd Edition,</em> by Jan Axelson, which is heavily referenced in our code. Axelson's Visual Basic project (USBHIDIO2) was the starting point for our PC based USB-FPGA program, and the information in this book was essential to our development.</p>
+<p></p>
+<hr>
+<h1><a name="disclaimer"></a>DISCLAIMER</h1>
+<p>Please be aware that this whole package is not a polished product, but was developed as a senior design project by several of our graduating EEs. Hence, no guarantees or support are offered for its use.</p>
+<p></p>
+<hr>
+<h1><a name="author"></a>AUTHOR</h1>
+<p>Robert E. Jenkins - Johns Hopkins University ECE Dept.</p>
+<p></p>
+<hr>
+<h1><a name="copyright_and_license"></a>COPYRIGHT AND LICENSE</h1>
+<p>Copyright 2009 by Robert E. Jenkins.</p>
+<p>This application can be freely distributed and modified as long as you do not remove the attributions to the author or his employer.</p>
+<p></p>
+<hr>
+<h1><a name="history"></a>HISTORY</h1>
+<p>02/24/2009 - Initial release.</p>
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fprojects%252Ffpga-usb-v2-project%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fprojects%252Ffpga-usb-v2-project%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+    
+    
+
+
+
+
+
+
+    
+    
+
+
+
+
+<h3>Announcements</h3>
+<ul class="recent-anncs">
+
+<li><a href="../../blog/stickit-grove-board-is-released/index.html">StickIt!-Grove Board is Released!</a></li>
+
+<li><a href="../../blog/raspberry-pi-xula/index.html">Raspberry Pi + XuLA</a></li>
+
+<li><a href="../../blog/new-us-distributor/index.html">New US Distributor!</a></li>
+
+</ul>
+
+
+
+    
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li class="active"
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

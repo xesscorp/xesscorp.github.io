@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="Makefiles for Xilinx FPGA / CPLD Projects">
+<title>Document Asset | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../blog/feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../blog/feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown active"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li 
+                                    class="active  dropdown-submenu"
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../../blog/category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../../blog/index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li id="breadcrumb-menu-learn"><a href="../../learn/index.html">Learn</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu-appnotes"><a href="../index.html">Application Notes</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu-appnotes-makefiles-for-xilinx-fpga-cpld-projects"
+        class="active">Makefiles for Xilinx FPGA / CPLD Projects</li>
+</ul>
+
+<h1>
+Makefiles for Xilinx FPGA / CPLD Projects
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+    <div>
+        <div class="assetfield-label">Date:</div>
+        <div class="assetfield-content">03/25/2007</div>
+    </div>
+
+
+
+    <div>
+        <div class="assetfield-label">Categories:</div>
+        
+            <div class="assetfield-content">
+                appnote, 
+            </div>
+        
+            <div class="assetfield-content">
+                obsolete
+            </div>
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+        <div class="assetfield-label">Authors:</div>
+            
+                <div class="assetfield-content">
+                    <a href="../../people/davevandenbout/index.html">
+                        Dave Vandenbout
+                    </a>
+                </div>
+        
+    </div>
+
+
+
+    <div>
+        <div class="assetfield-label">Organization:</div>
+        <div class="assetfield-content">
+            <a href="../../organizations/xess/index.html">
+                XESS
+            </a>
+        </div>
+    </div>
+
+
+
+<h2>Description</h2>
+
+<div class="StdPageBody">
+<h1>Makefiles for Xilinx FPGA/CPLD Projects</h1>
+<p></p>
+<ul>
+<li><a href="index.html#makefiles_for_xilinx_fpga_cpld_projects">MAKEFILES FOR XILINX FPGA/CPLD PROJECTS</a>
+<ul>
+<li><a href="index.html#xilinx_rules_makefile">Xilinx Rules Makefile</a>
+<ul>
+<li><a href="index.html#xilinx_rules_mk">xilinx_rules.mk</a></li>
+<li><a href="index.html#get_option_values_pl_perl_script">get_option_values.pl Perl Script</a></li>
+<li><a href="index.html#set_option_values_pl_perl_script">set_option_values.pl Perl Script</a></li>
+<li><a href="index.html#get_project_files_pl_perl_script">get_project_files.pl Perl Script</a></li>
+</ul>
+</li>
+<li><a href="index.html#project_makefile">Project Makefile</a></li>
+<li><a href="index.html#directory_makefile">Directory Makefile</a></li>
+<li><a href="index.html#environment">Environment</a></li>
+<li><a href="index.html#source_files">Source Files</a></li>
+<li><a href="index.html#author">Author</a></li>
+<li><a href="index.html#copyright_and_license">Copyright and License</a></li>
+<li><a href="index.html#history">History</a></li>
+</ul>
+</li>
+</ul>
+<!-- INDEX END --><hr>
+<p></p>
+<hr>
+<h1><a name="makefiles_for_xilinx_fpga_cpld_projects"></a>MAKEFILES FOR XILINX FPGA/CPLD PROJECTS</h1>
+<p>These makefiles were created so that you can develop a Xilinx project using the WebPACK/ISE GUI, but then use a makefile to automate the build process once the development work is done.</p>
+<p>Several makefiles will be described:</p>
+<dl><dt><strong><a name="item_xilinx_rules_makefile"></a><a href="index.html#xilinx_rules_makefile">Xilinx Rules Makefile</a></strong></dt><dd>
+<p>This makefile contains the rules that move the HDL files through the synthesizer, place &amp; route and bitstream generation processes to produce the final bitstream file.</p>
+</dd><dt><strong><a name="item_project_makefile"></a><a href="index.html#project_makefile">Project Makefile</a></strong></dt><dd>
+<p>This makefile resides in the WebPACK/ISE project directory and uses the Xilinx rules makefile to create the bitstream for the project.</p>
+</dd><dt><strong><a name="item_directory_makefile"></a><a href="index.html#directory_makefile">Directory Makefile</a></strong></dt><dd>
+<p>This makefile creates bitstreams for a number WebPACK/ISE projects by calling the project makefile in each of the project subdirectories.</p>
+</dd></dl>
+<p></p>
+<h2><a name="xilinx_rules_makefile"></a>Xilinx Rules Makefile</h2>
+<p>The <em>xilinx_rules.mk</em> file contains the variable definitions and rules that perform the bulk of the operations for creating an FPGA or CPLD configuration bitstream. The rules encode the process flow for an FPGA:</p>
+<pre>     (.vhd,.ver)--&gt;[XST]--&gt;(.ngc,.ucf)--&gt;[NGDBUILD]--&gt;(.ngd,.pcf)--&gt;[MAP]--&gt;(.ncd,.pcf)--&gt; ...
+                ... --&gt;[PAR]--&gt;(.ncd)--&gt;[BITGEN]--&gt;(.bit)</pre>
+<p>and the process flow for a CPLD:</p>
+<pre>     (.vhd,.ver)--&gt;[XST]--&gt;(.ngc,.ucf)--&gt;[NGDBUILD]--&gt;(.ngd)--&gt;[CPLDFIT]--&gt;(.vm6)--&gt; ...
+                ... --&gt;[HPREP6]--&gt;(.jed)--&gt;[IMPACT]--&gt;(.svf)</pre>
+<p><em>xilinx_rules.mk</em> is not used directly. It is included in the main <em>makefile</em> of a WebPACK/ISE project. <em>xilinx_rules.mk</em> is usually placed in the <em>/usr/local/include</em> directory so that <code>make</code> can find it when needed.</p>
+<p>The <em><a href="index.html#xilinx_rules_mk">xilinx_rules.mk</a></em> file is shown below. <em>xilinx_rules.mk</em> uses several Perl script files (<em><a href="index.html#get_option_values_pl_perl_script">get_option_values.pl</a></em>, <em><a href="index.html#set_option_values_pl_perl_script">set_option_values.pl</a></em>, and <em><a href="index.html#get_project_files_pl_perl_script">get_project_files.pl</a></em>) and these are also shown.</p>
+<p></p>
+<h3><a name="xilinx_rules_mk"></a>xilinx_rules.mk</h3>
+<pre>           <span class="comment">#-------------------------------------------------------------------</span>
+            <span class="comment"># Company : XESS Corp.</span>
+            <span class="comment"># Engineer : Dave Vanden Bout</span>
+            <span class="comment"># Creation Date : 05/16/2006</span>
+            <span class="comment"># Copyright : 2005-2006, XESS Corp</span>
+            <span class="comment"># Tool Versions : make 3.79.1, perl 5.8.8, WebPACK 8.1.03i</span>
+            <span class="comment">#</span>
+            <span class="comment"># Description:</span>
+            <span class="comment"># This makefile contains the rules that move the HDL files through</span>
+            <span class="comment"># the Xilinx WebPACK/ISE synthesizer, place &amp; route and bitstream </span>
+            <span class="comment"># generation processes to produce the final bitstream file.</span>
+            <span class="comment">#</span>
+            <span class="comment"># Revision:</span>
+            <span class="comment"># 1.0.3</span>
+            <span class="comment">#</span>
+            <span class="comment"># Additional Comments:</span>
+            <span class="comment"># This file is normally included in another makefile using the</span>
+            <span class="comment"># `include' directive. Usually this file is placed in the </span>
+            <span class="comment"># /usr/local/include directory so make can find it automatically.</span>
+            <span class="comment">#</span>
+            <span class="comment"># The makefile targets are:</span>
+            <span class="comment"># config: Creates bit/svf file for FPGA/CPLD.</span>
+            <span class="comment"># svf: Directly creates bit file for FPGA.</span>
+            <span class="comment"># bit: Directly creates svf file for CPLD.</span>
+            <span class="comment"># mcs: Creates Intel MCS file from bit file.</span>
+            <span class="comment"># exo: Creates Motorola EXO file from bit file.</span>
+            <span class="comment"># timing: Creates timing report for FPGA (not CPLD).</span>
+            <span class="comment"># clean: Cleans temporary files created during build process.</span>
+            <span class="comment"># distclean: Clean and also remove timing report.</span>
+            <span class="comment"># maintainer-clean: Distclean and also remove bit/svf files.</span>
+            <span class="comment"># nice: beautify the HDL source code</span>
+            <span class="comment">#</span>
+            <span class="comment"># 1.0.3:</span>
+            <span class="comment"># Modified to support ISE9 project directory structure.</span>
+            <span class="comment"># 1.0.2:</span>
+            <span class="comment"># Added more file types for removal during cleaning.</span>
+            <span class="comment"># 1.0.1:</span>
+            <span class="comment"># Added 'nice' target.</span>
+            <span class="comment"># 1.0.0</span>
+            <span class="comment"># Initial revision.</span>
+            <span class="comment">#-------------------------------------------------------------------</span>
+    </pre>
+<pre>           <span class="comment">#</span>
+            <span class="comment"># Paths to utilities.</span>
+            <span class="comment">#</span>
+    </pre>
+<pre>           RM                 := erase /s /q
+            RMDIR              := rmdir /s /q
+            MKDIR              := mkdir
+            ECHO               := echo
+            EMACS              := /bin/emacs-21.3/bin/emacs</pre>
+<pre>           UTILITY_DIR        := C:/BIN/
+            SET_OPTION_VALUES  := perl $(UTILITY_DIR)set_option_values.pl
+            GET_OPTION_VALUES  := perl $(UTILITY_DIR)get_option_values.pl
+            GET_PROJECT_FILES  := perl $(UTILITY_DIR)get_project_files.pl</pre>
+<pre>           <span class="comment">#</span>
+            <span class="comment"># Flags and option values that control the behavior of the Xilinx tools.</span>
+            <span class="comment"># You can override these values in the makefile that includes this one.</span>
+            <span class="comment"># Otherwise, the default values will be set as shown below.</span>
+            <span class="comment">#</span>
+    </pre>
+<pre>           DIR_SPACES  := $(subst /, ,$(CURDIR))
+            DIR_NAME    := $(word $(words $(DIR_SPACES)), $(DIR_SPACES))
+            DESIGN_NAME ?= $(DIR_NAME)
+            TOP_NAME    ?= $(DESIGN_NAME)</pre>
+<pre>           PART_TYPE        ?=            $(shell $(GET_OPTION_VALUES) $(DESIGN_NAME).npl DEVICE)
+            PART_SPEED_GRADE ?= $(subst -,,$(shell $(GET_OPTION_VALUES) $(DESIGN_NAME).npl DEVSPEED))
+            PART_PACKAGE     ?=            $(shell $(GET_OPTION_VALUES) $(DESIGN_NAME).npl DEVPKG)
+            PART             ?= $(PART_TYPE)-$(PART_SPEED_GRADE)-$(PART_PACKAGE)</pre>
+<pre>           IS_CPLD = $(findstring xc95,$(PART))</pre>
+<pre>           INTSTYLE         ?= -intstyle silent      # call Xilinx tools in silent mode
+            XST_FLAGS        ?= $(INTSTYLE)           # most synthesis flags are specified in the .xst file
+            UCF_FILE         ?= $(DESIGN_NAME).ucf    # constraint/pin-assignment file
+            NGDBUILD_FLAGS   ?= $(INTSTYLE) -dd _ngo  # ngdbuild flags
+            NGDBUILD_FLAGS += $(if $(UCF_FILE),-uc,) $(UCF_FILE)         # append the UCF file option if it is specified</pre>
+<pre>           MAP_FLAGS        ?= $(INTSTYLE) -cm area -pr b -k 4 -c 100 -tx off
+            PAR_FLAGS        ?= $(INTSTYLE) -w -ol std -t 1
+            TRCE_FLAGS       ?= $(INTSTYLE) -e 3 -l 3
+            BITGEN_FLAGS     ?= $(INTSTYLE)           # most bitgen flags are specified in the .ut file
+            PROMGEN_FLAGS    ?= -u 0                  # flags that control the MCS/EXO file generation</pre>
+<pre>           CPLDFIT_FLAGS    ?= -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper
+            SIGNATURE        ?= $(DESIGN_NAME)        # JTAG-accessible signature stored in the CPLD
+            HPREP6_FLAGS     ?= -s IEEE1149           # hprep flags
+            HPREP6_FLAGS     += $(if $(SIGNATURE),-n,) $(SIGNATURE)  # append signature if it is specified</pre>
+<pre>           ISE_VERSION ?= $(shell grep -m 1 -o -P "ISE\s*[0-9]+" %XILINX%/readme.txt | grep -m 1 -P -o "[0-9]+")
+            ifeq ($(ISE_VERSION),6)
+                    PROJNAV_DIR ?= __projnav
+            else
+            ifeq ($(ISE_VERSION),7)
+                    PROJNAV_DIR ?= __projnav
+            else
+                    PROJNAV_DIR ?= .
+            endif
+            endif</pre>
+<pre>           ifneq (,$(IS_CPLD))
+                    XST_CPLD_OPTIONS_FILE ?= $(PROJNAV_DIR)/$(DESIGN_NAME).xst
+                    IMPACT_OPTIONS_FILE   ?= _impact.cmd
+                    XST_OPTIONS_FILE       = $(XST_CPLD_OPTIONS_FILE)
+            else
+                    XST_FPGA_OPTIONS_FILE ?= $(PROJNAV_DIR)/$(DESIGN_NAME).xst
+                    BITGEN_OPTIONS_FILE   ?= $(DESIGN_NAME).ut
+                    XST_OPTIONS_FILE       = $(XST_FPGA_OPTIONS_FILE)
+            endif</pre>
+<pre>           <span class="comment">#</span>
+            <span class="comment"># The following rules describe how to compile the design to an FPGA/CPLD.</span>
+            <span class="comment">#</span>
+    </pre>
+<pre>           ifeq ($(origin HDL_FILES),undefined)
+              HDL_FILES       ?= $(shell $(GET_PROJECT_FILES) $(DESIGN_NAME).prj)
+            endif</pre>
+<pre>           %.nice: %.vhd
+                    $(EMACS) -batch $&lt; -f vhdl-beautify-buffer -f save-buffer
+                    $(RM) $&lt;~</pre>
+<pre>           %.ngc: $(HDL_FILES) $(XST_OPTIONS_FILE)
+                    -$(MKDIR) $(PROJNAV_DIR)
+                    $(SET_OPTION_VALUES) $(XST_OPTIONS_FILE) 
+                            "set -tmpdir $(PROJNAV_DIR)" 
+                            "-lso $(DESIGN_NAME).lso" 
+                            "-ifn $(DESIGN_NAME).prj" 
+                            "-ofn $(DESIGN_NAME)" 
+                            "-p $(PART)" 
+                            "-top $(TOP_NAME)" 
+                                    &gt; $(PROJNAV_DIR)/tmp.xst
+                    xst $(XST_FLAGS) -ifn $(PROJNAV_DIR)/tmp.xst -ofn $*.syr</pre>
+<pre>           %.ngd: %.ngc %.ucf
+                    ngdbuild $(NGDBUILD_FLAGS) -p $(PART) $*.ngc $*.ngd</pre>
+<pre>           %_map.ncd %.pcf: %.ngd
+                    map $(MAP_FLAGS) -p $(PART) -o $*_map.ncd $*.ngd $*.pcf</pre>
+<pre>           %.ncd: %_map.ncd %.pcf
+                    par $(PAR_FLAGS) $*_map.ncd $*.ncd $*.pcf</pre>
+<pre>           %.bit: %.ncd $(BITGEN_OPTIONS_FILE)
+                    bitgen $(BITGEN_FLAGS) -f $(BITGEN_OPTIONS_FILE) $*.ncd</pre>
+<pre>           %.mcs: %.bit
+                    promgen $(PROMGEN_FLAGS) $*.bit -p mcs</pre>
+<pre>           %.exo: %.bit
+                    promgen $(PROMGEN_FLAGS) $*.bit -p exo</pre>
+<pre>           %.vm6: %.ngd
+                    cpldfit $(CPLDFIT_FLAGS) -p $(PART) $*.ngd</pre>
+<pre>           %.jed: %.vm6
+                    hprep6 $(HPREP6_FLAGS) -i $*.vm6</pre>
+<pre>           %.svf: %.jed $(IMPACT_OPTIONS_FILE)
+                    $(SET_OPTION_VALUES) $(IMPACT_OPTIONS_FILE) 
+                            "setCable -port svf -file \"$*.svf\"" 
+                            "addDevice -position 1 -file \"$*.jed\"" 
+                                    &gt; impactcmd.txt
+                    $(ECHO) "quit" &gt;&gt; impactcmd.txt
+                    impact -batch impactcmd.txt</pre>
+<pre>           <span class="comment"># Use .config suffix to trigger creation of a bit/svf file</span>
+            <span class="comment"># depending upon whether an FPGA/CPLD is the target device.</span>
+            <span class="variable">%.</span><span class="variable">config</span><span class="operator">:</span> <span class="variable">$(</span><span class="keyword">if</span> <span class="variable">$(</span><span class="variable">IS_CPLD</span><span class="operator">),</span><span class="variable">%.</span><span class="variable">svf</span><span class="operator">,</span><span class="variable">%.</span><span class="variable">bit</span><span class="operator">)</span> <span class="operator">;</span>
+    </pre>
+<pre>           %.twr: %.ncd %.pcf
+                    trce $(TRCE_FLAGS) $*.ncd -o $*.twr $*.pcf</pre>
+<pre>           <span class="comment"># Use .timing suffix to trigger timing report creation.</span>
+            <span class="variable">%.</span><span class="variable">timing</span><span class="operator">:</span> <span class="variable">%.</span><span class="variable">twr</span> <span class="operator">;</span>
+    </pre>
+<pre>           .PRECIOUS: %.ngc %.ngd %_map.ncd %.ncd %.twr %.vm6 %.jed</pre>
+<pre>           %.clean:
+                    -$(RM) $*.stx $*.ucf.untf $*.mrp $*.nc1 $*.ngm $*.prm $*.lfp
+                    -$(RM) $*.placed_ncd_tracker $*.routed_ncd_tracker
+                    -$(RM) $*.pad_txt $*.twx *.log *.vhd~ $*.dhp $*.jhd $*.cel
+                    -$(RM) $*.ngr $*.ngc $*.ngd $*.syr $*.bld $*.pcf
+                    -$(RM) $*_map.mrp $*_map.ncd $*_map.ngm $*.ncd $*.pad
+                    -$(RM) $*.par $*.xpi $*_pad.csv $*_pad.txt $*.drc $*.bgn
+                    -$(RM) $*.xml $*_build.xml $*.rpt $*.gyd $*.mfd $*.pnx
+                    -$(RM) $*.vm6 $*.jed $*.err $*.ER result.txt tmperr.err *.bak *.vhd~
+                    -$(RM) impactcmd.txt
+                    -$(RMDIR) xst _ngo $*_html __projnav</pre>
+<pre>           %.distclean: %.clean
+                    -$(RM) $*.twr</pre>
+<pre>           %.maintainer-clean: %.distclean
+                    -$(RM) $*.bit $*.svf $*.exo $*.mcs</pre>
+<pre>           <span class="comment">#</span>
+            <span class="comment"># Default targets for FPGA/CPLD compilations.</span>
+            <span class="comment">#</span>
+    </pre>
+<pre>           config          : $(DESIGN_NAME).config
+            bit             : $(DESIGN_NAME).bit
+            svf             : $(DESIGN_NAME).svf
+            mcs             : $(DESIGN_NAME).mcs
+            exo             : $(DESIGN_NAME).exo
+            timing          : $(DESIGN_NAME).timing
+            clean           : $(DESIGN_NAME).clean
+            distclean       : $(DESIGN_NAME).distclean
+            maintainer-clean: $(DESIGN_NAME).maintainer-clean
+            nice            : $(subst .vhd,.nice,$(HDL_FILES))</pre>
+<p></p>
+<h3><a name="get_option_values_pl_perl_script"></a>get_option_values.pl Perl Script</h3>
+<pre>     <span class="comment">#</span>
+      <span class="comment"># Get selected option value from an options file of a Xilinx WebPACK/ISE project</span>
+      <span class="comment">#</span>
+      <span class="variable">$option_file</span> <span class="operator">=</span> <span class="keyword">shift</span> <span class="variable">@ARGV</span><span class="operator">;</span>         <span class="comment"># first argument is the option file name</span>
+      <span class="keyword">open</span><span class="operator">(</span><span class="variable">FILE</span><span class="operator">,</span><span class="variable">$option_file</span><span class="operator">)</span> <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$!</span><span class="operator">;</span>
+      <span class="variable">$option_name</span> <span class="operator">=</span> <span class="variable">$ARGV</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span><span class="operator">;</span>            <span class="comment"># second argument is the option name to search for</span>
+    </pre>
+<pre>     <span class="comment"># read lines from option file looking for the given option name</span>
+      <span class="keyword">while</span><span class="operator">(&lt;</span><span class="variable">FILE</span><span class="operator">&gt;)</span> <span class="operator">{</span>
+        <span class="keyword">chop</span><span class="operator">;</span>
+        <span class="regex">/^$option_name\s+/</span> <span class="operator">&amp;&amp;</span> <span class="keyword">print</span> <span class="variable">$'</span><span class="operator">;</span>   <span class="comment"># print out the value for the given option</span>
+      <span class="operator">}</span>
+    </pre>
+<p></p>
+<h3><a name="set_option_values_pl_perl_script"></a>set_option_values.pl Perl Script</h3>
+<pre>     <span class="comment">#</span>
+      <span class="comment"># Set option values in an options file of a Xilinx WebPACK/ISE project</span>
+      <span class="comment">#</span>
+      <span class="variable">$option_file</span> <span class="operator">=</span> <span class="keyword">shift</span> <span class="variable">@ARGV</span><span class="operator">;</span>    <span class="comment"># first argument is the option file name</span>
+      <span class="keyword">open</span><span class="operator">(</span><span class="variable">FILE</span><span class="operator">,</span><span class="variable">$option_file</span><span class="operator">)</span> <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$!</span><span class="operator">;</span>
+      <span class="variable">@options</span> <span class="operator">=</span> <span class="operator">&lt;</span><span class="variable">FILE</span><span class="operator">&gt;;</span>             <span class="comment"># read in all the options</span>
+      <span class="variable">$options</span> <span class="operator">=</span> <span class="keyword">join</span><span class="operator">(</span><span class="string">""</span><span class="operator">,</span><span class="variable">@options</span><span class="operator">);</span>  <span class="comment"># join all options into one big string</span>
+    </pre>
+<pre>     <span class="comment"># remaining arguments are new option strings that will replace existing options</span>
+      <span class="keyword">foreach</span> <span class="operator">(</span><span class="variable">@ARGV</span><span class="operator">)</span> <span class="operator">{</span>
+        <span class="variable">@option_fields</span> <span class="operator">=</span> <span class="keyword">split</span><span class="operator">(</span><span class="regex">/\s+/</span><span class="operator">,</span><span class="variable">$_</span><span class="operator">);</span>  <span class="comment"># split new option string into fields</span>
+        <span class="variable">$option_value</span> <span class="operator">=</span> <span class="keyword">pop</span> <span class="variable">@option_fields</span><span class="operator">;</span> <span class="comment"># new option value is last field in the string</span>
+        <span class="variable">$option_name</span> <span class="operator">=</span> <span class="keyword">join</span><span class="operator">(</span><span class="string">" "</span><span class="operator">,</span><span class="variable">@option_fields</span><span class="operator">);</span>  <span class="comment"># option name is all the preceding fields</span>
+        <span class="variable">$options</span> <span class="operator">=~</span> <span class="regex">s/$option_name\s+.*/$option_name $option_value/gi</span><span class="operator">;</span>  <span class="comment"># replace existing value with new value</span>
+      <span class="operator">}</span>
+    </pre>
+<pre>     <span class="keyword">print</span> <span class="variable">$options</span><span class="operator">;</span>  <span class="comment"># print the updated option file</span>
+    </pre>
+<p></p>
+<h3><a name="get_project_files_pl_perl_script"></a>get_project_files.pl Perl Script</h3>
+<pre>     <span class="comment">#</span>
+      <span class="comment"># Output a list of the files found in the .prj file of a Xilinx WebPACK/ISE project</span>
+      <span class="comment">#</span>
+      <span class="keyword">open</span><span class="operator">(</span><span class="variable">PRJFILE</span><span class="operator">,</span><span class="variable">$ARGV</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span><span class="operator">)</span> <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$!</span><span class="operator">;</span>
+      <span class="keyword">while</span><span class="operator">(&lt;</span><span class="variable">PRJFILE</span><span class="operator">&gt;)</span> <span class="operator">{</span>
+        <span class="variable">@fields</span> <span class="operator">=</span> <span class="keyword">split</span><span class="operator">(</span><span class="regex">/\s+/</span><span class="operator">,</span><span class="variable">$_</span><span class="operator">);</span>
+        <span class="variable">$f</span> <span class="operator">=</span> <span class="keyword">pop</span><span class="operator">(</span><span class="variable">@fields</span><span class="operator">);</span>  <span class="comment"># file name is last field of each line</span>
+        <span class="variable">$f</span> <span class="operator">=~</span> <span class="regex">s/\"//g</span><span class="operator">;</span>  <span class="comment"># remove any quotations around file names</span>
+        <span class="keyword">print</span> <span class="string">" "</span> <span class="operator">.</span> <span class="variable">$f</span><span class="operator">;</span>
+      <span class="operator">}</span>
+    </pre>
+<p></p>
+<h2><a name="project_makefile"></a>Project Makefile</h2>
+<p>The contents of the <em>makefile</em> file in the WebPACK/ISE project directory can be as simple as:</p>
+<pre>           include xilinx_rules.mk</pre>
+<p>You can also override variables in the <em>xilinx_rules.mk</em> file to change the behavior of the build process. For example, to target a different FPGA, you might use:</p>
+<pre>           PART = xc2s100-5-tq144</pre>
+<pre>           include xilinx_rules.mk</pre>
+<p>Or if you don't want to use a constraint file, just give it an empty value like so:</p>
+<pre>           PART = xc2s100-5-tq144
+            UCF_FILE =</pre>
+<pre>           include xilinx_rules.mk</pre>
+<p>To build the FPGA or CPLD configuration bitstream, just type the command:</p>
+<pre>           make</pre>
+<p>or:</p>
+<pre>           make config</pre>
+<p>To generate the timing report for an FPGA design, use the command:</p>
+<pre>           make timing</pre>
+<p>To clean any temporary files created during the build process, use the command:</p>
+<pre>           make clean</pre>
+<p>You can also remove more of the intermediate files with the command:</p>
+<pre>           make distclean</pre>
+<p>And you can remove all of the above plus the configuration bitstream file with:</p>
+<pre>           make maintainer-clean</pre>
+<p></p>
+<h2><a name="directory_makefile"></a>Directory Makefile</h2>
+<p>If you have a directory that contains several subdirectories, each of which contains a WebPACK/ISE project, then the following makefile will build the bitstream for each project. This makefile resides in the top-level directory and it activates the makefiles in each project subdirectory.</p>
+<pre>           projects := project1 project2 project3</pre>
+<pre>           config          : $(projects:=.config)
+            timing          : $(projects:=.timing)
+            clean           : $(projects:=.clean)
+            distclean       : $(projects:=.distclean)
+            maintainer-clean: $(projects:=.maintainer-clean)</pre>
+<pre>           $(projects:=.config):
+                    $(MAKE) -C $(subst .config,,$@) $@</pre>
+<pre>           $(projects:=.timing):
+                    $(MAKE) -C $(subst .timing,,$@) $@</pre>
+<pre>           <span class="comment"># The next three rules cause make to enter each project directory</span>
+            <span class="comment"># and clean the project to the selected level of cleanliness.</span>
+    </pre>
+<pre>           $(projects:=.clean):
+                    $(MAKE) -C $(subst .clean,,$@) $@</pre>
+<pre>           $(projects:=.distclean):
+                    $(MAKE) -C $(subst .distclean,,$@) $@</pre>
+<pre>           $(projects:=.maintainer-clean):
+                    $(MAKE) -C $(subst .maintainer-clean,,$@) $@</pre>
+<p>The following makefile is similar to the previous one but it also allows you to retarget the projects at a different type of FPGA or CPLD and use new options for the tools.</p>
+<pre>           FPGA_PART     := xc3s1000-4-ft256
+            fpga_projects := project1 project2</pre>
+<pre>           CPLD_PART     := xc9572xl-10-vq64
+            cpld_projects := project3 project4</pre>
+<pre>           export XST_CPLD_OPTIONS_FILE ?= $(CURDIR)/xst_cpld_options.xst
+            export XST_FPGA_OPTIONS_FILE ?= $(CURDIR)/xst_fpga_options.xst
+            export BITGEN_OPTIONS_FILE   ?= $(CURDIR)/bitgen_options.ut
+            export IMPACT_OPTIONS_FILE   ?= $(CURDIR)/impact_options.txt</pre>
+<pre>           config          : $(fpga_projects:=.config)           $(cpld_projects:=.config)
+            timing          : $(fpga_projects:=.timing)
+            clean           : $(fpga_projects:=.clean)            $(cpld_projects:=.clean)
+            distclean       : $(fpga_projects:=.distclean)        $(cpld_projects:=.distclean)
+            maintainer-clean: $(fpga_projects:=.maintainer-clean) $(cpld_projects:=.maintainer-clean)</pre>
+<pre>           $(fpga_projects:=.config):
+                    $(MAKE) -C $(subst .config,,$@) PART=$(FPGA_PART) $@</pre>
+<pre>           $(cpld_projects:=.config):
+                    $(MAKE) -C $(subst .config,,$@) PART=$(CPLD_PART) $@</pre>
+<pre>           $(fpga_projects:=.timing):
+                    $(MAKE) -C $(subst .timing,,$@) PART=$(FPGA_PART) $@</pre>
+<pre>           <span class="comment"># The next three rules cause make to enter each FPGA and CPLD project directory</span>
+            <span class="comment"># and clean the project to the selected level of cleanliness.</span>
+    </pre>
+<pre>           $(fpga_projects:=.clean) $(cpld_projects:=.clean):
+                    $(MAKE) -C $(subst .clean,,$@) $@</pre>
+<pre>           $(fpga_projects:=.distclean) $(cpld_projects:=.distclean):
+                    $(MAKE) -C $(subst .distclean,,$@) $@</pre>
+<pre>           $(fpga_projects:=.maintainer-clean) $(cpld_projects:=.maintainer-clean):
+                    $(MAKE) -C $(subst .maintainer-clean,,$@) $@</pre>
+<p>To build the FPGA and CPLD configuration bitstreams for all the projects, just type the command:</p>
+<pre>           make</pre>
+<p>or:</p>
+<pre>           make config</pre>
+<p>To generate the timing reports for all the FPGA designs, use the command:</p>
+<pre>           make timing</pre>
+<p>To clean all the project subdirectories, use one of the commands:</p>
+<pre>           make clean
+            make distclean
+            make maintainer-clean</pre>
+<p></p>
+<h2><a name="environment"></a>Environment</h2>
+<p>These makefiles were developed and tested using the following versions of software:</p>
+<pre>           GNU make          : 3.79.1 (version 3.77.1 does not work)
+            Active State perl : 5.8.4, 5.8.8
+            Xilinx WebPACK    : 6.3.03i, 8.1.03i</pre>
+<p></p>
+<h2><a name="source_files"></a>Source Files</h2>
+<p>You can download an example of a Xilinx project directory that uses these makefiles and perl scripts from <a href="../../projects/XILINX_MAKEFILES.tar.gz">/projects/XILINX_MAKEFILES.tar.gz</a> .</p>
+<p></p>
+<h2><a name="author"></a>Author</h2>
+<p>Dave Vanden Bout, X Engineering Software Systems Corp.</p>
+<p>Send bug reports to <a href="mailto:bugs@xess.com.">bugs@xess.com.</a></p>
+<p></p>
+<h2><a name="copyright_and_license"></a>Copyright and License</h2>
+<p>© 2005-2006 by X Engineering Software Systems Corporation.</p>
+<p>These applications can be freely distributed and modified as long as you do not remove the attributions to the author or his employer.</p>
+<p></p>
+<h2><a name="history"></a>History</h2>
+<dl><dt></dt><dd>
+<p>03/26/2007 - Modified xilinx_rules.mk to support ISE9 project directory structure.</p>
+</dd><dt></dt><dd>
+<p>05/16/2006 - Added 'nice' feature to prettify VHDL source files.</p>
+</dd><dt></dt><dd>
+<p>05/16/2006 - Fixed get_project_files.pl to handle quotes in Xilinx ISE 8.1i .prj file.</p>
+</dd><dt></dt><dd>
+<p>05/05/2005 - Initial release.</p>
+</dd><dd></dd></dl></div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fappnotes%252Fmakefiles-for-xilinx-fpga-cpld-projects%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fappnotes%252Fmakefiles-for-xilinx-fpga-cpld-projects%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+    
+    
+
+
+
+
+
+
+    
+    
+
+
+
+
+<h3>Announcements</h3>
+<ul class="recent-anncs">
+
+<li><a href="../../blog/stickit-grove-board-is-released/index.html">StickIt!-Grove Board is Released!</a></li>
+
+<li><a href="../../blog/raspberry-pi-xula/index.html">Raspberry Pi + XuLA</a></li>
+
+<li><a href="../../blog/new-us-distributor/index.html">New US Distributor!</a></li>
+
+</ul>
+
+
+
+    
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li class="active"
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

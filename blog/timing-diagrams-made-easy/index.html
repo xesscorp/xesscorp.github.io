@@ -1,0 +1,1186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="If you do electronics design, especially digital circuits, you&#39;ll eventually find yourselfdrawing timing diagrams showing the clock, control and data waveforms.They help you clarify the sequencing of data and control signals as they pass through your circuit.They also serve as valuable documentation to others who might use your design later.">
+<title>Timing Diagrams Made Easy | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li class="active">Timing Diagrams Made Easy</li>
+</ul>
+
+<h1>
+Timing Diagrams Made Easy
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="../author/devbisme/index.html">Dave Vandenbout</a>
+    
+    5 years, 4 months ago
+</h6>
+
+
+
+<p>
+    
+        (<a href="index.html#comments">0 comments</a>)
+        
+    
+</p>
+
+
+
+
+
+
+
+
+
+
+<p><img class="thumbnail-it float-it-left" src="../../static/media/uploads/blog/devbisme/2015-02-12/timing_diag_small.JPG">
+If you do electronics design, especially digital circuits, you'll eventually find yourself
+drawing timing diagrams showing the clock, control and data waveforms.
+They help you clarify the sequencing of data and control signals as they pass through your 
+circuit.
+They also serve as valuable documentation to others who might use your design later.</p>
+<p>Unfortunately, timing diagrams are painful and time consuming to draw.
+They're also a pain to keep up to date as you modify your design.
+So they fall out of sync with your current prototype,
+at which point they no longer help the design process (and can, in fact, hinder it by
+propagating a false view of how the circuit operates).
+Then you have to try and update them at the end of the project, probably misremembering a few details
+along the way.</p>
+<p>It would help if there was a simple way to describe timing waveforms instead of trying to
+draw all the fiddly bits using a generic drawing program.
+This is where <a href="http://wavedrom.com">WaveDrom</a> comes in.
+It uses a simple <a href="http://www.w3schools.com/json/json_syntax.asp">JSON syntax</a> like this:</p>
+<pre><code>{ signal: [
+  { name: "clk_i",     wave: 'P...' },
+  { name: 'add_i',     wave: '010.' },
+  { name: 'data_i',    wave: 'x=x.', data:["data"] },
+  { name: 'upEmpty_o', wave: 'x.0.' },
+  { name: 'upFull_o',  wave: '0.x.' },
+  { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+  ],
+  config: {hscale: 2},
+  head: {text: 'Up FIFO Push Example', tick:0,}
+}
+</code></pre>
+<p>to create timing diagrams like this:</p>
+<script type="WaveDrom">
+{ signal: [
+  { name: "clk_i",     wave: 'P...' },
+  { name: 'add_i',     wave: '010.' },
+  { name: 'data_i',    wave: 'x=x.', data:["data"] },
+  { name: 'upEmpty_o', wave: 'x.0.' },
+  { name: 'upFull_o',  wave: '0.x.' },
+  { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+  ],
+  config: {hscale: 2},
+  head: {text: 'Up FIFO Push Example', tick:0,}
+}
+</script>
+
+<p>The waveform objects that make up the timing diagram are contained in the <code>signal:[...]</code> JSON array.
+In the simplest case, each waveform object has a <code>name</code> field and a <code>wave</code> field.
+The value in the wave field is just a string of characters where each character represents the
+logic level of the wave during a single time slot.
+The meanings of the characters are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th align="left">  Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td align="left">Clock pulse with positive polarity (i.e., starts off at a logic high and transitions to a logic low.</td>
+</tr>
+<tr>
+<td>P</td>
+<td align="left">Positive polarity clock pulse with an arrow drawn on the rising edge.</td>
+</tr>
+<tr>
+<td>n</td>
+<td align="left">Clock pulse with negative polarity (i.e., starts off at a logic low and transitions to a logic high.</td>
+</tr>
+<tr>
+<td>N</td>
+<td align="left">Negative polarity clock pulse with an arrow drawn on the falling edge.</td>
+</tr>
+<tr>
+<td>l, 0</td>
+<td align="left">Low logic level.</td>
+</tr>
+<tr>
+<td>L</td>
+<td align="left">Low logic level with an arrow drawn on the falling edge.</td>
+</tr>
+<tr>
+<td>d</td>
+<td align="left">Low logic level maintained by a pulldown resistor.</td>
+</tr>
+<tr>
+<td>h, 1</td>
+<td align="left">High logic level.</td>
+</tr>
+<tr>
+<td>H</td>
+<td align="left">High logic level with an arrow drawn on the rising edge.</td>
+</tr>
+<tr>
+<td>u</td>
+<td align="left">High logic level maintained by a pullup resistor.</td>
+</tr>
+<tr>
+<td>x</td>
+<td align="left">Unknown logic level or bus value.</td>
+</tr>
+<tr>
+<td>z</td>
+<td align="left">Tri-state (undriven) logic level.</td>
+</tr>
+<tr>
+<td>=, 2</td>
+<td align="left">Digital bus value with white fill color.</td>
+</tr>
+<tr>
+<td>3, 4, 5</td>
+<td align="left">Digital bus value with various fill colors.</td>
+</tr>
+<tr>
+<td>.</td>
+<td align="left">Repeat the previous value of the waveform.</td>
+</tr>
+</tbody>
+</table>
+<p>Probably the most used character is the period, which just repeats the last value of the waveform.
+For example, <code>wave: 'p....'</code> would draw five, consecutive, positive-polarity pulses like so:</p>
+<script type="WaveDrom">
+{signal: [{wave:'p....'}]}
+</script>
+
+<p>Or <code>wave: '1..0...=.'</code> would draw a waveform that is high for three periods, low for four periods,
+and then displays a bus value for two periods like this:</p>
+<script type="WaveDrom">
+{signal: [{wave:'1..0...=.'}]}
+</script>
+
+<p>Note that using the period is <strong>not</strong> the same as just repeating the character.
+Here's what the previous example looks like if you use <code>wave: '1110000=='</code> instead:</p>
+<script type="WaveDrom">
+{signal: [{wave:'1110000=='}]}
+</script>
+
+<p>It's nice to be able to label waveforms for digital buses with the values they carry.
+That can be done using a <code>data</code> field whose consecutive values are inserted into the
+bus waveform as each <code>=</code> sign is encountered.
+For example, this <code>wave: '=..=...=.', data:['N','N+1','N+2']</code> results in this:</p>
+<script type="WaveDrom">
+{signal: [{wave:'=..=...=.', data:['N','N+1','N+2']}]}
+</script>
+
+<p>It also works if you replace the <code>=</code> with a character for one of the colored buses like this
+<code>wave: '3..4...5.', data:['N','N+1','N+2']</code></p>
+<script type="WaveDrom">
+{signal: [{wave:'3..4...5.', data:['N','N+1','N+2']}]}
+</script>
+
+<p>I've only shown a fraction of what WaveDrom can do.
+I haven't even touched on these features:</p>
+<ul>
+<li>Offsetting individual waveforms by arbitrary intervals.</li>
+<li>Adding gaps to represent omitted parts of waveforms.</li>
+<li>Hierarchical labeling of groups of waveforms.</li>
+<li>Placing splines and lines to show relations between transitions in two waveforms.</li>
+<li>Scaling the size of the timing diagram.</li>
+<li>Adding descriptive headers and footers to an entire timing diagram.</li>
+<li>Changing the overall style of the timing diagram using <em>skins</em>.</li>
+</ul>
+<p>You can learn more by reading the <a href="http://wavedrom.com/tutorial.html">WaveDrom tutorial</a>.
+There's even a <a href="http://wavedrom.com/editor.html">live WaveDrom editor page</a> where you can type in 
+JSON code to try out the various features.</p>
+<p>If you decide you like WaveDrom (and, really, <em>who wouldn't!?</em>), there are two ways to use it.
+The first is in an off-line mode for generating timing diagrams to include in your documents.
+First, <a href="https://github.com/wavedrom/wavedrom.github.io/releases">download an archive</a> of 
+the WaveDrom editor for your particular OS.
+Unpack it into a directory and run the executable.
+Then you can type in JSON code and see the resulting waveforms just like you did on the
+live editor web page.
+You can export your timing diagram as either a PNG image or as an SVG file.
+The interesting thing is that you can open the SVG file with a graphic editor like
+<a href="https://inkscape.org/en/">Inkscape</a> and modify the drawing.
+This is useful if there is some formatting you absolutely need that WaveDrom can't provide.</p>
+<p>The second option is to use the WaveDrom Javascript library to show timing diagrams in your web pages.
+Get the <code>WaveDrom.js</code> file and the <code>skins</code> directory from the 
+<a href="https://github.com/drom/wavedrom">WaveDrom Github page</a>.
+Place these files somewhere that your web server can find them.
+Then load the Javascript libraries by placing the following into the 
+<code>&lt;head&gt;...&lt;/head&gt;</code> section of your web page:</p>
+<pre><code>    &lt;script src="your_website_path/skins/default.js"&gt;&lt;/script&gt;
+    &lt;script src="your_website_path/WaveDrom.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>Next, place the following call to the timing waveform rendering function at the bottom of
+your web page:</p>
+<pre><code>    (function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+</code></pre>
+<p>Then you can draw a timing diagram anywhere in your page by inserting JSON code
+inside a <code>&lt;script type="WaveDrom"&gt;...&lt;/script&gt;</code> bracket like this:</p>
+<pre><code>    &lt;script type="WaveDrom"&gt;
+    { signal: [
+      { name: "clk_i",     wave: 'P...' },
+      { name: 'add_i',     wave: '010.' },
+      { name: 'data_i',    wave: 'x=x.', data:["data"] },
+      { name: 'upEmpty_o', wave: 'x.0.' },
+      { name: 'upFull_o',  wave: '0.x.' },
+      { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+      ],
+      config: {hscale: 2},
+      head: {text: 'Up FIFO Push Example', tick:0,}
+    }
+    &lt;/script&gt;
+</code></pre>
+<p>After you reload the web page, you should see the same figure shown at the beginning of this article.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="panel rating">
+
+<p id="rating-76">
+    
+    Current rating: 4.9
+    
+</p>
+
+
+<form method="post" action="http://www.xess.com/rating/">
+    
+    <input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+    
+    <ul><li> <ul>
+<li><label for="id_value_0"><input id="id_value_0" name="value" type="radio" value="1" /> 1</label></li>
+<li><label for="id_value_1"><input id="id_value_1" name="value" type="radio" value="2" /> 2</label></li>
+<li><label for="id_value_2"><input id="id_value_2" name="value" type="radio" value="3" /> 3</label></li>
+<li><label for="id_value_3"><input id="id_value_3" name="value" type="radio" value="4" /> 4</label></li>
+<li><label for="id_value_4"><input id="id_value_4" name="value" type="radio" value="5" /> 5</label></li>
+</ul><input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" /><input id="id_object_pk" name="object_pk" type="hidden" value="76" /><input id="id_timestamp" name="timestamp" type="hidden" value="1593966798" /><input id="id_security_hash" name="security_hash" type="hidden" value="4ed30cbc7915a8300b7d0739568bf886805da78f" /></li></ul>
+    <input type="submit" class="btn" value="Rate"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+
+
+<br style="clear:both">
+
+</div>
+
+
+
+
+<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status=http%3A//www.xess.com/blog/timing-diagrams-made-easy/%20Timing%20Diagrams%20Made%20Easy">Share on Twitter</a>
+<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u=http://www.xess.com/blog/timing-diagrams-made-easy/&amp;t=Timing%20Diagrams%20Made%20Easy">Share on Facebook</a>
+<a class="btn small primary share-reddit" target="_blank" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">Share on Reddit</a>
+
+
+
+<ul class="pager">
+
+
+<li class="previous">
+    <a href="../cut-the-cord/index.html">&larr; Cut the Cord: Using the ZPUino Without an FTDI Cable</a>
+</li>
+
+
+
+
+<li class="next">
+    <a href="../led-panels/index.html">Led Panels &rarr;</a>
+</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+<div id="comments">
+<h3>Comments</h3>
+
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.reply-form').hide();
+        $(this).next('.reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+
+
+<ul class="unstyled">
+    
+    
+    <li>There are currently no comments</li>
+    
+</ul>
+
+
+<h3>New Comment</h3>
+<form method="post" id="comment" action="http://www.xess.com/comment/#comment">
+    
+    
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="76" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966798" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="4ed30cbc7915a8300b7d0739568bf886805da78f" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+    
+    <div class="form-actions">
+        <input class="btn btn-primary btn-large" type="submit" value="Comment">
+    </div>
+</form>
+
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fblog%252Ftiming-diagrams-made-easy%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fblog%252Ftiming-diagrams-made-easy%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="../are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="../walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="../colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="../extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="../esp8266-re-reflash-dance/index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="../archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="../archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="../archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="../archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="../archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="../archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="../archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="../archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="../category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="../category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="../author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="../feeds/rss/index.html">RSS</a> /
+    <a href="../feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

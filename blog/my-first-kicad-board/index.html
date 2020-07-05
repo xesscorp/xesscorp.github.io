@@ -1,0 +1,1163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="I made the decision last year to move from Eagle to KiCad. I got tired of releasing OSHW boards that many people couldn&#39;t modify because the freeware version of Eagle was so limited. I also got tired of paying $600 for upgrading to the next major release, especially when the big, new feature was ASCII-encoded design files. Really, that&#39;s it?! Hold me back!">
+<title>My First KiCad Board! | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li class="active">My First KiCad Board!</li>
+</ul>
+
+<h1>
+My First KiCad Board!
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="../author/devbisme/index.html">Dave Vandenbout</a>
+    
+    6 years, 3 months ago
+</h6>
+
+
+
+<p>
+    
+        (<a href="index.html#comments">1 comment</a>)
+        
+    
+</p>
+
+
+
+
+
+
+
+
+
+
+<p><img alt="KiCad logo" class="float-it-left thumbnail-it" src="../../static/media/uploads/blog/devbisme/2014-03-21/icon_kicad.png"> I made the decision last year to move from Eagle to KiCad. I got tired of releasing OSHW boards that many people couldn't modify because the <a href="../a-modest-proposal-to-element14/index.html">freeware version of Eagle was so limited</a>. I also got tired of paying $600 for upgrading to the next major release, especially when the big, new feature was ASCII-encoded design files. Really, that's it?! <em>Hold me back!</em></p>
+<p>I got a taste of the KiCad design flow by watching Chris Gammel's <a href="http://contextualelectronics.com/buildpcbs/">"Getting to Blinky" video series</a> while I was sitting in a hospital waiting room. Chris's videos made the time pass so quic ... nope, still bored. Though it was a better use of the time than folding and reorganizing the disposable hospital gowns. <em>Damn you, OCD!</em></p>
+<p>But eventually, as I learned in grad school, you have to stop reading stuff and start doing stuff. So last week, I downloaded and installed the <a href="https://launchpad.net/kicad-winbuilder">latest development version of KiCad for Windows</a>. (My philosophy is, if you're going to learn to drive, it might as well be on a car where the brakes don't work.) It takes a while to build KiCad, but having the source available can be important (as I'll discuss later).</p>
+<p>As my first project, I decided to build a StickIt! module for an eight-channel ADC chip, the <a href="http://www.ti.com/product/adc108s102&amp;lpos=See_Also_Container&amp;lid=Alternative_Devices">TI ADC108S</a>. <a href="../../shop/product/stickit-mpu-6050/index.html">StickIt! modules</a> are small (2.0" x 8") and usually only need a two-layer PCB, so I figured this would be easier than a four-layer PCB with a 256-ball BGA.</p>
+<p>I used KiCad's <code>Eeschema</code> tool to enter the schematic shown below. It works pretty much like most schematic editors I've used. (However, I was never able to figure out how to globally rename a net; I had to click on each stub where the net name was used and rename it.) I also learned how to define new parts for the schematic because, as usual, the parts you need are never in the libraries. (I also checked at the <a href="http://www.kicadcloud.com/">KiCad CLoud</a> parts repository. No luck.)</p>
+<p><img alt="StickIt! ADC108S schematic" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-03-21/adc108s-schematic.png"></p>
+<p>Going from a schematic to laying out the PCB isn't as seamless in KiCad as it is in Eagle. You have to:</p>
+<ol>
+<li>Generate the netlist from the schematic.</li>
+<li>Associate footprints with each schematic symbol using the <code>CvPCB</code> tool.</li>
+<li>Regenerate the netlist from the schematic (to incorporate the footprint assignments).</li>
+<li>Start <code>PCBnew</code> and import the netlist.</li>
+</ol>
+<p>There's also no live-link between the schematic and the PCB layout, so you can't highlight a net in the schematic and then see it in the layout. Still, it gets the job done.</p>
+<p>The steps for using <code>PCBnew</code> aren't much different from any other layout tool:</p>
+<ol>
+<li>Specify your board parameters: # of layers, minimum trace/space, solder mask clearance, etc. (<code>PCBnew</code> has these parameters spread around between the <strong>Dimensions</strong> and <strong>Design Rules</strong> menus, so it's kind of confusing.)</li>
+<li>Define the board boundary using what KiCad calls the <em>Edge Cuts</em> layer. (Really, can't we all use the same terminology? PCB design is like 100 years old.)</li>
+<li>Place the parts. (<code>PCBnew</code> has a nice feature where all the air wires are hidden except those connected to the part you're currently moving.) There's an auto-placement feature as well, but I didn't find out about that until I finished the layout.</li>
+<li>Place copper-pour polygons for ground and power planes. (You can also put cutouts into the planes, which is something I couldn't do in Eagle.)</li>
+<li>Draw the wiring traces. (Real-time design-rule checking prevents you from getting traces too close, but this feature can be turned off when you want to ram a trace through and clean up the design violations later.) There's also a button for doing autorouting using the <a href="http://www.freerouting.net/">FreeRouting web service</a>.</li>
+<li>Run a design rule check. (The DRC also calculates the fill-in for the copper-pours, which seems weird to me. It took me a while to find out that was how to redraw the pours.)</li>
+</ol>
+<p>Here's the front and back layouts for my first board:</p>
+<p><img alt="StickIt! ADC108S PCB layout (front)" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-03-21/adc108s-pcb-front.png"></p>
+<p><img alt="StickIt! ADC108S layout (back)" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-03-21/adc108s-pcb-back.png"></p>
+<p>One of the pain points for the layout was, oddly enough, generating the graphics for the back-side of the PCB. KiCad provides the <code>Bitmap2Component</code> tool for translating any of around twenty different graphic file formats into a footprint you can place in a silkscreen layer. It produces a much smaller, easier-to-handle file than the equivalent tool in Eagle. But it's limited in that there's no way to scale the footprint: it uses a fixed resolution of 300 dpi, so if your image is 1200 pixels wide, it will be 4 inches wide on the board. I had to write a small Python script to scale all the polygon vertices in the <code>.kicad_mod</code> file that was generated by the tool. (It's nice that all the KiCad files are ASCII text and have well-structured formats that are easy to parse.)</p>
+<p>I had a problem getting <code>PCBnew</code> to find the new footprint; it kept reporting "library module path does not exist." Since the error message was providing a <code>.c</code> file and a line number where the problem was found, I could check the source to see if I could find a solution. From that I was able to determine that I only needed to provide the directory for footprint files of type <code>.kicad_mod</code> and not the file itself.</p>
+<p>Another problem was that when I placed the graphics footprint on the backside of the PCB, I was unable to mirror it. That meant the text would read backwards when the board was flipped over. I solved the problem by using a negative scaling factor for the X coordinate in my Python script. It was only while writing this post that I found I had to do the mirroring of the footprint in the <code>Module Editor</code> instead of <code>PCBnew</code>, but even then it doesn't seem to be working for me. </p>
+<p>Once the layout was done, I generated the Gerber files for the PCB fabricator. (This function is under the <strong>File =&gt; Plot</strong> menu instead of the <strong>File =&gt; Fabrication Outputs</strong> menu where you can, however, generate the drill file. <em>WTF?</em>) I checked the Gerber files with the <code>GerbView</code> tool and also using the free version of ViewMate from <a href="http://www.pentalogix.com">PentaLogix</a>. The results seem to match, but the Y coordinate-mapping translates the layout below the X-axis. I can't find a way to change that. I guess I'll see if that has any effect when the boards are made. At least the drills and the wire traces match up.</p>
+<p>Now that the boards are sent for fabrication, how would I rate the whole experience? Good, overall. KiCad has its quirks, just like Eagle. (I think the designers of both must have attended Crazy Eddie's UX Design School.) In most cases, I think my problems were caused by inexperience and will lessen once KiCad gets into my muscle memory. </p>
+<p>If I were starting to do PCB design from scratch today and needed to select a design tool, I would pick KiCad over Eagle. Here's why:</p>
+<ul>
+<li>KiCad tools are equivalent and of about the same quality (sometimes better) as those found in Eagle.</li>
+<li>KiCad is free. Eagle Professional (which is the only version that <em>doesn't</em> limit your board size and the number of layers) is $1640 (you do get their autorouter with that, but I've never heard of anybody who likes it).</li>
+<li>KiCad is open source. That won't matter to a lot of people, but it helps sometimes when you're looking for the source of a problem and you'd like it fixed <a href="../thanks-bunches-for-that/index.html">sometime during this century</a>.</li>
+<li>KiCad is starting to support Python scripting. This will be incredibly powerful and much nicer than working with the User Language Programming tool found in Eagle. It should make re-creating my <a href="../tools-of-the-trade-1/index.html">BOM pricing tool</a> much easier.</li>
+<li>Along with the open source community, <a href="http://www.ohwr.org/projects/cern-kicad/wiki">CERN has started putting some design effort into KiCad</a>. This increases the momentum of KiCad development and serves as some validation for its usefulness.</li>
+</ul>
+<p>Besides, how can you <em>not</em> like a tool that gives you 3D board visualizations right out of the box!</p>
+<p><img alt="StickIt! ADC108S PCB array in 3D" class="center-it" src="../../static/media/uploads/blog/devbisme/2014-03-21/adc108s-3d.png"></p>
+
+
+
+
+
+
+
+
+
+
+<div class="panel rating">
+
+<p id="rating-55">
+    
+    Current rating: 4.7
+    
+</p>
+
+
+<form method="post" action="http://www.xess.com/rating/">
+    
+    <input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+    
+    <ul><li> <ul>
+<li><label for="id_value_0"><input id="id_value_0" name="value" type="radio" value="1" /> 1</label></li>
+<li><label for="id_value_1"><input id="id_value_1" name="value" type="radio" value="2" /> 2</label></li>
+<li><label for="id_value_2"><input id="id_value_2" name="value" type="radio" value="3" /> 3</label></li>
+<li><label for="id_value_3"><input id="id_value_3" name="value" type="radio" value="4" /> 4</label></li>
+<li><label for="id_value_4"><input id="id_value_4" name="value" type="radio" value="5" /> 5</label></li>
+</ul><input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" /><input id="id_object_pk" name="object_pk" type="hidden" value="55" /><input id="id_timestamp" name="timestamp" type="hidden" value="1593966356" /><input id="id_security_hash" name="security_hash" type="hidden" value="3c54998ee9152506d7475074a475111230c9e591" /></li></ul>
+    <input type="submit" class="btn" value="Rate"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+
+
+<br style="clear:both">
+
+</div>
+
+
+
+
+<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status=http%3A//www.xess.com/blog/my-first-kicad-board/%20My%20First%20KiCad%20Board%21">Share on Twitter</a>
+<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u=http://www.xess.com/blog/my-first-kicad-board/&amp;t=My%20First%20KiCad%20Board%21">Share on Facebook</a>
+<a class="btn small primary share-reddit" target="_blank" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">Share on Reddit</a>
+
+
+
+<ul class="pager">
+
+
+<li class="previous">
+    <a href="../thanks-bunches-for-that/index.html">&larr; Thanks Bunches for That!</a>
+</li>
+
+
+
+
+<li class="next">
+    <a href="../test-results-for-my-first-kicad-board/index.html">Test Results for My First KiCad Board! &rarr;</a>
+</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+<div id="comments">
+<h3>Comments</h3>
+
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.reply-form').hide();
+        $(this).next('.reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+
+
+<ul class="unstyled">
+    
+
+    <li id="comment-177"
+        >
+        
+        
+
+        <strong>
+            
+            <a href="http://boldport.com/">
+                <img src="http://www.gravatar.com/avatar/d5fecb83573d59262b02ac47f4800e15?s=32&amp;d=identicon&amp;r=PG">
+                saar drimer
+            </a>
+            
+        </strong>
+        <span class="timespan">6 years, 3 months ago</span>
+        <p>Great article! I haven&#39;t done much with KiCad, and I&#39;m looking forward to it maturing into a contender. It&#39;s good to have options.<br /><br />I agree completely with you on naming. We should have a tool-agnostic language, and resist this land-grabbing-empire-building crap that confuses everyone, especially those who&#39;re starting out.<br /><br />Finally, isn&#39;t is remarkable, though, that a tool like KiCad is on par with a commercial tool like Eagle that has been around for so long? It tells us of the strides we&#39;re making in open source EDA development, but also about the abysmal disregard for user experience by commercial EDA tools all these years. I hope that they&#39;re paying attention!</p>
+
+        <a href="index.html#comment-177">Link</a> /
+        <a href="index.html#reply-177" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-177"
+            action="http://www.xess.com/comment/#reply-177"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="55" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966356" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="3c54998ee9152506d7475074a475111230c9e591" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="177">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+<h3>New Comment</h3>
+<form method="post" id="comment" action="http://www.xess.com/comment/#comment">
+    
+    
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="55" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966356" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="3c54998ee9152506d7475074a475111230c9e591" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+    
+    <div class="form-actions">
+        <input class="btn btn-primary btn-large" type="submit" value="Comment">
+    </div>
+</form>
+
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fblog%252Fmy-first-kicad-board%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fblog%252Fmy-first-kicad-board%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="../are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="../walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="../colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="../extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="../esp8266-re-reflash-dance/index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="../archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="../archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="../archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="../archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="../archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="../archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="../archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="../archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="../category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="../category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="../author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="../feeds/rss/index.html">RSS</a> /
+    <a href="../feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

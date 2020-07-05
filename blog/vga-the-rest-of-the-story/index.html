@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="In my previous blog post, I showed a circuit I built to interface my XuLA FPGA board to a VGA monitor. What I didn&#39;t show was the code that lets the FPGA fetch an image from SDRAM and display it on a monitor. I&#39;ll try to remedy that in this post.">
+<title>VGA - the Rest of the Story  | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li class="active">VGA - the Rest of the Story </li>
+</ul>
+
+<h1>
+VGA - the Rest of the Story 
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="../author/devbisme/index.html">Dave Vandenbout</a>
+    
+    9 years ago
+</h6>
+
+
+
+<p>
+    
+        (<a href="index.html#comments">1 comment</a>)
+        
+    
+</p>
+
+
+
+
+
+
+
+
+
+
+<div class="field-item even">
+<p>In my <a href="http://devbisme.webfactional.com/blogs/devbisme/2011/06/02/simple-vga-interface-xula-fpga-board">previous blog post</a>, I showed a circuit I built to interface my <a href="../../prods/prod048.php">XuLA FPGA board</a> to a VGA monitor. What I didn't show was the code that lets the FPGA fetch an image from SDRAM and display it on a monitor. I'll try to remedy that in this post.</p>
+<p>I'll start off with the basics of VGA video signals: signal levels and timing. Then I'll show you the block-level architecture of a module for generating VGA video and an application that uses the module to display an image stored in SDRAM. Finally, I'll post an archive of the Xilinx ISE 13 project files that compiles into a downloadable bitstream for the FPGA on the XuLA board. Hopefully you'll find enough comments in the VHDL code to understand how it all relates to what I'll describe below. (And for all who are about to ask: <em>NO, I do not have a Verilog version of this.</em>)</p>
+<p>OK, here we go...<!--more--></p>
+<h1>Principles of VGA Video</h1>
+<p>There are three signals -- red, green, and blue (RGB) -- that send color information to a VGA monitor.  Signal levels between 0 (completely dark) and 0.7 V (maximum brightness) control the intensity of each color component, which combine to make the final color of a pixel on the monitor screen.</p>
+<p>Each analog color input can be set to one of 32 levels by five digital outputs using a simple five-bit digital-to-analog converter (DAC) as shown below.  Replicating the DAC for each analog input gives us a palette of 32 x 32 x 32 = 32768 different colors selectable through fifteen digital control lines.</p>
+<p>For many applications we only need two colors: black and white. This is done by applying the same level to each of the RGB inputs. This simplifies the DAC circuitry to a single resistor driven by a single output.</p>
+<img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2011-06-11/app001_1.png" style="margin-top: 10px; margin-bottom: 10px; width: 600px;">
+<p>An image (or frame) on a monitor screen is composed of <i>h</i> lines each containing <i>w</i> pixels.  VGA frame size is expressed as <i>w</i> x <i>h</i> with typical sizes of 640 x 480, 800 x 600, 1024 x 768 and 1280 x 1024.</p>
+<p>In order to send a frame of pixels to the monitor, two sync signals are required: a horizontal sync to indicate the start and stop of each line of pixels going from left to right on the screen, and a vertical sync that marks the top and bottom lines so they stack up to form an image.  The timing for the VGA sync signals is shown in below.</p>
+<p>Negative pulses on the horizontal sync signal mark the start and end of a line and ensure that the monitor displays the pixels between the left and right edges of the visible screen area.  The pixels are sent on the RGB signal lines within a 25.17 μs window.  After this, a <i>front porch</i> interval of 0.94 μs is inserted before the horizontal sync signal goes low for 3.77 μs.  After a <i>back porch</i> interval of 1.89 μs, the next line of pixels begins.  Therefore, a single line of pixels occupies 25.17 μs of a 31.77 μs interval.  The red, green and blue signals are blanked during the 6.6 μs interval comprised of the front porch, sync pulse and back porch.</p>
+<p>In a similar fashion, negative pulses on the vertical sync signal mark the start and end of a frame of video lines and ensure that the monitor displays the lines between the top and bottom edges of the visible monitor screen.  The lines are displayed within a 15.25 ms window.  After this, a front porch interval of 0.45 ms is inserted before the vertical sync signal goes low for 64 μs.  After a back porch interval of 1.02 ms, the next frame begins.  Therefore, a single frame of pixels occupies 15.25 ms of a 16.784 ms interval.  The RGB signals are blanked during the 1.534 ms interval comprised of the front porch, sync pulse and back porch.</p>
+<img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2011-06-11/app001_2.png" style="margin-top: 10px; margin-bottom: 10px; width: 600px;">
+<h1>Pixel-Mode VGA Module</h1>
+<p>A simple module for driving a monitor just fetches individual pixel colors from a RAM and formats them into a frame that conforms to the VGA timing just discussed.</p>
+<h2>Architecture</h2>
+<p>A high-level block diagram of a pixel-mode VGA generator module is shown below.  An external system writes pixel values into a pixel buffer (a 256 x 16 FIFO in this case).  The pixels are extracted from the buffer into a pixel register.  A pixel field may be 1, 2, 4, 8 or 16 bits wide so the contents of the pixel register are shifted each clock cycle to place the current pixel in the least-significant bit positions.  These bits are transferred to a register (unless the video is currently in the horizontal or vertical blanking interval) where they are output to the external RGB video DACs.</p>
+<img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2011-06-11/app001_3.png" style="margin-top: 10px; margin-bottom: 10px; width: 600px;">
+<p>Two pulse generation circuits create the horizontal and vertical sync signals.  These circuits are identical save for the parameters that determine the pulse timing.  The horizontal sync generator outputs a single-cycle gate signal coincident with the leading edge of the horizontal sync pulse.  This gate signal connects to the clock-enable of the vertical sync generator so it only updates its timing counter once per line of pixels (i.e., it counts the video lines).  The gate signal of the vertical sync generator triggers at the start of the vertical sync pulse and is used as an end-of-frame indicator to the external source of pixel data.  It also resets the pixel buffer and erases its contents so the VGA generator starts from a completely cleared state on every frame.</p>
+<p>The horizontal and vertical blanking signals are logically-OR’ed with the lower order bits of the horizontal pixel counter to determine when to read more pixels from the buffer.  For example, if the pixels are four bits wide, then a 16-bit word is needed from the buffer once every four clock cycles.  So, the pixel buffer read operation is initiated whenever the video signal is not being blanked and the lower two bits of the pixel counter are both zero.</p>
+<p>A full signal is sent to the external source of pixels to let it know when to stop filling the buffer.  For a 255-entry FIFO, the full signal is raised when the upper five bits of the FIFO level signal are equal to 11111 (meaning there are at least 248 words stored in the FIFO).  This leaves seven empty slots in the FIFO to serve as a safety buffer for pixel data that the external source may already be generating in its own pipeline.</p>
+<p>Within the 16-bit words of the pixel buffer an<font><font size="2" style=""><span lang="zxx" xml:lang="zxx">d the pixel register, individual pixels of w</span></font></font>idth <font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>W</i></span></font></font> are placed in fields that are <font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>2</i></span></font></font><sup><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>L</i></span></font></font></sup>-bits wide such that <font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>2</i></span></font></font><sup><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>L-1</i></span></font></font></sup><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i> </i></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>&lt;</i></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i> W </i></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>≤</i></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i> 2</i></span></font></font><sup><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>L</i></span></font></font></sup><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><span style="">. The pixel information itself is placed into the lower bits of each field (if W is less than the size of the field). So, for example, a three-bit pixel would be placed into a four-bit field, and four of these fields would be packed into a 16-bit word with pixel </span></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>N</i></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><span style=""> in bit positions 2..0, pixel </span></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><i>N+1</i></span></font></font><font><font size="2" style=""><span lang="zxx" xml:lang="zxx"><span style=""> in bit positions 6..4, and so on as shown below.</span></span></font></font></p>
+<img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2011-06-11/app001_7.png" style="width: 300px;">
+<p>Below, you can see an example of the sequence of operations performed by the VGA generator with four-bit pixels.  At cycle <i>N</i> in the visible portion of a line of video, the counter in the horizontal sync generator will output a value of <i>N</i>.  If the least-significant two bits of the counter are both zero, then the rd input to the pixel buffer will be driven high to initiate the reading of four more pixels, <i>p</i><sub><i>N</i></sub>…<i>p</i><sub><i>N+3</i></sub>.  The buffer read operation begins at the rising edge of clock cycle <i>N+1</i> and the 16-bits of pixel data are available to latch into the pixel register at the rising edge of clock <i>N+2</i>.  At the beginning of cycle <i>N+3</i>, the least-significant four bits of the pixel register containing pixel <i>p</i><sub><i>N</i></sub> are sent to the RGB output register.  Simultaneously, pixel <i>p</i><sub><i>N+1</i></sub> is shifted into the lower four bits of the pixel register for output during cycle <i>N+4</i>.</p>
+<img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2011-06-11/app001_4.png" style="width: 600px;"><p></p>
+<p lang="zxx" style="" xml:lang="zxx">As for the RGB output bits themselves, how are they associated with the signals that drive the DACs? Which bits drive the red color DAC, or the blue or green? The VGA module takes no position on that, it just outputs the bits. The designer who uses the VGA module determines what the RGB bits do by what he connects them to. For instance, each bit in a three-bit pixel could be assigned to drive all the inputs of an individual color DAC, thus creating an eight color palette. Or the three-bit pixel could be applied to the pins of all the DACs in parallel to create an eight-level grayscale video signal.</p>
+<img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2011-06-11/app001_8.png" style="width: 600px;"><p></p>
+<h2>I/O Ports</h2>
+<p>The pixel-mode VGA module connects to external systems through the following I/O ports:</p>
+<p><dfn>clk_i:</dfn> This is the main clock input.</p>
+<p><dfn>pixelDataIn_i:</dfn> Data words containing one or more pixels enter the pixel buffer through this bus.</p>
+<p><dfn>wr_i:</dfn> This active-high input initiates the writing of a word of data into the pixel buffer..</p>
+<p><dfn>full_o:</dfn> This active-high output indicates when the pixel buffer is full and no more space is currently available for more pixels.</p>
+<p><dfn>eof_o:</dfn> This active-high output indicates when the display of a video frame has been completed and pixels for the next frame can begin entering the pixel buffer.</p>
+<p><dfn>rgb_o:</dfn> This bus outputs the bits for the red, green and blue color DACs that drive the VGA monitor. The width of this bus determines the number of bits in each pixel and, thus, the number of pixels packed into each word of the pixel buffer.</p>
+<p><dfn>hSync_bo:</dfn> This active-low output drives the horizontal sync input of the VGA monitor.</p>
+<p><dfn>vSync_bo:</dfn> This active-low output drives the vertical sync input of the VGA monitor.</p>
+<p><dfn>rst_i:</dfn> This active-high, asynchronous input resets the internal circuitry of the sync generators.</p>
+<h2>Parameters</h2>
+<p>The following generic parameters customize the operation of the pixel-mode VGA module:</p>
+<p><dfn>FREQ_G:</dfn> This parameter sets the master operating frequency of the controller (in units of MHz).  This frequency is used to calculate the time delays for the horizontal and vertical sync pulses.</p>
+<p><dfn>CLK_DIV_G:</dfn> Setting this parameter to a value greater than 1 reduces the rate at which pixels are fetched from the buffer and delivered to the monitor.  For example, if FREQ_G=100.0 and CLK_DIV=4, then pixels are sent to the monitor at a rate of 25 MHz.</p>
+<p><dfn>PIXELS_PER_LINE_G:</dfn> This parameter determines the number of pixels displayed in the active portion of each line of video.</p>
+<p><dfn>LINES_PER_FRAME_G:</dfn> This parameter sets the number of lines of pixels displayed in the active portion of each video frame.</p>
+<p><dfn>OFFSET_RIGHT_G:</dfn> The active portion of the video frame can be shifted right (left) a number of pixels by setting this parameter to a positive (negative) value.</p>
+<p><dfn>OFFSET_DOWN_G:</dfn> The active portion of the video frame can be shifted down (up) a number of pixels by setting this parameter to a positive (negative) value.</p>
+<p><dfn>FIT_TO_SCREEN_G:</dfn> If this Boolean parameter is set to true, then the sync generators are configured so that the given number of pixels and lines fill the entire width and height of the screen, respectively.  Setting this parameter to false embeds the active video region into a standard 31 Khz horizontal / 60 Hz vertical video frame.</p>
+<h2>Test Application</h2>
+<p>An application of the pixel-mode VGA module combines it with the following modules in order to display a stored image:</p>
+<ul><li>
+<p>A clock multiplier to generate a fast 100 Mhz clock from a slow 12 Mhz clock;</p>
+</li>
+<li>
+<p>An external SDRAM chip that stores the image to be displayed;</p>
+</li>
+<li>
+<p>An SDRAM controller that manages all the SDRAM housekeeping tasks (refresh, opening/closing pages, etc.) and presents a simplified memory interface to the rest of the FPGA;</p>
+</li>
+<li>
+<p>A counter that steps through the SDRAM addresses.</p>
+</li>
+</ul>
+<img alt="" class="center-it" src="../../static/media/uploads/blog/devbisme/2011-06-11/app001_5.png" style="width: 600px;">
+<p>The complete system operates as follows:</p>
+<ol><li>
+<p>As long as the VGA module pixel buffer is not full, the read control input of the SDRAM controller is active. This initiates a read of the SDRAM from the current address in the counter.</p>
+</li>
+<li>
+<p>Once the SDRAM controller initiates the requested read operation (the earlyOpBegun signal is driven high), the counter increments and points to the next location from which pixels will be read.</p>
+</li>
+<li>
+<p>The SDRAM controller continues the read operation from the previous address location. This usually takes one clock cycle, but may take as many as eleven cycles if refreshing is in progress or a new SDRAM page must be activated.</p>
+</li>
+<li>
+<p>Once the SDRAM read operation is completed, the value from the SDRAM is sent to the VGA module and the rdDone signal is raised to initiate a write into the pixel buffer.</p>
+</li>
+<li>
+<p>If the pixel buffer isn't full after the data is written to it, another read of image data from the SDRAM is initiated. If the buffer is full, then reads from the SDRAM are halted until the VGA module can remove some of the pixel data from the buffer.</p>
+</li>
+<li>
+<p>Once the VGA module has displayed the entire frame, the eof signal is raised. This clears the address counter so it once again points to the beginning of the image in memory. Then the entire sequence is repeated.</p>
+</li>
+</ol></div>
+
+
+
+
+
+
+
+
+
+
+<div class="panel rating">
+
+<p id="rating-34">
+    
+    Current rating: 3.9
+    
+</p>
+
+
+<form method="post" action="http://www.xess.com/rating/">
+    
+    <input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+    
+    <ul><li> <ul>
+<li><label for="id_value_0"><input id="id_value_0" name="value" type="radio" value="1" /> 1</label></li>
+<li><label for="id_value_1"><input id="id_value_1" name="value" type="radio" value="2" /> 2</label></li>
+<li><label for="id_value_2"><input id="id_value_2" name="value" type="radio" value="3" /> 3</label></li>
+<li><label for="id_value_3"><input id="id_value_3" name="value" type="radio" value="4" /> 4</label></li>
+<li><label for="id_value_4"><input id="id_value_4" name="value" type="radio" value="5" /> 5</label></li>
+</ul><input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" /><input id="id_object_pk" name="object_pk" type="hidden" value="34" /><input id="id_timestamp" name="timestamp" type="hidden" value="1593966879" /><input id="id_security_hash" name="security_hash" type="hidden" value="9fde5383a3a271b1f15d3d58e8142c3f29486896" /></li></ul>
+    <input type="submit" class="btn" value="Rate"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+
+
+<br style="clear:both">
+
+</div>
+
+
+
+
+<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status=http%3A//www.xess.com/blog/vga-the-rest-of-the-story/%20VGA%20-%20the%20Rest%20of%20the%20Story%20">Share on Twitter</a>
+<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u=http://www.xess.com/blog/vga-the-rest-of-the-story/&amp;t=VGA%20-%20the%20Rest%20of%20the%20Story%20">Share on Facebook</a>
+<a class="btn small primary share-reddit" target="_blank" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">Share on Reddit</a>
+
+
+
+<ul class="pager">
+
+
+<li class="previous">
+    <a href="../a-simple-vga-interface-for-the-xula-fpga-board/index.html">&larr; A Simple VGA Interface for the XuLA FPGA Board </a>
+</li>
+
+
+
+
+<li class="next">
+    <a href="../why-arent-you-using-the-ft2232/index.html">Why aren&#39;t you using the FT2232?  &rarr;</a>
+</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+<div id="comments">
+<h3>Comments</h3>
+
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.reply-form').hide();
+        $(this).next('.reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+
+
+<ul class="unstyled">
+    
+    
+    <li>There are currently no comments</li>
+    
+</ul>
+
+
+<h3>New Comment</h3>
+<form method="post" id="comment" action="http://www.xess.com/comment/#comment">
+    
+    
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2011/6/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="34" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966879" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="9fde5383a3a271b1f15d3d58e8142c3f29486896" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+    
+    <div class="form-actions">
+        <input class="btn btn-primary btn-large" type="submit" value="Comment">
+    </div>
+</form>
+
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fblog%252Fvga-the-rest-of-the-story%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fblog%252Fvga-the-rest-of-the-story%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="../are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="../walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="../colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="../extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="../esp8266-re-reflash-dance/index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="../archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="../archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="../archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="../archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="../archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="../archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="../archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="../archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="../category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="../category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="../author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="../feeds/rss/index.html">RSS</a> /
+    <a href="../feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

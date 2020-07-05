@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="VGA generator with parallel port SDRAM interface that allows downloading an image via the parallel port while the VGA generator is running.">
+<title>Project Asset | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../blog/feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../blog/feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown active"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li 
+                                    class="active  dropdown-submenu"
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li 
+                                    class="active  dropdown-submenu"
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../../blog/category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../../blog/index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li id="breadcrumb-menu-learn"><a href="../../learn/index.html">Learn</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu-projects"><a href="../../design_examples.php">Design Examples</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu--projects-"><a href="../../design_examples.php">XESS</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu-projects-an-103005-vgagen-project"
+        class="active">an-103005-vgagen Project</li>
+</ul>
+
+<h1>
+an-103005-vgagen Project
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+    <div>
+        <div class="assetfield-label">Date:</div>
+        <div class="assetfield-content">01/29/2008</div>
+    </div>
+
+
+
+    <div>
+        <div class="assetfield-label">Categories:</div>
+        
+            <div class="assetfield-content">
+                obsolete, 
+            </div>
+        
+            <div class="assetfield-content">
+                project
+            </div>
+        
+    </div>
+
+
+
+    <div>
+        <div class="assetfield-label">Link:</div>
+        <div class="assetfield-content">
+            <a href="../../static/media/projects/an-103005-vgagen.zip">
+                /static/media/projects/an-103005-vgagen.zip
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+        <div class="assetfield-label">Authors:</div>
+            
+                <div class="assetfield-content">
+                    <a href="../../people/davevandenbout/index.html">
+                        Dave Vandenbout
+                    </a>
+                </div>
+        
+    </div>
+
+
+
+    <div>
+        <div class="assetfield-label">Organization:</div>
+        <div class="assetfield-content">
+            <a href="../../organizations/xess/index.html">
+                XESS
+            </a>
+        </div>
+    </div>
+
+
+
+<h2>Description</h2>
+
+<div class="StdPageBody">
+<h1>VGA Generator Test Application with an Embedded Parallel Port Interface</h1>
+<p></p>
+<ul>
+<li><a href="index.html#vga_generator_test_application_with_an_embedded_parallel_port_interface">VGA GENERATOR TEST APPLICATION WITH AN EMBEDDED PARALLEL PORT INTERFACE</a></li>
+<li><a href="index.html#source_files">SOURCE FILES</a></li>
+<li><a href="index.html#compiling_and_running_the_vga_generator_test_application">COMPILING AND RUNNING THE VGA GENERATOR TEST APPLICATION</a></li>
+<li><a href="index.html#embedding_a_parallel_port_interface_in_other_applications">EMBEDDING A PARALLEL PORT INTERFACE IN OTHER APPLICATIONS</a></li>
+<li><a href="index.html#see_also">SEE ALSO</a></li>
+<li><a href="index.html#author">AUTHOR</a></li>
+<li><a href="index.html#copyright_and_license">COPYRIGHT AND LICENSE</a></li>
+<li><a href="index.html#history">HISTORY</a></li>
+</ul>
+<!-- INDEX END --><hr>
+<p></p>
+<hr>
+<h1><a name="vga_generator_test_application_with_an_embedded_parallel_port_interface"></a>VGA GENERATOR TEST APPLICATION WITH AN EMBEDDED PARALLEL PORT INTERFACE</h1>
+<p>This is a modification of the application originally described in <a href="../../appnotes/an-101204-vgagen.pdf">/appnotes/an-101204-vgagen.pdf</a> . The original application was a combination of a VGA generator with an SDRAM controller that could display an image stored in SDRAM on a VGA monitor. The image had to be pre-loaded into the SDRAM on the XSA Board before the VGA generator was activated.</p>
+<p>The current design removes that restriction and allows you to upload and download images while the VGA generator is active. This is achieved by combining the SDRAM controller with the dualport interface described in <a href="../../appnotes/an-071205-dualport.pdf">/appnotes/an-071205-dualport.pdf</a> . A parallel port interface is attached to one of the ports and the VGA generator is attached to the other. Images can be transferred through the parallel port of a PC to the SDRAM without disturbing the VGA generator as it accesses the SDRAM.</p>
+<p></p>
+<hr>
+<h1><a name="source_files"></a>SOURCE FILES</h1>
+<dl><dt><strong><a name="item_xsa_lib_2fvga_2evhd_3a"></a>XSA_LIB/vga.vhd:</strong></dt><dd>
+<p>This file describes the VGA generator circuit.</p>
+</dd><dt><strong><a name="item_xsa_lib_2fsdramcntl_2evhd_3a"></a>XSA_LIB/sdramcntl.vhd:</strong></dt><dd>
+<p>This file describes the core state machine of the SDRAM controller and the dualport module that attaches to it to provide dual independent channels to/from the SDRAM. See application note <a href="../../appnotes/an-071205-dualport.pdf">/appnotes/an-071205-dualport.pdf</a> for details.</p>
+</dd><dt><strong><a name="item_xsa_lib_2fxsasdramcntl_2evhd_3a"></a>XSA_LIB/xsasdramcntl.vhd:</strong></dt><dd>
+<p>This file creates a wrapper around the SDRAM controller core to customize it for the XSA Board. See application note <a href="../../appnotes/an-071205-xsasdramcntl.pdf">/appnotes/an-071205-xsasdramcntl.pdf</a> for details.</p>
+</dd><dt><strong><a name="item_xsa_lib_2framintfc_core_2evhd_3a"></a>XSA_LIB/ramintfc_core.vhd:</strong></dt><dd>
+<p>This file describes an interface that allows SDRAM address and data to be sent over the parallel port.</p>
+</dd><dt><strong><a name="item_xsa_lib_2fxsasdramcntl_ppintfc_2evhd_3a"></a>XSA_LIB/xsasdramcntl_ppintfc.vhd:</strong></dt><dd>
+<p>This file combines the XSA SDRAM controller, the dualport interface, and the parallel port interface. The resulting module has a single SDRAM interface that is identical to that of the <em>xsasdramcntl.vhd</em> module, and an additional port that connects to a few pins of the parallel port to provide access to the SDRAM from an attached PC.</p>
+</dd><dt><strong><a name="item_xsa_lib_2fcommon_2evhd_3a"></a>XSA_LIB/common.vhd:</strong></dt><dd>
+<p>Some functions and definitions useful in many applications are provided in this file.</p>
+</dd><dt><strong><a name="item__5b50_2c100_2c200_2c3s1000_5d_2ftest_vga_2ftest_vg"></a>[50,100,200,3S1000]/test_vga/test_vga.vhd:</strong></dt><dd>
+<p>This is the top-level file that combines the SDRAM controller and the VGA generator to create the complete test application for the XSA-50, XSA-100, XSA-200 or XSA-3S1000 Board.</p>
+</dd><dt><strong>[50,100,200,3S1000]/test_vga/test_vga.ucf:</strong></dt><dd>
+<p>These are the pin assignments for mapping the VGA generator test application to the XSA-50, XSA-100, XSA-200 or XSA-3S1000 Board. These files also show the correct attachment of the pins from the parallel port to the FPGA in order to upload/download the SDRAM using the GXSLOAD program.</p>
+</dd><dt><strong>[50,100,200,3S1000]/test_vga/test_vga.npl:</strong></dt><dd>
+<p>This project file tells WebPACK how to combine the source files to create the VGA generator test application for the XSA-50, XSA-100, XSA-200 or XSA-3S1000 Board.</p>
+</dd><dt><strong>[50,100,200,3S1000]/test_vga/test_vga.bit:</strong></dt><dd>
+<p>This is a configuration bitstream that has already been generated for the XSA-50, XSA-100, XSA-200 or XSA-3S1000 Board based on the files listed above.</p>
+</dd><dt><strong><a name="item_image_2exes_3a"></a>image.xes:</strong></dt><dd>
+<p>This is an image file that can be downloaded into the SDRAM on the XSA Board which will then be displayed on a monitor by the VGA generator test application.</p>
+</dd><dt><strong><a name="item_xsa_lib_2fvga_2dtiming_2exls_3a"></a>XSA_LIB/vga-timing.xls:</strong></dt><dd>
+<p>This is a simple spreadsheet that calculates the durations of the various portions of the horizontal and vertical sync signals given the height and width of the display and the pixel clock frequency.</p>
+</dd></dl>
+<p></p>
+<hr>
+<h1><a name="compiling_and_running_the_vga_generator_test_application"></a>COMPILING AND RUNNING THE VGA GENERATOR TEST APPLICATION</h1>
+<ol>
+<li>
+<p>Open the project file for the VGA generator test application by double-clicking the <em>test_vga.npl</em> file for your particular model of XSA Board. All the compilation options can be set through the Project Navigator interface of WebPACK, and the generic parameters that affect the operation of the VGA generator can be set in the test_vga.vhd file. (The options for compiling a working application are already set in the files provided.) Then double-click the ``Generate Programming File'' icon in the Process pane and the bitstream will be generated.</p>
+</li>
+<li>
+<p>The VGA generator test application needs a specific clock frequency to operate correctly. For the XSA-50 and XSA-100 Boards, use GXSSETCLK to set the clock divisor to 2 so that a 50 MHz clock is available. Nothing needs to be done for the XSA-200 or XSA-3S1000 Boards since they have a fixed frequency 100 MHz oscillator.</p>
+</li>
+<li>
+<p>Open the GXSLOAD downloading tool. Drag-and-drop the <em>test_vga.bit</em> bitstream file generated in step #1 into the FPGA pane of the GXSLOAD window. Then click on the Load button to download this file to the FPGA on the XSA Board.</p>
+</li>
+<li>
+<p>Connect a monitor to the VGA port of the XSA Board. A random pattern of ``snow'' will appear on the monitor screen because the SDRAM has not been initialized with image data, yet.</p>
+</li>
+<li>
+<p>Double-click the <em>test_vga.bit</em> file in the GXSLOAD FPGA pane to de-select it. Then drag-and-drop the <em>image.xes</em> file into the RAM pane. Uncheck the ``Download RAM/Flash Interface'' box below the RAM pane to stop GXSLOAD from overwriting the FPGA with the default SDRAM interface bitstream. Then click on the Load button to download the image data to the SDRAM.</p>
+</li>
+<li>
+<p>An image will appear on the monitor screen (beginning at the top of the screen and proceeding to the bottom) as GXSLOAD downloads the contents of <em>image.xes</em> to the SDRAM.</p>
+</li>
+</ol>
+<p></p>
+<hr>
+<h1><a name="embedding_a_parallel_port_interface_in_other_applications"></a>EMBEDDING A PARALLEL PORT INTERFACE IN OTHER APPLICATIONS</h1>
+<p>You can use the files in this application to provide access between the parallel port and the SDRAM in your own application. The necessary design files to include in your design are: <em>sdramcntl.vhd</em>, <em>xsasdramcntl.vhd</em>, <em>ramintfc_core.vhd</em>, <em>xsasdramcntl_ppintfc.vhd</em>, and <em>common.vhd</em>. You can also look in the <em>test_vga.ucf</em> file for your particular model of XSA Board to find the appropriate pin assignments to the SDRAM and parallel port. Then connect the logic for your application to the host-side interface shown in the <em>xsasdramcntl_ppintfc.vhd</em> file in the same manner as you would the standard SDRAM controller in the <em>xsasdramcntl.vhd</em> file. (Look at <a href="../../appnotes/an-071205-xsasdramcntl.pdf">/appnotes/an-071205-xsasdramcntl.pdf</a> for details on how to use the SDRAM controller.)</p>
+<p></p>
+<hr>
+<h1><a name="see_also"></a>SEE ALSO</h1>
+<p>Use the <em>img2xes.pl</em> Perl script to convert your own graphic files into a format that works with the VGA generator circuit. The most-current version of <em>img2xes.pl</em> can be found <a href="../../downloads.php">here</a>.</p>
+<p></p>
+<hr>
+<h1><a name="author"></a>AUTHOR</h1>
+<p>Dave Vanden Bout, X Engineering Software Systems Corp.</p>
+<p>Send bug reports to <a href="mailto:bugs@xess.com.">bugs@xess.com.</a></p>
+<p></p>
+<hr>
+<h1><a name="copyright_and_license"></a>COPYRIGHT AND LICENSE</h1>
+<p>Copyright 2005 by X Engineering Software Systems Corporation.</p>
+<p>This library is free software; you may redistribute it and/or modify it as long as you do not remove the attributions to the author or his employer.</p>
+<p></p>
+<hr>
+<h1><a name="history"></a>HISTORY</h1>
+<p>12/20/07 - Version 1.1 - Updated <em>ramintfc_core.vhd</em> to filter-out glitches on the downloading clock passed through the parallel port.</p>
+<p>10/30/05 - Version 1.0</p>
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fprojects%252Fan-103005-vgagen-project%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fprojects%252Fan-103005-vgagen-project%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+    
+    
+
+
+
+
+
+
+    
+    
+
+
+
+
+<h3>Announcements</h3>
+<ul class="recent-anncs">
+
+<li><a href="../../blog/stickit-grove-board-is-released/index.html">StickIt!-Grove Board is Released!</a></li>
+
+<li><a href="../../blog/raspberry-pi-xula/index.html">Raspberry Pi + XuLA</a></li>
+
+<li><a href="../../blog/new-us-distributor/index.html">New US Distributor!</a></li>
+
+</ul>
+
+
+
+    
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li class="active"
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

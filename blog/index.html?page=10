@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title>Blog | XESS Corp.</title>
+<link rel="shortcut icon" href="../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../index.html"><img class="logo" src="../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown active"
+                                id="dropdown-menu-interact"><a href="../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="category/announcements">Announcements</a></li><li 
+                                    class="active "
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li id="breadcrumb-menu-interact"><a href="../interact/index.html">Interact</a><span class="divider">&gt;&gt;</span></li><li id="breadcrumb-menu--blog-"><a href="index.html">Blog</a><span class="divider">&gt;&gt;</span></li>
+</ul>
+
+<h1>
+
+Blog
+
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+    
+
+
+
+
+
+<h2>
+    <a href="one-from-the-junkbox/index.html">One from the Junkbox... </a>
+</h2>
+
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="author/devbisme/index.html">Dave Vandenbout</a>
+    
+    
+    
+    in
+    
+    <a href="category/blog-post/index.html">Blog Post</a>
+    
+    
+    
+    7 years, 11 months ago
+</h6>
+
+
+
+
+
+
+
+<div class="field-item even"><p><img src="../static/media/uploads/blog/devbisme/2012-07-29/junkbox-small.jpg" style="margin-left: 10px; margin-right: 10px; float: left;">When <a href="http://devbisme.webfactional.com/blogs/devbisme/2012/06/17/maker-faire-project-reflex-circle">I demoed a few projects</a> at the recent Maker Faire NC, I also brought along a loose box of projects for people to paw through. (The little kids loved 'em. Nothing puts out an eye like an 0.1" header.) Most of the stuff was old <a href="../prods/prod048.php">XuLAs</a> and <a href="../prods/prod050.php">StickIt! motherboards</a> and <a href="../prods/prod054.php">modules</a>. But the one most people asked about was just an unpopulated PCB I'd designed back in 2011 and had never gotten around to doing anything with. (That's one of the unexpected consequences brought on by companies like Itead: you can make a PCB for a project and, because it's so cheap, you don't care if you never finish it.) <a style="float:right" href="one-from-the-junkbox/index.html"><em>&lt;&lt;more...&gt;&gt;</em></a></p></div>
+
+
+
+
+<p class="blog-list-detail">
+    
+    
+    
+    <a href="one-from-the-junkbox/index.html#comments">
+        0 comments
+    </a>
+    
+</p>
+
+
+
+
+<h2>
+    <a href="its-the-same-size-only-bigger/index.html">It&#39;s the Same Size, Only Bigger! </a>
+</h2>
+
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="author/devbisme/index.html">Dave Vandenbout</a>
+    
+    
+    
+    in
+    
+    <a href="category/blog-post/index.html">Blog Post</a>
+    
+    
+    
+    7 years, 11 months ago
+</h6>
+
+
+
+
+
+
+
+<div class="field-item even">
+<img alt="" src="../static/media/uploads/blog/devbisme/2012-07-26/XuLA2.png" style="margin: 10px; width: 200px; float: left;">
+<p>
+Well, I finally finished testing the XuLA2 prototype a few days ago and released the PCB to manufacturing. When I layed-out the prototype, I butted the microSD socket right up against the FPGA in order to keep the board at 2" x 1". I knew that wasn't going to fly for final production, but I wanted to get it done quick so I could find the other gotchas that typically occur when I move to using a different chip (in this case, the Spartan-6 FPGA).</p>
+<p>It turns out there was a gotcha involving the strength of the Spartan-6 pullup resistors, but that was easily resolved once it was finally found. So the only change needed on the board was to find a way to fit the socket on there. <a style="float:right" href="its-the-same-size-only-bigger/index.html"><em>&lt;&lt;more...&gt;&gt;</em></a></p></div>
+
+
+
+
+<p class="blog-list-detail">
+    
+    
+    
+    <a href="its-the-same-size-only-bigger/index.html#comments">
+        0 comments
+    </a>
+    
+</p>
+
+
+
+
+<h2>
+    <a href="my-first-fpgarelatedcom-blog/index.html">My First FPGARelated.com Blog! </a>
+</h2>
+
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="author/devbisme/index.html">Dave Vandenbout</a>
+    
+    
+    
+    in
+    
+    <a href="category/blog-post/index.html">Blog Post</a>
+    
+    
+    
+    7 years, 11 months ago
+</h6>
+
+
+
+
+
+
+
+<div class="field-item even"><p>I wrote <a href="http://www.fpgarelated.com/showarticle/37.php">my first blog post for FPGARelated.com</a> yesterday. It's about augmenting Notepad++ to speed-up VHDL coding. So go on over and check it out. <a href="http://www.fpgarelated.com/showarticle/13.php">I get paid a dime for every unique pageview</a>, and I could <em>really</em> use some of those dimes right now! <a style="float:right" href="my-first-fpgarelatedcom-blog/index.html"><em>&lt;&lt;more...&gt;&gt;</em></a></p></div>
+
+
+
+
+<p class="blog-list-detail">
+    
+    
+    
+    <a href="my-first-fpgarelatedcom-blog/index.html#comments">
+        0 comments
+    </a>
+    
+</p>
+
+
+
+
+<h2>
+    <a href="maker-faire-project-the-reflex-circle/index.html">Maker Faire Project: The Reflex Circle </a>
+</h2>
+
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="author/devbisme/index.html">Dave Vandenbout</a>
+    
+    
+    
+    in
+    
+    <a href="category/blog-post/index.html">Blog Post</a>
+    
+    
+    
+    8 years ago
+</h6>
+
+
+
+
+
+
+
+<div class="field-item even">
+  <p>
+    People at the <a href="http://devbisme.webfactional.com/blogs/devbisme/2012/04/13/visit-xess-raleigh-maker-faire">2012 NC Maker Faire</a> were asking me if the documentation for my projects was online. (OK, one person asked, but that's enough to get me going.) So here's a description of my first project, the <em>Reflex Circle</em>, and how I built it. <a style="float:right" href="maker-faire-project-the-reflex-circle/index.html"><em>&lt;&lt;more...&gt;&gt;</em></a></p></div>
+
+
+
+
+<p class="blog-list-detail">
+    
+    
+    
+    <a href="maker-faire-project-the-reflex-circle/index.html#comments">
+        0 comments
+    </a>
+    
+</p>
+
+
+
+
+<h2>
+    <a href="a-modest-proposal-to-element14/index.html">A Modest Proposal to Element14 </a>
+</h2>
+
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="author/devbisme/index.html">Dave Vandenbout</a>
+    
+    
+    
+    in
+    
+    <a href="category/blog-post/index.html">Blog Post</a>
+    
+    
+    
+    8 years, 1 month ago
+</h6>
+
+
+
+
+
+
+
+<div class="field-item even"><p>Hi, Element14. First off, let  me tell you how much I like Eagle. I bought version 4 back in 2001 for $1212. (Schematic editor, pcb layout and auto-router - woo hoo! Times were good.) Then in 2004, I upgraded to V4.1 for $315. (I don't know why I had to pay for a minor release, but there you go.) Finally, I went to V5 in 2009 for $400. I've never regretted my choice - over the years, Eagle has gotten better and better and my total outlay is still less than $2000. I can hardly get a schematic editor in one of the major CAD packages for that. <a style="float:right" href="a-modest-proposal-to-element14/index.html"><em>&lt;&lt;more...&gt;&gt;</em></a></p></div>
+
+
+
+
+<p class="blog-list-detail">
+    
+    
+    
+    <a href="a-modest-proposal-to-element14/index.html#comments">
+        0 comments
+    </a>
+    
+</p>
+
+
+
+
+
+
+<div class="pagination">
+<ul>
+
+<li class="disabled page-info">
+    <a>Page 10 of 15</a>
+</li>
+<li class="prev previous">
+    <a href="index.html?page=9">&larr;</a>
+</li>
+
+<li>
+    <a href="index.html?page=5">5</a>
+</li>
+
+<li>
+    <a href="index.html?page=6">6</a>
+</li>
+
+<li>
+    <a href="index.html?page=7">7</a>
+</li>
+
+<li>
+    <a href="index.html?page=8">8</a>
+</li>
+
+<li>
+    <a href="index.html?page=9">9</a>
+</li>
+
+<li class="active">
+    <a href="index.html?page=10">10</a>
+</li>
+
+<li>
+    <a href="index.html?page=11">11</a>
+</li>
+
+<li>
+    <a href="index.html?page=12">12</a>
+</li>
+
+<li>
+    <a href="index.html?page=13">13</a>
+</li>
+
+<li>
+    <a href="index.html?page=14">14</a>
+</li>
+
+<li class="next">
+    <a href="index.html?page=11">&rarr;</a>
+</li>
+
+</ul>
+</div>
+
+
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../accounts/login/index.html?next=%252Fblog%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../account/signup/index.html?next=%252Fblog%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="esp8266-re-reflash-dance/index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="feeds/rss/index.html">RSS</a> /
+    <a href="feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li class="active"
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="active"
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

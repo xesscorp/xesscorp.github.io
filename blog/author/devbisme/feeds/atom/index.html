@@ -1,0 +1,1847 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><title>XESS Corp.</title><link href="http://www.xess.com/blog/feeds/atom/" rel="alternate"></link><link href="http://www.xess.com/blog/author/devbisme/feeds/atom/" rel="self"></link><id>http://www.xess.com/blog/feeds/atom/</id><updated>2016-09-09T14:04:46+00:00</updated><subtitle></subtitle><category term="Announcements"></category><category term="Blog Post"></category><entry><title>Are You In An Abusive Relationship With Your Schematic Editor?</title><link href="http://www.xess.com/blog/are-you-in-an-abusive-relationship-with-your-schematic-editor/" rel="alternate"></link><updated>2016-09-09T14:04:46+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/are-you-in-an-abusive-relationship-with-your-schematic-editor/</id><summary type="html">&lt;img src="/static/media/uploads/blog/devbisme/2016-09-08/abusive_schematic.jpg" alt="Abusive Schematic based on Scream by Paulius Lizdenis" class="thumbnail-it float-it-left"/&gt;
+Having hung out on [forum.kicad.info](https://forum.kicad.info/) for over a year, I'm quite aware of the problems engineers have with their CAD tools.
+In particular, I hear a lot of moaning and groaning about *schematic editors*.
+(For the record, I know my graphic to the left shows a PCB, not a schematic. What can I say? *Art trumps accuracy.*)
+
+For all the complaints, we don't seem to change: resignedly shuffling off to use the same tools that mistreated us the day before.
+And I thought: "Well, that's pretty dysfunctional!"
+So I googled "are you in an abusive relationship" and my computer came back with 3,830,000 hits.
+(Luckily, they were all the same basic article, just with different pictures.)
+
+I glanced through a few lists of characteristics for these relationships and I thought they seemed kind of familiar.
+Then I picked a prototypical example and repurposed it for schematic designers.
+Take a look and see how many of these excuses you've made in the past month...
+
+##Take the Test!
+
+###___&amp;nbsp;*It's Normal, Really.*
+
+Everyone who uses schematic editors has problems with them.
+Using a DOS program that was ported to linux and then back to Windows 10, that's just part of the job.
+*No biggie!*
+
+###___&amp;nbsp;*It's My Fault: I Made It Do That.*
+
+It wouldn't have core dumped and destroyed three hours of work
+if I hadn't tried to merge two named nets.
+*My bad!*
+
+###___&amp;nbsp;*It's Just the Way It Works. It's Not Malicious.*
+
+Sure, the pins have to be *exactly* on the grid (an *imperial* grid, mind you, not metric)
+or else the wires won't connect (even though they *look* connected).
+That's just the way it works.
+It's a pain, but it's not *intentional*. I mean, I guess...
+
+###___&amp;nbsp;*It's Just Its Weird Way of Showing It Loves Me.*
+
+Yes, it makes me open two instances of the editor outside the normal
+design flow in order to copy-and-paste stuff from one schematic to another.
+But knowing how to do that makes me less replaceable.
+*My schematic editor is helping me keep my job!*
+
+###___&amp;nbsp;*I'm Not Perfect, Either.*
+
+I'll admit that - from time to time - I call my schematic editor "old poopy doo-doo head".
+Perhaps if I were more understanding it wouldn't freeze while loading libraries from Github.
+
+###___&amp;nbsp;*I Can Take It.*
+
+I'm an engineer: I've been shit on by the worst of the worst!
+(And, to be honest, pretty much everybody else.)
+So there's no way this schematic editor can break me.
+
+What? You say I have to route a 128-wire bus from twenty levels deep in the hierarchy?
+*Bring it on!*
+
+###___&amp;nbsp;*I Like Being Treated This Way.*
+
+Is that a global bus? A hierarchical connection? A local net? Hell, I don't know!
+But figuring out puzzles like that is the best part of my day.
+
+###___&amp;nbsp;*It Could Be Worse*
+
+Even the simplest operation takes several point-and-click operations with the mouse combined with pressing obscure
+hotkeys, but at least the editor doesn't snap off my fingers with some crazy
+keyboard guillotine thingy last seen in a "Saw" movie.
+
+Oh, wait, that's planned for the *next release?*
+
+###___&amp;nbsp;*If I Just Stick It Out, Things Will Change.*
+
+They're really trying to change and the next release will fix a lot of these issues.
+I know they've said that before, but this time they mean it.
+If I can just hold out, things will be better.
+
+Except for the keyboard guillotine thingy: *that's gonna suck*.
+
+
+## So, How'd You Do?
+
+How many of those excuses did *you* check, and what does that mean?
+Read on to find out...
+
+### *Five or More...*
+
+You're definitely ready to get out.
+If there was a safe house, you'd be checking into it.
+
+### *Two to Four...*
+
+You recognize you have a problem, you're looking for something better, but
+there doesn't seem to be a reasonable alternative.
+
+### *Just One...*
+
+You're throwing me a bone, right?
+You really wanted to say "zero" but were afraid you'd be labeled as a GUI fanboy.
+
+### *None. Not a Single One...*
+
+Your are *so* deep in denial.
+You're obviously involved with some Svengaliesk Rasputin of a schematic editor that has trapped you in a Stockholm Syndrome nightmare.
+
+
+## What Now?
+
+Have I taken you all this way, shown you that you have a problem, and then left you with no solution?
+Would I do that?
+
+Well, yeah, I probably would do something like that. *But not this time!*
+
+I've suffered from the same problems with schematics as everyone else, but I decided to do something about it.
+Taking my cue from things like [PHDL](https://sourceforge.net/p/phdl/wiki/Home/) and
+[MyHDL](http://myhdl.org/),
+I created the
+[SKiDL module](https://xesscorp.github.io/skidl/docs/_build/singlehtml/index.html)
+that turns Python into a language for building schematics. 
+It changes circuit design from a fiddly drawing exercise into a programming task.
+
+Why is that important?
+Because for decades, coders have been successfully building programs a lot larger and more complicated
+than any schematic.
+SKiDL acts as a bridge that allows the methods and tools of programmers to be applied to the problem of electronic design because it:
+
+* Has a powerful, flexible syntax (because it *is* Python).
+* Permits compact descriptions of electronic circuits (think about not having to trace signals through a multi-page schematic).
+* Allows textual descriptions of electronic circuits (think about using diff and git for circuits).
+* Enables global refactoring of a design (and eliminates the need to point-and-click on every ... single ... component).
+* Performs electrical rules checking (ERC) for common mistakes (e.g., unconnected device I/O pins).
+* Supports linear / hierarchical / mixed descriptions of electronic systems.
+* Fosters design reuse (think about using PyPi and Github to distribute electronic designs).
+* Makes possible the creation of *smart circuit modules* whose behavior / structure are changed parametrically (think about filters whose component values are automatically adjusted based on your desired cutoff frequency).
+* Can work with any ECAD tool (only two methods are needed: one for reading the part libraries and another for outputing the correct netlist format).
+* Takes advantage of all the features and benefits of the Python ecosystem (because it *is* Python).
+
+Getting started with SKiDL is easy.
+If you already have Python on your system (either 2 or 3), then just use:
+
+    pip install skidl
+
+and you're ready to go!
+(Well, *almost* ready to go. Right now, SKiDL only supports [KiCad](http://kicad-pcb.org/), but I'm working on others.)
+
+\[Credits: I used "Scream" by Paulius Lizdenis for my opening image and merged it with a picture of a PCB. Sorry I mangled your artwork, Paulius, but what can I say? *Marketing trumps art.*\]
+
+</summary><category term="Blog Post"></category></entry><entry><title>Walk In, Walk Out</title><link href="http://www.xess.com/blog/walk-in-walk-out/" rel="alternate"></link><updated>2016-06-26T14:55:47+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/walk-in-walk-out/</id><summary type="html">&lt;p&gt;&lt;img class="thumbnail-it float-it-left" src="http://www.30sleeps.com/images/tracks-in-the-desert.jpg"&gt;I wrote a blog post several years ago about &lt;a href="/blog/my-first-kicad-board/"&gt;my first KiCad design&lt;/a&gt;: an eight-channel analog-to-digital StickIt! board. While &lt;a href="http://www.xess.com/blog/test-results-for-my-first-kicad-board/"&gt;testing it&lt;/a&gt;, I discovered the signals in the analog channels could leak into one another if the signal drivers had too high an impedance. The design kind of languished after that.&lt;/p&gt;
+&lt;p&gt;But a few months ago as I was building an array of StickIt! boards for fabrication, I decided to resurrect the ADC board (now called the OctoADC). I modified the design so the ADC inputs would be driven by dual quad opamps (&lt;a href="http://www.ti.com/lit/ds/symlink/tl971.pdf"&gt;TL974&lt;/a&gt;) with low-impedance outputs to stop the signal leakage. Here's the modified schematic:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="OctoAdc Board Schematic" src="/static/media/uploads/blog/devbisme/2016-06-22/octoadc_schematic.png"&gt;&lt;/p&gt;
+&lt;p&gt;Eleven copies of the PCB array containing the OctoADC (and six other designs) were fabricated by &lt;a href="http://dirtypcbs.com"&gt;dirtypcbs.com&lt;/a&gt; for $25.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="StickIt Board Array" src="/static/media/uploads/blog/devbisme/2016-06-22/stickit-array.png"&gt;&lt;/p&gt;
+&lt;p&gt;Upon receiving the PCBs, I assembled an OctoADC board and ran a test where it samples three, low-resolution sine waves (4-5 bits). 
+These are the results I got:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Three Sampled Waveforms from OctoADC Board" src="/static/media/uploads/blog/devbisme/2016-06-22/vga_voltage_x3.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Single Sampled Waveform from OctoADC Board" src="/static/media/uploads/blog/devbisme/2016-06-22/vga_voltage_x1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Yowsa! Definitely a turn for the worse!&lt;/p&gt;
+&lt;p&gt;By looking at the waveform for a single channel, it became apparent that the sampled waveform goes nuts when the input drops near ground. It turns out I had mistakenly assumed the TL974 could handle an input voltage near ground (which I used as the negative rail) because they were described as "rail-to-rail" opamps. However, that only applies to the &lt;em&gt;opamp output&lt;/em&gt;; the input has to stay at least 1.15 V away from either rail. (Doh! I really should start reading these datasheets.)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Common-Mode Limits of the TL974 Opamp Inputs" src="/static/media/uploads/blog/devbisme/2016-06-22/input_limits.png"&gt;&lt;/p&gt;
+&lt;p&gt;So my opamps needed at least a -1.15 V supply, but there's not a negative supply on the board. I had walked myself into a real mess and now I was going to have to to walk myself out of it.&lt;/p&gt;
+&lt;p&gt;My first thought was to use an &lt;a href="http://www.ti.com/lit/ds/symlink/lm2660.pdf"&gt;LM2660&lt;/a&gt; to generate a negative supply. But that chip is relatively expensive and the datasheet recommends placing &lt;em&gt;another&lt;/em&gt; regulator on the output of the LM2660 to clean-up the noise. That seemed like a lot of added circuitry and expense for what I needed, so I decided to look for more "creative" options.&lt;/p&gt;
+&lt;p&gt;Taking a look at my existing design, one resource I did have was four unused I/Os on the PMOD connector that can be driven by the FPGA. From my beginning circuits classes I knew I could generate a negative voltage by applying positive pulses to a combination of diodes and capacitors like the circuit shown below. To test the idea, I modeled the FPGA pin in LTspice as a pulsed 3.3V supply with a 70-ohm series resistance, and I represented the current draw of the opamp with a 1mA current source.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Negative Voltage Generator" src="/static/media/uploads/blog/devbisme/2016-06-22/voltage_inverter_single.png"&gt;&lt;/p&gt;
+&lt;p&gt;Simulation showed that, after an initial charging transient, pulsing the circuit with a 1 MHz square wave resulted in a stable negative voltage:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Negative Voltage Generator" src="/static/media/uploads/blog/devbisme/2016-06-22/voltage_inverter_output.png"&gt;&lt;/p&gt;
+&lt;p&gt;Due to their series resistance, the FPGA pins can't output an infinite amount of current. In combination with the current draw of the opamp, this limits the size of the negative voltage that can be generated. By varying the current source, I could plot the negative voltage that would result for various amounts of opamp supply current:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Negative Voltage Generator Output Current Versus Output Voltage" src="/static/media/uploads/blog/devbisme/2016-06-22/voltage_inverter_V_vs_I.png"&gt;&lt;/p&gt;
+&lt;p&gt;From the graph, it looks like I can draw no more than 6 mA from the negative supply before it fails to provide the -1.15 V the opamps need. The datasheet shows each opamp consumes 3.2 mA (worst case), so eight of them will require 25.6 mA. By combining four FPGA pins in parallel to decrease the equivalent series resistance, I thought I might be able to achieve that.&lt;/p&gt;
+&lt;p&gt;At this point, more accuracy was needed so I downloaded the &lt;a href="http://www.ti.com/lit/zip/slom243"&gt;Spice model for a single TL972 opamp&lt;/a&gt;. I placed the &lt;code&gt;TL972.lib&lt;/code&gt; file in a local directory and used a &lt;code&gt;.lib&lt;/code&gt; Spice directive to access it. I instantiated a single TL972 in a unity gain configuration with the non-inverting input driven by a 5 V, 10 KHz sine wave centered at 2.5 V. The positive rail of the opamp was fed by a 6.15 V source while the negative voltage generator feeds the negative rail.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Negative Voltage Generator" src="/static/media/uploads/blog/devbisme/2016-06-22/voltage_inverter_with_tl972.png"&gt;&lt;/p&gt;
+&lt;p&gt;A simulation showed the opamp was working correctly as its output (the blue trace) exactly matched the input sine wave (the green trace). The output was also able to get to ground without any distortion.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Input and Output Sine Waves" src="/static/media/uploads/blog/devbisme/2016-06-22/tl972-vin_and_vout.png"&gt;&lt;/p&gt;
+&lt;p&gt;In addition, the negative rail current (the red trace) was only 2 mA (albeit with some substantial spikes) while the voltage (the green trace) was -2.27 V and free of noise.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="TL972 Negative Rail Supply Current and Voltage" src="/static/media/uploads/blog/devbisme/2016-06-22/tl972_icc-_and_vcc-.png"&gt;&lt;/p&gt;
+&lt;p&gt;Simulations are nice, but eventually you have wire together some parts and make it work in the real world. So I drew up a component layout for the negative voltage generator (otherwise I'd end up wiring it wrong):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Component Arrangement for the Negative Voltage Generator" src="/static/media/uploads/blog/devbisme/2016-06-22/voltage_inv_layout.png"&gt;&lt;/p&gt;
+&lt;p&gt;And then I soldered it onto the OctoADC board (which is even uglier than the drawing):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Component Arrangement for the Negative Voltage Generator" src="/static/media/uploads/blog/devbisme/2016-06-22/octoadc_front.JPG"&gt;&lt;/p&gt;
+&lt;p&gt;Once the hardware modifications were complete, I modified the FPGA design to include a &lt;a href="https://github.com/xesscorp/VHDL_Lib/blob/master/pwm.vhd"&gt;pulse-width modulator&lt;/a&gt; (PWM) that outputs a 1.5 MHz square wave. The PWM signal exits the FPGA on up to four pins to drive the negative voltage generator, but I found in my experiments that using three outputs was enough to generate a stable -2.7 V supply rail. (Obviously, my modeling of the FPGA outputs as a voltage source with a 70-ohm resistor was too conservative.)&lt;/p&gt;
+&lt;p&gt;When I re-ran the test with the modified OctoADC board, the results were much better. Now you can clearly see the three, separate quantized sine waves.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Three Sampled Waveforms from OctoADC Board With the Negative Supply Rail" src="/static/media/uploads/blog/devbisme/2016-06-22/invclk_x_3.png"&gt;&lt;/p&gt;
+&lt;p&gt;So I managed to walk (crawl?) my way out of my current problem. Now it's just a matter of modifying the OctoADC PCB and including it in my next array. And then on to the next problem...&lt;/p&gt;</summary><category term="Blog Post"></category></entry><entry><title>Colossus-al!</title><link href="http://www.xess.com/blog/colossus-al/" rel="alternate"></link><updated>2016-06-08T15:31:19+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/colossus-al/</id><summary type="html">Every now and then, one of my customers comes back with something they've been working on.
+In this case, it's [Ben North](http://www.redfrontdoor.org/blog/) showing some work he did modeling the [Colossus code-breaking machine]() built at Bletchley Park.
+
+![Colossus in use](http://redfrontdoor.org/blog/wp-content/uploads/2016/04/Colossus-w240.jpg)
+
+First, Ben had to understand how Colossus actually broke codes.
+He did this by creating a [Jupyter notebook](http://redfrontdoor.org/Dickens-Teleprinter/index.html) that replicated the process of encrypting some plain-text (in his case, Dicken's *Pickwick Papers*) with a Lorenz cipher and then analyzing it as Colossus did.
+Doing this, he was able to debug his understanding of each step in the algorithm.
+He shows how a small feature of the Lorenz cipher (that the encryption wheels do not always advance after each letter) leads to an observable distortion of the letter frequency in the encrypted text which can be used to guess likely settings for the wheels. 
+
+Once the operational details were understood, Ben went about [implementing (most of) Colossus in the Spartan-6 LX25 FPGA](http://bennorth.github.io/fpga-colossus/doc/Content/notes.html) of a XuLA2 board.
+He created [VHDL code describing each portion of Colossus](https://github.com/bennorth/fpga-colossus/tree/published/src).
+These pieces communicated with a *dataflow* protocol (i.e, a unit would start processing if it had data available in its input buffer and space available to hold the result in its output buffer).
+Because of this loose coupling, it was relatively easy for Ben to add multiple analysis pipelines to his design.
+
+![Colossus pipelines](http://bennorth.github.io/fpga-colossus/doc/Content/whole-pipeline.png)
+
+To test his design, Ben wrote unit tests in Python that drove a simulation of his VHDL code.
+When it came time to test the real thing running in the FPGA, he just changed his unit tests so they interfaced with the Raspberry Pi GPIO pins connected to the XuLA2 board.
+
+![XuLA2 + StickIt! motherboard + RPi](http://bennorth.github.io/fpga-colossus/doc/Content/labelled-photo.png)
+
+The results from the actual hardware test matched with the simulation on the first attempt.
+According to Ben, he found this a "satisfying outcome".
+I guess he picked up a penchant for English understatement while working on this project.
+
+For those looking for a project, it would be great to recode Ben's VHDL into [MyHDL](http://myhdl.org/).
+Then it could be included in the same Jupyter notebook with the Lorenz encryption/decryption theory,
+and the tests could be run using only Python with no need for the VHDL simulator.
+You could probably also get dynamic animations of the Colossus pipelines that Ben had to
+hard-code in his documentation.
+
+Some colossal work here, Ben! Thanks for sharing it.
+
+*(Figures: Ben North, used under CC BY-SA 4.0)*</summary><category term="Blog Post"></category></entry><entry><title>Extinction Level Event</title><link href="http://www.xess.com/blog/extinction-level-event/" rel="alternate"></link><updated>2016-05-25T16:17:21+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/extinction-level-event/</id><summary type="html">&lt;img src="http://allnewspipeline.com/images/asteroidELE.jpg" class="thumbnail-it float-it-left"/&gt;
+Well, there are [rumblings that Xilinx is going to be bought](http://seekingalpha.com/news/3185340-xilinx-jumps-5_9-percent-amid-15b-takeover-rumor).
+
+As everyone already knows, [Intel bought Altera last year](https://newsroom.intel.com/news-releases/intel-completes-acquisition-of-altera/), looking at integrating FPGAs with CPUs for the datacenter market. That removed a company that serviced roughly 40% of the FPGA market.
+If Xilinx is also bought by someone looking to compete in the datacenter, then the suppliers of more than 80% of the FPGA market will have vanished.
+That's the equivalent of an [extinction level event](https://en.wikipedia.org/wiki/Extinction_event).
+
+So what happens next?
+
+##High-end FPGA development stalls.##
+
+First, high-end FPGA development will stall. This was bound to happen once Intel bought Altera because that removed Xilinx's main competitor. Much of the increase in FPGA capabilities was due to that rivalry. If Xilinx also becomes a captive supplier to some other company with eyes on the data center, then that removes the apex innovator of the FPGA market. So you can forget about getting denser, cheaper discrete FPGAs every year for the immediate future.
+
+##The traditional FPGA market is abandoned.##
+
+Won't the purchasers of Altera and Xilinx keep servicing traditional FPGA markets? Why would they walk away from all that money?
+
+*Because it's not that much money.* Currently, Xilinx and Altera were both around $4B in yearly revenue and each made around $500M in profit. [And the projected (and historic) growth rate has only been 7%](http://blogs-images.forbes.com/kurtmarko/files/2015/06/FPGA-market.png). Meanwhile, Intel's revenue from the datacenter alone was [$16B last year and it's growing at 11%](http://www.fool.com/investing/general/2016/02/04/intel-corps-data-center-business-is-truly-wonderfu.aspx).
+
+&lt;img src="http://blogs-images.forbes.com/kurtmarko/files/2015/06/FPGA-market.png" alt="FPGA market trends" class="center-it" style="width: 80%;"/&gt;
+
+Why would Intel spend $16B to buy Altera and then use any of the acquired resources (i.e., Altera FPGA engineers) to service a slower-growing market where the potential profit is a tiny fraction of what they can make in a faster-growing market? It doesn't make sense.
+
+Plus, the FPGA market is highly fragmented. It takes a lot of expertise to service each one of those segments. It's just plain easier to handle a single, large segment like the data center.
+
+That said, Intel will probably keep selling to the telecomm guys because they have similar characteristics to the datacenter: a few major customers building base stations or networking hubs where performance is king and chip costs are secondary. And networking is an integral part of any data center as well.
+
+Anybody that purchases Xilinx will have these same market forces affecting their decisions. They'll abandon the traditional FPGA markets (consumer, industrial, automotive, aerospace) and concentrate on the datacenter and telecomm. (Although telecomm will have to get used to not being in the driver's seat as far as setting the direction of FPGA development.)
+
+##More innovation and consolidation occurs.##
+
+Lattice is the only pure FPGA company that will be left. They have less than $500M in annual revenue. The Actel portion of Microsemi is roughly that size as well.
+
+And with 80% of the FPGA market up for grabs (if Xilinx is purchased), then that makes Lattice an attractive purchase for a larger semiconductor company that finds an $8B market attractive (because not everybody is Intel).
+
+It also opens the market for a lot of innovation. Previously, companies found it hard to penetrate with customers against Xilinx and Altera. Once they were starved of revenue, Xilinx and Altera purchased the remnants. Now there may be a more open playing field.
+
+##So what happens to me, the individual FPGA developer?##
+
+You'll live in interesting times.
+
+You'll still be able to buy existing Xilinx and Altera FPGAs. All the development is done, it's just a matter of having them cranked out by the fabs. That's easy money. But the yearly improvement of these discrete chips that we've come to expect may cease as the engineers devote themselves to the wishes of their new masters.
+
+And you'll still have the Quartus and Vivado FPGA programming environments, but further development and dissemination of those is questionable. Of course, nobody really loved them (because nobody loves *any* EDA software), but they are necessary for programming the current chips. So they'll still be around.
+
+But there may also be new FPGAs that are made widely available. As Intel injects the FPGA into the data center, some of the developments will make their way to the desktop. That will make FPGA programming a possibility for a much larger audience. And just as compilers massively improved when PCs became widespread, maybe FPGA tools will also. And there would be a market incentive for that if multiple companies are struggling for control of the data center: ease of programming will be a big incentive for customers.
+
+Meanwhile, there will be new FPGA architectures and programming environments springing up in the decimated ecosystem as a diaspora of FPGA engineers leave Intel and other megacorps to try it on their own. But that's a tough business given the level of technical expertise needed and the number of places where it's easier to make money (e.g., social networking, VR). Which of these will grow into the new apex innovator is anybody's guess.
+
+In the end, it's not all good and it's not all bad. It's just going to be different. Kind of like 1985 when FPGAs first started to appear.
+
+So if you like change, you're going to get it. Lots of it.
+</summary><category term="Blog Post"></category></entry><entry><title>ESP8266: Re-Reflash Dance!</title><link href="http://www.xess.com/blog/esp8266-re-reflash-dance/" rel="alternate"></link><updated>2016-03-28T18:44:51+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/esp8266-re-reflash-dance/</id><summary type="html">&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/jbeals_again.png" class="thumbnail-it float-it-left"/&gt;
+Over a year ago, I posted about [how I reflashed an ESP-01 module with new firmware](http://www.xess.com/blog/esp8266-reflash/).
+That post has been very popular and I got the idea in my head that I was some sort of expert on doing this.
+But when I recently tried to do the same for an ESP-201 module, *I found out I wasn't!*
+
+[Note: If you would rather watch than read, there is a video at the end of this post that goes 
+through the ESP-201 flash reprogramming process.](#reflash_video)
+
+Backing up a bit, about a year ago I bought ten of the -201 modules on Aliexpress for $33.
+(Now you can [get the same thing for $26](http://www.aliexpress.com/item/10pcs-lot-ESP8266-Serial-Port-WIFI-Wireless-Transceiver-Send-Receive-Module-IO-Lead-Out-ESP-201/32401815422.html?ws_ab_test=searchweb201556_6,searchweb201602_1_505_506_503_504_10034_10032_10020_502_10001_10014_10002_10017_10005_10010_10006_10011_10003_10021_10004_10022_10009_10008_10018_10019,searchweb201603_2&amp;btsid=8bc51a7e-4656-48c1-9087-f3864c8f4cb8).)
+I was going to do something with them; I've quite forgotten what that was.
+
+But I've become interested in integrating the ESP8266 chip in another project so I thought I'd
+pull these out and get reacquainted.
+The ESP8266 has been integrated into the Arduino environment since I last looked, and that
+would be an easy way for me to reprogram the chip.
+
+The first thing I did was connect some resistors, buttons, jumpers and my 
+[C232HM cable](http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)
+to the pins of the ESP-201 module in a manner similar to what I did 
+[previously for the ESP-01 module](http://www.xess.com/static/media/uploads/blog/devbisme/2014-12-09/esp8266_flash_prog_board_sch.png):
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/esp-201_no_work.png" alt="Non-working ESP-201 module connections" class="center-it" style="width: 400px;"/&gt;
+
+(Note that in the photo above, the `RX` and `TX` labels apply to the serial 
+receiver and transmitter pins *of the -201 module*.  
+The attached C232HM cable leads have the opposite functions.)
+
+I put the ESP8266-201 module into flash reprogramming mode using the
+same procedure as for the ESP-01 module: 
+
+1. press and hold the `PROG` button,
+2. press and release the `RESET` button, 
+3. release the `PROG` button.
+
+Next, I downloaded and installed the [latest Ardunio IDE](http://www.arduino.cc/en/Main/Software).
+It doesn't support the ESP8266 out of the box, so I opened the `File =&gt; Preferences` 
+dialog box and entered `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
+into the `Additional Boards Manager URLs` field.
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/rereflash_url.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+Then I clicked on `Tools =&gt; Board: =&gt; Boards Manager...`.
+At the bottom of the `Boards Manager` window that appeared, I found the `esp8266` entry and clicked on it.
+Then I clicked on the `Install` button which downloaded and installed the
+appropriate compiler &amp; linker (plus code samples).
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/brd_manager.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+In order to work with the ESP-201 module, I selected the `Generic ESP8266 Module` entry from the list of boards:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/brd_select.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+Selecting this entry reconfigures the `Tools` menu with new options having default values.
+The only thing I changed was the port for my C232HM cable:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/port_select.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+Now that I had my environment set up, I needed something to compile and run to test my board.
+I selected the `WiFiWebServer`: an application that turns an LED on and off
+when a particular web page served by the ESP8266 is accessed.
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/wifiwebsrv_open.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+Once the project loaded, I just selected `Sketch =&gt; Upload` to see if it would
+compile and get programmed into my -201 module.
+Naturally, it failed:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/wifi_load_fail.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+OK, that's not surprising: the -201 module may need a different set up than the -01 module.
+After searching for a while, I found this 
+[handy ESP-201 cheat sheet](http://adlerweb.deviantart.com/art/ESP8266-ESP-201-Module-Pinout-Diagram-Cheat-Sheet-575951137).
+It indicated that for the ESP-201 to enter the flash mode, the GPIO2 and GPIO15
+pins had to be attached to +3.3V and ground, respectively.
+I added a few jumpers to do that, repeated the steps for putting the ESP-201 into programming mode, and tried another upload...
+
+Failure.
+
+From there, I tried various combinations of options under the `Tools` menu:
+different upload speeds, different COM ports, different board frequencies,
+different flash settings...
+
+Failure.
+Failure.
+Failure.
+Failure.
+
+My next thought was that maybe the AT firmware in my modules was too old to work with
+the Arduino uploader.
+I installed the [ESP Flash Download Tool by Espressif](http://bbs.espressif.com/viewtopic.php?f=57&amp;t=433) and then
+downloaded a [fresher version of the AT firmware that would fit into the 4 Mb flash](http://bbs.espressif.com/viewtopic.php?f=46&amp;t=1123)
+on my -201 modules.
+But when I tried the tool, it wouldn't link to my module, either.
+
+So I went looking for another program to update the firmware.
+I decided to try
+[esptool.py](https://github.com/themadinventor/esptool/) since it is mentioned frequently.
+There, halfway down its README page, I found this:
+
+    The following ESP8266 pins must be pulled high/low for either normal or serial 
+    bootloader operation. Most development boards or modules make these connections
+    already, internally:
+
+    | GPIO | Must Be Pulled |
+    --------------------------
+    | 15	| Low/GND (directly, or with a resistor) |
+    | 2	    | High/VCC (always use a resistor) |
+
+    If these pins are set differently to shown, nothing on the ESP8266 will work as expected. 
+
+There was my problem: I had tied GPIO2 to +3.3 directly rather than through a resistor.
+So I replaced the jumpers on the GPIO2 and GPIO15 pins with 1K resistors as shown below:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/esp-201_work.png" alt="Working ESP-201 module connections" class="center-it" style="width: 400px;"/&gt;
+
+Then I tried the Arduino uploader again:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/wifi_load_success.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+Success!
+
+OK, now I could upload to my ESP-201 module.
+I edited the web server code to enter the SSID and password for my local WiFi network
+and then recompiled and uploaded it to my board.
+Then I clicked on `Tools =&gt; Serial Monitor` to bring up a window that would show
+status messages output by the web server.
+Pressing the `RESET` button (*without pressing* the `PROG` button) initiated
+the web server and it put out the following information:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2016-03-22/wifiwebsrv_msgs.png" alt="" class="center-it" style="width: 600px;"/&gt;
+
+These indicated that the web server had started and connected to the local WiFi
+with the displayed IP address.
+
+The web server outputs a high or low level on the `GPIO2` pin depending upon the
+web page that's accessed.
+To observe the output level, I connected an LED plus a current-limiting resistor
+from the `GPIO2` pin to ground.
+Then I just opened a web browser and went to the pages shown below to turn the LED on and off.
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="Web server page for GPIO2 set high." src="/static/media/uploads/blog/devbisme/2016-03-22/gpio_1.png"&gt;
+        &lt;/div&gt;
+        &lt;div class="span1"&gt;&lt;/div&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="GPIO LED on." src="/static/media/uploads/blog/devbisme/2016-03-22/led_on.jpg"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span9"&gt;
+            &amp;nbsp;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span9 text-center"&gt;
+            &lt;strong&gt;Web page result and LED state from accessing web address 192.168.0.104/gpio/1.&lt;/strong&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span9"&gt;
+            &amp;nbsp;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span9"&gt;
+            &amp;nbsp;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="Web server page for GPIO2 set low." src="/static/media/uploads/blog/devbisme/2016-03-22/gpio_0.png"&gt;
+        &lt;/div&gt;
+        &lt;div class="span1"&gt;&lt;/div&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="GPIO LED off." src="/static/media/uploads/blog/devbisme/2016-03-22/led_off.jpg"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span9"&gt;
+            &amp;nbsp;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span9 text-center"&gt;
+            &lt;strong&gt;Web page result and LED state from accessing web address 192.168.0.104/gpio/0.&lt;/strong&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span9"&gt;
+            &amp;nbsp;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+So after a lot of effort and a few dead ends, I had my ESP-201 boards working with the Arduino IDE.
+In order to make it easier in the future to program the modules, I used the schematic shown below
+and added the necessary sockets and components to
+[a programming board I previously built for the ESP-01](http://www.xess.com/static/media/uploads/blog/devbisme/2014-12-09/esp8266_flash_prog_board.jpg):
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="ESP-201 flash programming board schematic." src="/static/media/uploads/blog/devbisme/2016-03-22/esp8266_flash_prog_board_sch.png"&gt;
+        &lt;/div&gt;
+        &lt;div class="span1"&gt;&lt;/div&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="ESP-201 flash programming board." src="/static/media/uploads/blog/devbisme/2016-03-22/esp8266_flash_prog_board1.jpg"&gt;
+            &lt;p&gt;&amp;nbsp&lt;/p&gt;
+            &lt;img alt="ESP-201 flash programming board." src="/static/media/uploads/blog/devbisme/2016-03-22/esp8266_flash_prog_board2.jpg"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+I hope this post will help you get started with using your own ESP-201 modules.
+Even if you use a different programming environment than the Arduino IDE,
+the steps for building the programming hardware may still save you from the
+mistakes I made.
+
+&lt;a name="reflash_video"&gt;&lt;/a&gt;Finally, if you're someone who would rather watch than read, 
+then here's a video showing the entire process of building the hardware for the 
+ESP-201 and reprogramming it with the Arduino IDE:
+
+&lt;iframe class="center-it" width="560" height="315" src="https://www.youtube.com/embed/fsPZPv76gvw" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+</summary><category term="Blog Post"></category></entry><entry><title>Random Number Generators and Hardware Sorters</title><link href="http://www.xess.com/blog/random-number-generators-and-hardware-sorters/" rel="alternate"></link><updated>2016-02-25T15:31:16+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/random-number-generators-and-hardware-sorters/</id><summary type="html">Just a short post to alert you to some things I've done that are FPGA-related but don't appear on this site.
+
+First, I released a [Jupyter notebook about building random number generators (RNGs)](https://github.com/xesscorp/CAT-Board/blob/master/tests/RNG_with_MyHDL.ipynb).
+For those that aren't familiar with it, [Jupyter](http://jupyter.org/) gives us a way to build *executable documents* that are displayed in a browser.
+My notebook uses Python and [MyHDL](http://myhdl.org/) to explore several methods for building RNGs.
+The neat thing is you can change the RNG parameters, simulate the effects, and visualize the results
+right in the browser.
+Then you can dump out Verilog or VHDL code to run in an FPGA.
+
+Second, I released [another Jupyter + MyHDL notebook](https://github.com/xesscorp/Hardware-Sorters/blob/master/hardware_sorters.ipynb) showing how I built two FPGA-based circuits to
+sort lists of numbers.
+One of the sorters was [recently discussed on the Hackaday site](http://hackaday.com/2016/01/20/a-linear-time-sorting-algorithm-for-fpgas/), and the other is an [IBM design](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.5786&amp;rep=rep1&amp;type=pdf) that I first built back in 1983 for a VLSI design class.
+The notebook generates a random list of numbers and you can see the progress as each
+sorter works through it.
+And just like the previous notebook, you can dump out the HDL code to make your own sorter.
+
+The links I gave above go to static documents, but if you want to interact  with the documents,
+you'll need the following:
+
+* A Python interpreter. ([Anaconda](https://www.continuum.io/downloads) is a popular choice for this, 
+   and it already has Jupyter bundled in.)
+* The Jupyter notebook (if you aren't using Anaconda).
+* The MyHDL Python package (easily installed by `pip install myhdl` ).
+
+Once you have those installed, you can download notebook files with the `.ipynb` extension to your computer
+and open them with Jupyter.
+
+The combination of Jupyter and MyHDL provides some unique advantages for exploring, documenting, and disseminating designs of digital systems.
+It's definitely worth checking out!
+</summary><category term="Blog Post"></category></entry><entry><title>Giving Back to KiCad</title><link href="http://www.xess.com/blog/giving-back-to-the-community/" rel="alternate"></link><updated>2015-08-25T13:00:00+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/giving-back-to-the-community/</id><summary type="html">&lt;img src="/static/media/uploads/blog/devbisme/2015-08-24/helping-hand-cropped.jpg" class="thumbnail-it float-it-left"/&gt;
+[I switched over to KiCad a while ago](http://www.xess.com/blog/my-first-kicad-board/), 
+mainly because paying fees for Eagle upgrades that didn't have much "up" in them seemed pretty stupid.
+In exchange for providing a free tool, the KiCad open-source developers get a lot of grief, 
+mostly about the GUI and library management. 
+That's to be expected: all EDA software, like unhappy families, sucks in its own unique way. 
+A lot of these are [bike-shed issues](https://en.wiktionary.org/wiki/bikeshedding) that are easy to 
+understand so people form opinions they're not shy about expressing. 
+But it's not a big problem to me as long as the right wires end up in the right places. 
+It's fine to voice your concerns so the developers get some feedback; 
+then put on your big-boy pants and make do with what you've got.
+
+And I've gotten *a lot* out of KiCad: well-documented ASCII design files, Python scripting, 
+push-and-shove length-matched differential routing, etc. *And I paid nothing to get it!*
+
+It's possible to [donate money to KiCad](https://giving.web.cern.ch/civicrm/contribute/transact?reset=1&amp;id=6), 
+mostly to support the [CERN team that's working on it](http://www.ohwr.org/projects/cern-kicad/wiki/WorkPackages). 
+A lot of great work is being done for a pittance.
+But, to be frank, I have too many people in my life who really need money to be sending it
+away to strangers in foreign lands.
+
+What I do have is time and energy. 
+(Well, as much energy as I have left at 59.) 
+So I've started building open-source point-tools to surround KiCad with features I want. 
+The first two of these are [KiCost](https://pypi.python.org/pypi/kicost) and 
+[KiPart](https://pypi.python.org/pypi/kipart).
+
+[KiCost](https://pypi.python.org/pypi/kicost) is a back-end tool to automate the most-hated portion 
+of electronic design: finding the cost of the components and placing an order. 
+It takes the bill-of-materials from KiCad and gets the current, quantity-adjusted price and 
+availability for each component from a set of online distributors (Digi-Key, Mouser and 
+Newark/Farnell are currently supported). 
+It places all of this information into a pretty spreadsheet:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2015-08-24/kicost-spreadsheet.png" 
+class="center-it" style="width:80%;" alt="KiCost Spreadsheet."/&gt;
+
+With the spreadsheet, you can see who has parts and what they'll cost for the quantities you need. 
+Then (and this is the big time-saver for me), it makes lists of the parts you select in a format 
+that can be cut-and-pasted into the online order forms of each distributor. 
+Just press "Submit" and your parts are on the way. 
+Here's a video that demonstrates what KiCost does:
+
+&lt;iframe class="center-it" width="560" height="315" src="https://www.youtube.com/embed/AeccxROpDfY" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+While KiCost helps on the back-end of a design, [KiPart](https://pypi.python.org/pypi/kipart) is oriented 
+toward another hated task at the front-end: building schematic symbols.
+When you're confronted with a high pin-count microcontroller or FPGA, KiCad (like Eagle) makes you use 
+a cumbersome, GUI-based schematic symbol editor to enter the pins one ... by ... one. 
+It's slow, tedious and error-prone but, other than that, it's just great. 
+(See, even I get in on the act of bashing the KiCad GUI.)
+That's avoided with KiPart because it lets me enter the device pin descriptions into a spreadsheet that's 
+automatically processed into a schematic symbol library. 
+The spreadsheet really speeds-up data entry and makes it easy to spot errors (like setting a 
+pin to be an input instead of bidirectional). 
+Plus, all my parts look consistent because I'm not manually drawing them. 
+KiPart speeds up symbol creation 3x-4x, even for simple parts. 
+And it's a *thousand times faster* if the device manufacturer already provides the pin information 
+as CSV files ([as many FPGA companies do](http://www.xilinx.com/support/packagefiles/)). 
+Here's a symbol KiPart created almost instantly for one of the *smaller* 256-pin FPGAs
+(if you think you want to do this manually, wait until you get one of those 2000-pin behemoths...):
+
+&lt;img src="/static/media/uploads/blog/devbisme/2015-08-24/schematic-symbol.png" 
+class="center-it" style="width:80%;" alt="256-pin FPGA Symbol Generated by KiPart."/&gt;
+
+And here's another video that shows how to use KiPart:
+
+&lt;iframe class="center-it" width="560" height="315" src="https://www.youtube.com/embed/hX4l8i4TSWY" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+In addition to being offered as open source tools to the KiCad community, KiCost and KiPart let me contribute in other ways. 
+For example, [I've been releasing schematic symbols generated by KiPart on GitHub](https://github.com/xesscorp/KiCad-Schematic-Symbol-Libraries). 
+So far there are libraries for the Xilinx Virtex-6, Spartan-6 and 7-Series FPGAs (a total of 166 different devices) 
+and for the Cypress PSoC5LP microcontrollers (awww, only 8 devices).
+More libraries are planned: I'm currently working my way through the Lattice iCE FPGAs.
+
+It's easy to get started with KiPart and KiCost:
+
+    pip install kipart
+    pip install kicost
+    
+Then go to [readthedocs.org](http://readthedocs.org) to read the documentation.
+
+Let me know if you have any suggestions for improvements. 
+Of course - since it's open source - I have the right to say "Hell no! I won't be doing that!" and you can reply
+"OK, I'll just fork it and do it myself."
+That's the *free* part of FOSS that I *really* like.
+</summary><category term="Blog Post"></category></entry><entry><title>StickIt!-Grove Board is Released!</title><link href="http://www.xess.com/blog/stickit-grove-board-is-released/" rel="alternate"></link><updated>2015-07-15T20:00:06+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/stickit-grove-board-is-released/</id><summary type="html">&lt;p&gt;
+Got a lot of &lt;a href="http://www.seeedstudio.com/wiki/Grove_System"&gt;Grove modules&lt;/a&gt; you want to use?
+Then the &lt;a href="http://www.xess.com/shop/product/stickit-grove/"&gt;Stickit!-Grove&lt;/a&gt; will let you connect four of them to a &lt;a href="http://www.xess.com/shop/product/stickit-mb-4_0/"&gt;StickIt! Board&lt;/a&gt; or a solderless breadboard.
+&lt;/p&gt;
+&lt;p&gt;
+Find out more about it &lt;a href="http://www.xess.com/shop/product/stickit-grove/"&gt;here!&lt;/a&gt;
+&lt;/p&gt;
+&lt;img src="http://www.xess.com/static/media/product/product_cover_1.jpg" style="width:50%" alt="StickIt!-Grove"/&gt;
+
+</summary><category term="Announcements"></category></entry><entry><title>Raspberry Pi + XuLA</title><link href="http://www.xess.com/blog/raspberry-pi-xula/" rel="alternate"></link><updated>2015-06-04T21:25:01+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/raspberry-pi-xula/</id><summary type="html">The [StickIt! Board](http://www.xess.com/shop/product/stickit-mb/) has been around since 2011, pretty much unchanged.
+Today that stops.
+
+The [new version of the StickIt! Board](/shop/product/stickit-mb-4_0/) still allows you to connect the 
+[XuLA FPGA boards](http://www.xess.com/store/fpga-boards/)
+with [various PMODs](http://www.xess.com/store/add-on-boards/), 
+but it also has a 20&amp;times;2 connector for talking to the Raspberry Pi B+/2.
+
+&lt;img src="/static/media/product/product_cover.jpg" class="center-it" style="width:400px" alt="StickIt! Board"/&gt;
+
+Here's what it looks like with a XuLA2 board inserted and attached to a Pi:
+
+&lt;img src="/static/media/product/RPI_PWR.jpg" class="center-it" style="width:400px" alt="StickIt! Board + XuLA2 + Raspberry Pi"/&gt;
+
+Now you can build applications where the Pi provides a standard linux environment coupled to the 
+XuLA FPGA and some PMODs for doing specialized processing and interfaces.
+
+Checkout the [product page](http://www.xess.com/shop/product/stickit-mb-4_0/) for all the details.
+Of course, it's all open source and you can get the 
+[documentation and design files on Github](https://github.com/xesscorp/StickIt-MB).</summary><category term="Announcements"></category></entry><entry><title>Easier Connections</title><link href="http://www.xess.com/blog/easier-connections/" rel="alternate"></link><updated>2015-05-25T17:38:21+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/easier-connections/</id><summary type="html">One of the real pains when using the StickIt! boards is trying to figure out how they connect to the FPGA pins.
+For example, you have to trace each I/O pin of an [LEDDigits board](http://www.xess.com/shop/product/stickit-leddigits/) through a particular socket of a [StickIt! motherboard](http://www.xess.com/shop/product/stickit-mb/) and over to the socket that holds the [XuLA2 FPGA board](http://www.xess.com/shop/product/xula2-lx25/).
+Then you have to follow the route from the XuLA2 I/O pin to the pin on the FPGA.
+Finally, you have to record that information in a user-constraints file and pass it to the FPGA compilation tools.
+
+In order to make life easier, I've released the `xsconnect` Python package which automates the entire process.
+The package includes both command-line and GUI tools for generating the pin assignments given the 
+connection of a peripheral board, motherboard and daughterboard. 
+For example, just highlight your choices in the `gxsconn` window and it spits out the FPGA pin assignments as
+shown below.
+
+&lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-25/gxsconn.png"
+class="center-it" style="width:75%" alt="GUI version of xsconnect tool."/&gt;
+
+You can find out more about the `xsconnect` package at its [Github page](https://github.com/xesscorp/xsconnect) and [online manual](https://xsconnect.readthedocs.org/en/latest/index.html).</summary><category term="Blog Post"></category></entry><entry><title>83 Boards. 25 Bucks.</title><link href="http://www.xess.com/blog/83-boards-25-bucks/" rel="alternate"></link><updated>2015-05-11T15:51:18+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/83-boards-25-bucks/</id><summary type="html">A lot of product ideas don't work out.
+Sometimes they're infeasible.
+If not, you build it and find out it sucks.
+If not, you build more and your customers say they suck.
+(Or so few say that it *doesn't* suck that there's no reason to make any more.)
+If not, then you've got a winner. Congratulations.
+
+Still, most times you fail. 
+But you have to keep trying because that's the only way to tell for sure.
+So you have to minimize the expense of each attempt.
+
+One avenue I've taken for making low-cost products is the 
+[StickIt! board](http://www.xess.com/shop/product/stickit-mb/)
+with it's [add-on modules](http://www.xess.com/store/add-on-boards/).
+The modules are small (less than two square inches) and 
+perform some limited function (think LEDs, buttons, VGA, ADC, etc.)
+in service to an FPGA that does all the heavy lifting.
+The limited functionality and small size makes the modules easy to design and
+cheap to produce.
+
+I chose the 0.8" width of the StickIt! modules to mimic
+the width of many of the Digilent PMOD modules.
+And the length was chosen so they would fit into the low-cost, small 5 cm &amp;times; 5 cm
+panel size offered by places like 
+[Itead](http://store.iteadstudio.com/index.php?main_page=index&amp;cPath=19_20) and 
+[Seeed](http://www.seeedstudio.com/service/index.php?r=pcb).
+Using a snap-off tab, I can lay out a simple 2 &amp;times; 1 board array that fits into a single panel
+like this:
+
+&lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2014-11-17/itead_reject_1.png"
+class="center-it" style="width:50%" alt="Dual-board PCB array."/&gt;
+
+The total cost was $10 for 10-12 panels and $4 for shipping with a total turn-around
+time of 19-26 days from Gerber submission to receipt of the panels.
+So for $14, I could get 20-24 StickIt! module PCBs in less than a month.
+
+That was great until last year when 
+[Itead started rejecting my Gerber files](http://www.xess.com/blog/necessity-is-a-mother/).
+Essentially, they didn't like manufacturing arrays of boards connected by snap-off tabs.
+They would do a single board per panel, but that halved the number of boards I got for my $14.
+That's not a deal-killer, but once you get used to sub-$1 PCBs, you don't want to go back.
+
+So I moved over to Seeed who had no problem with accepting and manufacturing my little PCB arrays.
+At least, *they didn't for the very first one I sent!*
+After that, my next array was rejected.
+They would do it, but only if I used a V-score instead of snap-off tabs.
+And the cost for V-scoring more than doubled the price, so I would have been better off
+just doing a single board per panel.
+
+So I went in search of another manufacturer.
+I eventually hit upon [Dirt Cheap Dirty Boards](http://dirtypcbs.com/) who go by the tag line
+"No bull, just crappy PCBs".
+Now, that may give you pause as to the quality of the panels you'll get from them, 
+but the customer testimonials were ecstatic and *they said they could do 5 mil trace/space etching!*
+(Seeed and Itead only claim to do 6 mil and recommend 8.)
+They offered a 5 cm &amp;times; 5 cm panel for $14 and a 10 cm &amp;times; 10 cm panel for $25.
+(All their prices include shipping, so they're equivalent to the prices charged by
+Seeed and Itead.)
+The 10 cm &amp;times; 10 cm panel is less than twice the cost of the 5 cm &amp;times; 5 cm panel but
+offers 4&amp;times; the area, so I figured why not go for broke and make a bigger panel with
+eight module PCBs on it?
+That would bring the per-PCB price down even further and it's no more likely to get rejected than
+the smaller panel.
+So I submitted Gerber files for this:
+
+&lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-10/dirtypcb_grove.png"
+class="center-it" style="width:70%" alt="Eight PCB array."/&gt;
+
+*That* is a really funky board outline and there are *nine* internal slots, 
+some of them very oddly shaped.
+I wouldn't have blamed Dirty PCBs for rejecting it,
+but 24 days later I got this in the mail:
+
+&lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-10/dirtypcb_pckg.jpg"
+class="center-it" style="width:70%" alt="Receipt of Dirty PCBs order."/&gt;
+
+The panels looked pretty good.
+
+| Front | Back |
+|:-----:|:----:|
+| &lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-10/array_front.jpg" class="center-it" style="width:80%" alt="Front of PCB array."/&gt; | &lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-10/array_back.jpg" class="center-it" style="width:80%" alt="Back of PCB array."/&gt; | 
+
+After buffing-out the mouse bites left by removing the snap-off tabs, the individual boards looked OK.
+
+| Front | Back |
+|:-----:|:----:|
+| &lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-10/grove_front.jpg" class="center-it" style="width:80%" alt="Front of individual PCB."/&gt; | &lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-10/grove_back.jpg" class="center-it" style="width:80%" alt="Back of individual PCB."/&gt; | 
+
+Lest you think everything was all sweetness-and-light, Dirty PCBs did nick a few of the panels 
+when they were being routed. I lost five individual boards from this.
+
+&lt;img src="http://www.xess.com/static/media/uploads/blog/devbisme/2015-05-10/panel_nick.jpg"
+class="center-it" style="width:70%" alt="Nicked panel."/&gt;
+
+I ordered ten panels, but I received eleven which gave me 88 individual PCBs. 
+Subtracting the five damaged PCBs left me with 83 usable boards for a per-board
+cost of 30&amp;cent;.
+
+At least, they *would* have been usable if *I* hadn't screwed up!
+I didn't have a datasheet or any physical copies of the four-pin Grove socket to measure,
+so I used a footprint from someone else's design.
+When the actual sockets arrived, the holes were a little too small and the plating a little
+too thick so the socket leads didn't fit.
+I'll have to correct the socket footprint and make another batch.
+
+Luckily, that's only going to cost me $25.
+</summary><category term="Blog Post"></category></entry><entry><title>This dream is not my dream.</title><link href="http://www.xess.com/blog/this-dream-is-not-my-dream/" rel="alternate"></link><updated>2015-04-07T19:28:37+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/this-dream-is-not-my-dream/</id><summary type="html">I've been alerted by a few people today of a [Kickstarter campaign](https://www.kickstarter.com/projects/414249697/32-bit-microcontroller-chip-next-generation-eco-in?ref=category_location) by DreamMICRO that uses some images of our [XuLA2 FPGA board](http://www.xess.com/shop/product/xula2-lx9/):
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="The DREAM-1." src="https://ksr-ugc.imgix.net/assets/003/381/364/76bbcbba4e2aa0caa407f67a21bf5db3_original.png?v=1425479089&amp;w=700&amp;h=&amp;fit=max&amp;auto=format&amp;lossless=true&amp;s=4fbf6bdeb37fde810c18fa960ccfeb6c"/&gt;
+            &lt;p&gt;&lt;em&gt;Their DREAM-1&lt;/em&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="span1"&gt;&lt;/div&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="The XuLA2." src="http://www.xess.com/static/media/product/XuLA2_1.png"/&gt;
+            &lt;p&gt;&lt;em&gt;Our XuLA2&lt;/em&gt;.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+They've also proposed an additional prototyping platform that uses their DREAM-1 as a daughterboard and supplements it with auxiliary functions implemented as Digilent PMODs&amp;#0153;.
+This is quite similar to our existing [StickIt! board](http://www.xess.com/shop/product/stickit-mb/) and [StickIt! modules](http://www.xess.com/store/add-on-boards/):
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="The DREAM-1 Prototyping Platform." src="https://ksr-ugc.imgix.net/assets/003/467/451/06d09d4ce3874a2a8b62fe1a14ea123b_original.png?v=1426783472&amp;w=700&amp;h=&amp;fit=max&amp;auto=format&amp;lossless=true&amp;s=6470138b01914c7f431e0f5b1877bea5"/&gt;
+            &lt;p&gt;&lt;em&gt;Their DREAM-1 Prototyping Platform&lt;/em&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="span1"&gt;&lt;/div&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="The StickIt! Board." src="http://www.xess.com/static/media/product/.thumbnails/StickIt_board-0x300.png"/&gt;
+            &lt;p&gt;&lt;em&gt;Our StickIt! Board&lt;/em&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+**Now, there's no problem with this**: the XuLA2 and StickIt! boards are [OSHW](http://en.wikipedia.org/wiki/Open-source_hardware) and Creative-Commons licensed. Anyone is free to download the schematics and layout files to make and sell their own versions. The DreamMICRO team even references that they've used the "open-source Xula pcb design" for their stuff. (No mention of *us*, but hey, the world's not a perfect place.)
+
+So I'm not calling foul on the DreamMICRO team or saying they're bad people. They've made use of OSHW to build their project. That's kind of what OSHW is for. I just want to make it public that XESS isn't involved in this campaign. If you contribute to their campaign, anything good or bad that comes out of that is between you and them. XESS is not involved in any way. (Well, we did design the original XuLA2 and StickIt! boards, but any design modifications, manufacturing details, distribution, delivery and customer support are the responsibility of the DreamMICRO team.)
+
+Meanwhile, XESS is still selling our XuLA2 and StickIt! boards. And, of course, you can buy one. Today. Like, right now.</summary><category term="Blog Post"></category></entry><entry><title>Led Panels</title><link href="http://www.xess.com/blog/led-panels/" rel="alternate"></link><updated>2015-03-12T01:00:00+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/led-panels/</id><summary type="html">&lt;img src="/static/media/uploads/blog/devbisme/2015-03-10/supreme_leds.jpg" class="thumbnail-it float-it-left"/&gt;
+My Twitter friend, [Jeremiah Johnson](https://twitter.com/naikrovek), sent me a couple of LED panels
+in January.
+These things retail for about $40 each, so I thought I should at least develop a driver for him.
+
+From the picture, you can see the panels are 32 &amp;times; 32 arrays of RGB LEDs.
+Ribbon cables are used to concatenate panels to form larger displays.
+There's a total of 2 &amp;times; 32 &amp;times; 32 &amp;times; 3 = 6,144 red, green and blue LEDs on both boards
+which can supposedly take up to 4 amps of current, but I got away with using a single 
+[1A power adapter](http://www.xess.com/shop/product/ps0004/).
+
+&lt;img alt="LED panel hardware." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-03-10/led_panel_hdw.jpg" 
+style="width: 60%;"/&gt;
+
+The panels don't contain a frame buffer to store an image: the LEDs have to be continuously refreshed.
+This is done by shifting-in a sequence of bits to activate selected RGB LEDs in a given row
+and then latching those bits to drive the LEDs while another set of bits is shifted in for the next row.
+An entire image is created by moving rapidly from one row to the next.
+And if you adjust the proportion of how often a particular LED bit is on or off, you can also
+display colors of varying intensity.
+
+Naturally this takes a fair amount of bit-twiddling over a short period of time, but
+that's a perfect job for an FPGA.
+The block diagram for the FPGA-based LED panel driver that I built is shown below.
+
+&lt;img alt="FPGA-Based LED Panel Driver." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-03-10/blk_diag.png" 
+style="width: 100%;"/&gt;
+
+The image is stored in a dual-port RAM that is written (or read) by some other
+logic circuit in the FPGA (usually something like a processor).
+The LED panel driver reads the image pixels from the other port of the RAM.
+There is no need to double-buffer the RAM: the high-bandwidth interface to the rest of
+the FPGA means that any re-write of the image occurs much too quickly to be noticed.
+(Of course, you *can* make a buffer in some other part of the FPGA where you slowly build
+an image and then quickly dump it into the dual-port RAM, but that can be done as needed on a case-by-case
+basis so as not to reduce the overall area-efficiency of the display circuitry.)
+
+Each word of RAM is divided into three bit-fields which each hold the intensity
+value for the red, green and blue LEDs of a pixel.
+The bit field values are compared to a threshold and the associated LED is turned on
+if the bit field value is greater than the threshold.
+The intensity of the pixel colors is varied by scanning a line of pixels multiple times
+while ramping-up the threshold.
+For example, a red LED will be on twice as much (and shine twice as brightly)
+if its bit field has the value 42 as compared to when it stores 21.
+
+The LED panel is divided into top and bottom halves, so the RAM stores
+pixels for one half in the locations with even addresses and pixels for the other
+half at odd addresses.
+The sequencer outputs odd and even addresses on alternate clock phases.
+The RGB bits for the pixel in one half of the panel are stored temporarily
+while the bits for the pixel in the other half are generated.
+Then both sets of bits are sent simultaneously to the panel on the falling-edge
+of the clock so they'll be stabilized before the rising edge of the clock
+shifts them into the panel.
+
+The sequencer also generates the latching signal and selects the active row of the display.
+Because several clock cycles are needed to fetch pixels from the RAM and do the threshold comparisons,
+the latch and active-row signals have to be delayed a few cycles to get them back in sync
+with the RGB signals.
+
+The sequencer also solves a timing problem that arises when it comes time to change the active row of the panel.
+If the row is changed before the latch is activated, then the pixels for the previous row
+will appear faintly in the new row before the new pixel values are established.
+Likewise, if the row changes after the latch signal, then the new pixels will appear
+briefly in the previous row before they show up in the desired location.
+Finally, if a pixel is on but then has its driver turned off, the charge residing in the wiring capacitance 
+can partially illuminate other pixels in the same column.
+These are examples of *[ghosting](http://www.rayslogic.com/propeller/Programming/AdafruitRGB/AdafruitRGB.htm)*.
+Since a row of pixels is scanned multiple times while ramping the
+threshold to create varying colors, ghosting can be eliminated by doing one final scan
+where all the pixels are off (or "blanked") before the row address is changed.
+While this leads to a slight diminution in the overall pixel brightness,
+it's much less noticeable than the partially-on pixels
+that occur with ghosting.
+
+You can examine the VHDL code for the LED panel driver [here](https://github.com/xesscorp/VHDL_Lib/blob/master/LedPanel.vhd).
+Some things to note are:
+   
++ The circuitry can resize itself at compile time by setting a few generic parameters
+  that describe the width and height of the LED panel and how many are strung together. 
+
++ The dual-port RAM is done using *VHDL inference* instead of instantiating a vendor-specific
+  block RAM. That makes it easier to port this module to other FPGA families.
+
+The VHDL file also contains a version of the LED panel driver with a Wishbone interface.
+This makes it easy to attach as a peripheral to the
+[ZPUino softcore processor](https://github.com/xesscorp/ZPUino-HDL/tree/LED_Panel/zpu/hdl/zpuino/boards/xula2/xula2).
+The combined ZPUino plus LED panel driver can be loaded into a XuLA2 board that is then inserted into
+a [Logic Pod](http://www.xess.com/shop/product/logicpod/).
+The Logic Pod provides a convenient connector for mating with the cable to the LED panel;
+the voltage translation capabilities of the Logic Pod are not needed since the LED panels accept 3.3V logic levels.
+
+&lt;img alt="Connection of the XuLA2 to the LED panel." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-03-10/xula2_led_panel_connection.jpg" 
+style="width: 60%;"/&gt;
+
+With the ZPUino + LED panel driver, it becomes possible to generate graphics just by
+writing Arduino sketches.
+Because the panel driver offloads all the real-time processing needed to refresh the display, 
+the ZPUino processor just has to concern itself with loading an image into the RAM.
+I took some code from [here](https://github.com/bikerglen/beagle/tree/master/projects/led-panel-v01/software) and 
+[adapted it](https://github.com/xesscorp/ZPUino-HDL/blob/LED_Panel/zpu/hdl/zpuino/boards/xula2/xula2/LedPanelPerlin.ino)
+to generate Perlin noise on a 64 &amp;times; 32 display:
+
+&lt;img alt="Perline noise generated by the ZPUino and displayed using the LED panel driver." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-03-10/perlin_noise_generator.jpg" 
+style="width: 60%;"/&gt;
+
+That's about it, but in closing I'll tell you a few things I tried that didn't work so you won't repeat them:
+
++ I built the driver starting from the pinout and my best guess as to how the circuitry expected
+  the signals to toggle.
+  Big mistake. I ended up rediscovering all the ghosting problems that others had already found
+  and solved.
+  Next time: read the blogs!
+  
++ I originally used a random number generator (RNG) for the threshold.
+  I figured that creating a uniform distribution between 0 and 255 would give the same
+  effect as a linear ramp and would require less sequencing and circuitry.
+  Unfortunately, I noticed a lot of sparkling and correlation effects in the pixels
+  even when using an eight-bit slice of a 32-bit RNG.
+  
++ The output-enable control input for the LED panels is practically useless.
+  I tried to use it to eliminate ghosting by disabling the outputs when the row was switched,
+  but it had no effect.
+  I ended up just enabling the panel all the time by pulling this input to ground.
+
+&amp;nbsp;
+</summary><category term="Blog Post"></category></entry><entry><title>Timing Diagrams Made Easy</title><link href="http://www.xess.com/blog/timing-diagrams-made-easy/" rel="alternate"></link><updated>2015-02-12T18:00:00+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/timing-diagrams-made-easy/</id><summary type="html">&lt;img src="/static/media/uploads/blog/devbisme/2015-02-12/timing_diag_small.JPG" class="thumbnail-it float-it-left"/&gt;
+If you do electronics design, especially digital circuits, you'll eventually find yourself
+drawing timing diagrams showing the clock, control and data waveforms.
+They help you clarify the sequencing of data and control signals as they pass through your 
+circuit.
+They also serve as valuable documentation to others who might use your design later.
+
+Unfortunately, timing diagrams are painful and time consuming to draw.
+They're also a pain to keep up to date as you modify your design.
+So they fall out of sync with your current prototype,
+at which point they no longer help the design process (and can, in fact, hinder it by
+propagating a false view of how the circuit operates).
+Then you have to try and update them at the end of the project, probably misremembering a few details
+along the way.
+
+It would help if there was a simple way to describe timing waveforms instead of trying to
+draw all the fiddly bits using a generic drawing program.
+This is where [WaveDrom](http://wavedrom.com) comes in.
+It uses a simple [JSON syntax](http://www.w3schools.com/json/json_syntax.asp) like this:
+
+    { signal: [
+      { name: "clk_i",     wave: 'P...' },
+      { name: 'add_i',     wave: '010.' },
+      { name: 'data_i',    wave: 'x=x.', data:["data"] },
+      { name: 'upEmpty_o', wave: 'x.0.' },
+      { name: 'upFull_o',  wave: '0.x.' },
+      { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+      ],
+      config: {hscale: 2},
+      head: {text: 'Up FIFO Push Example', tick:0,}
+    }
+
+to create timing diagrams like this:
+
+&lt;script type="WaveDrom"&gt;
+{ signal: [
+  { name: "clk_i",     wave: 'P...' },
+  { name: 'add_i',     wave: '010.' },
+  { name: 'data_i',    wave: 'x=x.', data:["data"] },
+  { name: 'upEmpty_o', wave: 'x.0.' },
+  { name: 'upFull_o',  wave: '0.x.' },
+  { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+  ],
+  config: {hscale: 2},
+  head: {text: 'Up FIFO Push Example', tick:0,}
+}
+&lt;/script&gt;
+
+The waveform objects that make up the timing diagram are contained in the `signal:[...]` JSON array.
+In the simplest case, each waveform object has a `name` field and a `wave` field.
+The value in the wave field is just a string of characters where each character represents the
+logic level of the wave during a single time slot.
+The meanings of the characters are as follows:
+
+Character  |  &amp;nbsp;&amp;nbsp;Meaning
+-----------|:--------------------------------------
+p          | Clock pulse with positive polarity (i.e., starts off at a logic high and transitions to a logic low.
+P          | Positive polarity clock pulse with an arrow drawn on the rising edge.
+n          | Clock pulse with negative polarity (i.e., starts off at a logic low and transitions to a logic high.
+N          | Negative polarity clock pulse with an arrow drawn on the falling edge.
+l, 0       | Low logic level.
+L          | Low logic level with an arrow drawn on the falling edge.
+d          | Low logic level maintained by a pulldown resistor.
+h, 1       | High logic level.
+H          | High logic level with an arrow drawn on the rising edge.
+u          | High logic level maintained by a pullup resistor.
+x          | Unknown logic level or bus value.
+z          | Tri-state (undriven) logic level.
+=, 2       | Digital bus value with white fill color.
+3, 4, 5    | Digital bus value with various fill colors.
+.          | Repeat the previous value of the waveform.
+
+
+Probably the most used character is the period, which just repeats the last value of the waveform.
+For example, `wave: 'p....'` would draw five, consecutive, positive-polarity pulses like so:
+
+&lt;script type="WaveDrom"&gt;
+{signal: [{wave:'p....'}]}
+&lt;/script&gt;
+
+Or `wave: '1..0...=.'` would draw a waveform that is high for three periods, low for four periods,
+and then displays a bus value for two periods like this:
+
+&lt;script type="WaveDrom"&gt;
+{signal: [{wave:'1..0...=.'}]}
+&lt;/script&gt;
+
+Note that using the period is **not** the same as just repeating the character.
+Here's what the previous example looks like if you use `wave: '1110000=='` instead:
+
+&lt;script type="WaveDrom"&gt;
+{signal: [{wave:'1110000=='}]}
+&lt;/script&gt;
+
+It's nice to be able to label waveforms for digital buses with the values they carry.
+That can be done using a `data` field whose consecutive values are inserted into the
+bus waveform as each `=` sign is encountered.
+For example, this `wave: '=..=...=.', data:['N','N+1','N+2']` results in this:
+
+&lt;script type="WaveDrom"&gt;
+{signal: [{wave:'=..=...=.', data:['N','N+1','N+2']}]}
+&lt;/script&gt;
+
+It also works if you replace the `=` with a character for one of the colored buses like this
+`wave: '3..4...5.', data:['N','N+1','N+2']`
+
+&lt;script type="WaveDrom"&gt;
+{signal: [{wave:'3..4...5.', data:['N','N+1','N+2']}]}
+&lt;/script&gt;
+
+I've only shown a fraction of what WaveDrom can do.
+I haven't even touched on these features:
+
++ Offsetting individual waveforms by arbitrary intervals.
++ Adding gaps to represent omitted parts of waveforms.
++ Hierarchical labeling of groups of waveforms.
++ Placing splines and lines to show relations between transitions in two waveforms.
++ Scaling the size of the timing diagram.
++ Adding descriptive headers and footers to an entire timing diagram.
++ Changing the overall style of the timing diagram using *skins*.
+
+You can learn more by reading the [WaveDrom tutorial](http://wavedrom.com/tutorial.html).
+There's even a [live WaveDrom editor page](http://wavedrom.com/editor.html) where you can type in 
+JSON code to try out the various features.
+
+If you decide you like WaveDrom (and, really, *who wouldn't!?*), there are two ways to use it.
+The first is in an off-line mode for generating timing diagrams to include in your documents.
+First, [download an archive](https://github.com/wavedrom/wavedrom.github.io/releases) of 
+the WaveDrom editor for your particular OS.
+Unpack it into a directory and run the executable.
+Then you can type in JSON code and see the resulting waveforms just like you did on the
+live editor web page.
+You can export your timing diagram as either a PNG image or as an SVG file.
+The interesting thing is that you can open the SVG file with a graphic editor like
+[Inkscape](https://inkscape.org/en/) and modify the drawing.
+This is useful if there is some formatting you absolutely need that WaveDrom can't provide.
+
+The second option is to use the WaveDrom Javascript library to show timing diagrams in your web pages.
+Get the `WaveDrom.js` file and the `skins` directory from the 
+[WaveDrom Github page](https://github.com/drom/wavedrom).
+Place these files somewhere that your web server can find them.
+Then load the Javascript libraries by placing the following into the 
+`&lt;head&gt;...&lt;/head&gt;` section of your web page:
+
+        &lt;script src="your_website_path/skins/default.js"&gt;&lt;/script&gt;
+        &lt;script src="your_website_path/WaveDrom.js"&gt;&lt;/script&gt;
+
+Next, place the following call to the timing waveform rendering function at the bottom of
+your web page:
+
+        (function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+        
+Then you can draw a timing diagram anywhere in your page by inserting JSON code
+inside a `&lt;script type="WaveDrom"&gt;...&lt;/script&gt;` bracket like this:
+
+        &lt;script type="WaveDrom"&gt;
+        { signal: [
+          { name: "clk_i",     wave: 'P...' },
+          { name: 'add_i',     wave: '010.' },
+          { name: 'data_i',    wave: 'x=x.', data:["data"] },
+          { name: 'upEmpty_o', wave: 'x.0.' },
+          { name: 'upFull_o',  wave: '0.x.' },
+          { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+          ],
+          config: {hscale: 2},
+          head: {text: 'Up FIFO Push Example', tick:0,}
+        }
+        &lt;/script&gt; 
+        
+After you reload the web page, you should see the same figure shown at the beginning of this article.
+</summary><category term="Blog Post"></category></entry><entry><title>Cut the Cord: Using the ZPUino Without an FTDI Cable</title><link href="http://www.xess.com/blog/cut-the-cord/" rel="alternate"></link><updated>2015-02-06T14:00:00+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/cut-the-cord/</id><summary type="html">&lt;img alt="Cutting the cord." class="thumbnail-it float-it-left" style="width:25%" src="https://nelato.files.wordpress.com/2013/04/gordian-knot.jpg"/&gt;
+In my previous two posts, I've talked about 
+[extending the ZPUino with custom peripherals](http://www.xess.com/blog/extending-the-zpuino/)
+and 
+[creating a terminal-like communication link over USB to an application running in an FPGA](http://www.xess.com/blog/terminal-velocity/).
+Now it's time to combine those two concepts to create a terminal link to the ZPUino over the
+USB link of a XuLA board.
+
+Why would I do this? For one reason only: to get rid of the 
+[FTDI cable I've been using to communicate with the ZPUino](http://www.xess.com/blog/ive-never-bought-an-arduino-but-now-i-have-1000-of-them/).
+It's just a pain in the ass to have two cables connected to the XuLA: one for downloading bitstreams to the FPGA and the 
+other for loading programs into the ZPUino softcore.
+Plus, it costs over $25 to get an FTDI cable and that dissuades some who might want to
+try out the ZPUino just to see what it's like.
+
+The block diagram of the communication link is similar to last time except for the endpoints.
+One end is now the Arduino-like IDE which compiles C source code and downloads it to the ZPUino.
+At the other end, naturally, is a ZPUino softcore processor running in the FPGA of a XuLA board.
+
+&lt;img alt="Complete communication link." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-02-04/ZPUino_Comm_Blk_Diag.jpg" 
+style="width: 100%"/&gt;
+
+A valid question at this point is "Why run the USB-to-serial server and null modem? Why not just write a
+direct interface for the IDE since it's open source?"
+The answer is that it avoids the effort of creating, maintaining and distributing
+a new version of the IDE.
+
+For the same reason, nobody wants to change the ZPUino firmware that's used to communicate with the IDE.
+Therefore, the HostIoComm module has to mimic the UART the ZPUino usually talks to.
+Since the ZPUino talks to the UART (and other peripherals) through a Wishbone interface, 
+the same interface has to be attached to the HostIoComm module (see the 
+[VHDL for the WbHostUart module](https://github.com/xesscorp/VHDL_Lib/blob/master/HostIoComm.vhd)).
+The resulting WbHostUart module has to be inserted into slot 1 in the 
+[top-level module of the ZPUino VHDL](https://github.com/xesscorp/ZPUino-HDL/blob/RGB_LED_Example/zpu/hdl/zpuino/boards/xula2/xula2/xula2_top.vhd).
+
+&lt;img alt="HostIoComm Wishbone interface." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-02-04/ZPUino_Interface.jpg" 
+style="width: 80%; box-shadow: none"/&gt;
+
+In order to pass as the standard UART, the WbHostUart operates as follows:
+
++ The `id` that the module reports to the ZPUino core is set as follows:
+
+               id &lt;= VENDOR_ID_G &amp; PRODUCT_ID_G
+
+    where `VENDOR_ID_G` and `PRODUCT_ID_G` are set by default to the same values as the
+    normal ZPUino UART.
+    This ensures the ZPUino will accept this UART when it scans the identifiers
+    of all the peripherals located in the slots.
+
++ Data transmission and reception is done through the data register located at address 0.
+   Any time the ZPUino reads this register, it gets the next byte from the download FIFO that receives 
+   data from the IDE running on the host PC.
+   Any write to this register queues a byte of data into the upload FIFO for transmission back to the IDE.
+   
++ Flow control is managed by querying the status register at address 1.
+   If bit 0 is set, then the download FIFO is holding one or more bytes of data from the host PC that 
+   can be read by the ZPUino.
+   If bit 1 is set, then the upload FIFO is full and the ZPUino shouldn't try to push any more data into it.
+   
+OK, this is all great, but how do you actually *use* this?
+Here's a complete list of steps to follow:
+
+1. Get the [ZPUino HDL code](https://github.com/xesscorp/ZPUino-HDL.git) using 
+   `git clone -b RGB_LED_Example --recursive https://github.com/xesscorp/ZPUino-HDL.git`.
+   Then go to the `ZPUino-HDL\zpu\hdl\zpuino\boards\xula2\xula2` folder and build it with `make xula2-lx9` or `make xula2-lx25`.
+   Or you can just download the bitstreams I already compiled for the 
+   [XuLA2-LX9](/static/media/uploads/blog/devbisme/2015-02-04/xula2-lx9_routed.bit) 
+   and [XuLA2-LX25](/static/media/uploads/blog/devbisme/2015-02-04/xula2-lx25_routed.bit).
+   (These bitstreams also include the RGB LED driver peripheral I talked about [here](http://www.xess.com/blog/extending-the-zpuino/).)
+2. Download the [ZPUino IDE](http://alvie.com/zpuino/downloads/2.0/beta2/) for your operating system and install it.
+3. Install the [Python version of the XSTOOLs](https://pypi.python.org/pypi/XsTools) using 
+   `pip install xstools --allow-all-external --allow-unverified intelhex`.
+4. Download the [com0com null-modem emulator](https://code.google.com/p/powersdr-iq/downloads/detail?name=setup_com0com_W7_x64_signed.exe&amp;can=2&amp;q=)
+   and use it to create a null modem connection between two COM ports (I usually choose COM7 and COM8).
+5. Plug a XuLA2-LX9 board into a USB port and flash it with the ZPUino bitstream via the command `xsload -flash xula2-lx9_routed.bit`.
+   (I'm using a XuLA2-LX9 here. If you're using a XuLA2-LX25, then just change the commands accordingly.)
+Then unplug and re-plug the USB connection; toggling the power will make the FPGA load itself with the ZPUino bitstream from the flash.
+6. Start the USB-to-serial server in debugging mode to create a connection between the USB port and one of the COM ports (I used COM8 here): `usb2serial -d -c 8 -m 253`. 
+7. Start the ZPUino IDE and select the `ZPUino 2.0 on XuLA2 (LX9)` as your board and the other end of the null-modem connection for the port (`COM7` in this case). 
+8. Create, compile, and download some ZPUino C source code. I used the RGB LED demo code found 
+   [here](https://github.com/xesscorp/ZPUino-HDL/blob/RGB_LED_Example/zpu/hdl/zpuino/boards/xula2/xula2/RGB_color_ramp/RGB_color_ramp.ino).
+   Once the object code is downloaded and starts executing, the ZPUino will run an RGB LED through a sequence of colors.
+
+That may sound pretty complicated, but most of these steps only have to be done once. After the first run, developing ZPUino software is just a matter of plugging in the XuLA (the ZPUino bitstream is stored in flash), initiating the usb2serial server (the null-modem emulator is persistent and runs whenever the PC is booted), and starting the ZPUino IDE (all the settings are retained from the last time it was run).
+
+Here's a video of me doing most of it (except for all the software installs):
+
+&lt;iframe class="center-it" width="420" height="315" src="https://www.youtube.com/embed/28_DXxy4mgY" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;br&gt;
+</summary><category term="Blog Post"></category></entry><entry><title>Multi-Year Z80 Build</title><link href="http://www.xess.com/blog/multi-year-z80-build/" rel="alternate"></link><updated>2015-02-03T17:00:00+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/multi-year-z80-build/</id><summary type="html">Let's face it: a lot of us buy dev boards but never get around to doing anything with them. We have the attention span of gnats. But not Roger Milne!  He's been on a [three-year mission to build a Z80 computer](http://24.87.49.120/z80computer/z80computer.html) in his spare time. And he did it! Take a look at the block diagram for his home build:
+
+&lt;img src="http://24.87.49.120/z80computer/images/Z80BlockDiagram.gif" class="center-it" style="width:70%"/&gt;
+
+There's a load of stuff in there:
+
++ A Z80 CPU chip as the main processor.
++ An XC9572 CPLD for the address decoder.
++ An FPGA on a [XuLA2-LX25 board](http://www.xess.com/shop/product/xula2-lx25/) for generating the audio.
++ An FPGA on another XuLA2-LX25 for generating the video.
++ Another CPLD on a daughter card that functions as a 4096-color video DAC.
++ A dsPIC30 for the BIOS MPU.
++ A PIC18F for the input coprocessor.
++ Two Bluetooth serial-port modules that provide wireless control interfaces to the BIOS and Z80 MPUs.
++ A 128-KByte SRAM chip for the main memory.
++ A handful of 74-series chips for miscellaneous logic.
+
+Most of these components are mounted on a couple of 6" &amp;times; 6" PCBs (a size he selected to allow etching
+in a typical Pyrex baking dish):
+
+&lt;div class="contained"&gt;
+&lt;div class="row"&gt;
+&lt;div class="span4"&gt;
+&lt;img src="http://24.87.49.120/z80computer/images/CpuBoardBottom.jpg"&gt;
+&lt;/div&gt;
+&lt;div class="span4"&gt;
+&lt;img src="http://24.87.49.120/z80computer/images/CustomChipBoardBottom.jpg" style="height:275px" class="center-it"&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;&lt;div class="span8"&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="row"&gt;
+&lt;div class="span4"&gt;
+&lt;img src="http://24.87.49.120/z80computer/images/VideoDac.JPG"&gt;
+&lt;/div&gt;
+&lt;div class="span4"&gt;
+&lt;img src="http://24.87.49.120/z80computer/images/Fpgas.JPG"&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+In addition to constructing the hardware, there's the equally daunting task of developing the firmware for the microcontrollers, HDL for the FPGAs and CPLDs, and software for the Z80. 
+To assist with this, he built a bunch of support tools:
+
++ Convertors for turning images into sprites, tiles, color maps and palettes.
++ Convertors for sound samples and music files.
++ A compiler for the Copper coprocessor inside the video chip.
++ Testbeds for exercising the hardware.
++ Downloading tools for getting everything from the development system into the various processors, FPGAs and CPLDs of the target system.
+
+Finally, knowing that modifications to the CPLD and FPGA HDL would cause changes to register addresses that would have to be propagated into the firmware of the processors, he created a tool to take a hardware definition in a text database and spit it out as headers for various compilers. 
+That made it much easier to keep all the pieces of his design in sync.
+His tool even outputs a [nice table of register addresses](http://24.87.49.120/z80computer/docs/RegisterMap.html) that can be used for documentation.
+
+Now, some will look askance at building a Z80-based computer in an age where a four-core Raspberry Pi running at 900 MHz goes for $35. But there's no denying that Roger mastered a tremendous range of technical subjects during his three-year odyssey that will have a large payback as he continues building stuff. This really is a case where it's the journey and not the destination.</summary><category term="Blog Post"></category></entry><entry><title>Terminal Velocity!</title><link href="http://www.xess.com/blog/terminal-velocity/" rel="alternate"></link><updated>2015-01-27T16:00:50+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/terminal-velocity/</id><summary type="html">&lt;img alt="Terminal communication with an application." class="float-it-left" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/goal.jpg" 
+style="width: 40%; box-shadow: none"/&gt;
+With processor-based systems, many of us like the simplicity and flexibility
+of communicating with our software applications through a terminal
+(like [PuTTY](http://en.wikipedia.org/wiki/PuTTY)).
+
+Taken to an extreme, some of us even want to communicate with our 
+*FPGA applications* through a terminal.
+But that can be difficult with something like the [XuLA FPGA board](http://www.xess.com/store/fpga-boards/),
+which doesn't even have a serial port.
+So what do you do?
+
+For the XuLA, I've beaten problems like this before by building a data pipeline 
+that goes through the USB link to talk with application logic in the FPGA as shown 
+[here](/blog/test-results-for-my-first-kicad-board/) 
+and [here](/blog/playing-around-with-sound/).
+But those examples use a Python API on the host computer side and any data 
+buffering in the FPGA is implemented using the SDRAM, which is "complicated".
+
+Sometimes I'd like a simpler system with a couple of FIFOs: one that the 
+application logic can dump data into so that it will eventually appear 
+back at the PC, and another that receives data from the PC which
+the application logic can read.
+
+&lt;img alt="FIFO communication with an application." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/fifos.jpg" 
+style="width: 55%; box-shadow: none"/&gt;
+
+Of course, the PC needs a way to access the FIFOs, so I can just add
+a HostIoToRam interface on that side. 
+While technically not RAMs, the FIFOs can be read and written using 
+a RAM-like interface. 
+A write from the PC over the USB link will push data into the download FIFO, while a read will 
+pop data from the upload FIFO.
+
+&lt;img alt="PC communication with the FIFOs." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/hostiotoram.jpg" 
+style="width: 70%; box-shadow: none"/&gt;
+
+That still leaves the problem of providing a terminal-like interface on the PC side.
+For that, I'll build a server in Python that mirrors any data coming or going 
+through the USB link onto a serial link.
+
+&lt;img alt="USB to serial mirroring." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/usb2serial.jpg" 
+style="width: 40%; box-shadow: none"/&gt;
+
+But how does that help?
+Sending data to a serial interface on a PC typically means sending it to
+an external serial port.
+(Do PCs even have those anymore?) 
+But my server is running as software inside the PC. 
+How do I get access to the serial stream of data using PuTTY?
+
+The answer is to use a *null modem emulator* 
+(also called a [virtual null modem](http://en.wikipedia.org/wiki/Null_modem))
+which is a software process that mimics two connected, physical serial I/O ports.
+So my server transfers data from the USB link to one serial port while 
+the PuTTY talks to the other serial port.
+The end result is that PuTTY thinks it it talking directly to the 
+application on the FPGA through a serial interface.
+
+&lt;img alt="Null modem." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/null_modem.jpg" 
+style="width: 70%; box-shadow: none"/&gt;
+
+Putting it all together, this is what the complete link looks like.
+
+&lt;img alt="Complete communication link." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/complete_link.jpg" 
+style="width: 100%; box-shadow: none"/&gt;
+
+This is all great in theory, but how do you actually do it? 
+There are a few issues that need more explanation:
+
++ What does the FIFO interface look like to the application logic?
++ How is data transferred between the PC and the FIFOs?
++ How does flow control work?
++ What null modem emulator will work with this?
+
+The application logic hooks to the 
+[FIFOs](https://github.com/xesscorp/VHDL_Lib/blob/master/fifo.vhd)
+as follows:
+
+&lt;img alt="FIFO interface to FPGA application logic." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/FPGA_App_Interface.jpg" 
+style="width: 70%; box-shadow: none"/&gt;
+
+The current piece of data received from the PC (call it `data[T]`) is always available on
+the `data_o` bus of the download FIFO.
+To pop `data[T]` from the FIFO and get the next data word, the `rmv_i` input is raised.
+On the next rising edge of `clk_i` (edge #2 in the example below),
+the new data (`data[T+1]`) appears on the `data_o` bus and the 
+`dnEmpty_o`, `dnFull_o`, and `dnLevel_o` outputs are updated to
+reflect the empty, full and occupancy level status of the FIFO, respectively.
+
+&lt;script type="WaveDrom"&gt;
+{ signal: [
+  { name: "clk_i",     wave: 'P...' },
+  { name: 'rmv_i',     wave: '010.', phase: -0.5 },
+  { name: 'data_o',    wave: '=.=.', data:["data[T]", "data[T+1]"] },
+  { name: 'dnEmpty_o', wave: '0.x.' },
+  { name: 'dnFull_o',  wave: 'x.0.' },
+  { name: 'dnLevel_o', wave: '=.=.', data:["N","N-1"] },
+  ],
+  config: {hscale: 2},
+  head: {text: 'Down FIFO Pop Example', tick:0}
+}
+&lt;/script&gt;
+&lt;br&gt;
+
+For sending data to the PC, a new data word is placed on the `data_i` bus
+of the upload FIFO and the `add_i` input is raised.
+The new data is accepted on the next rising edge (edge #2 in the example below)
+and the status outputs are updated.
+
+&lt;script type="WaveDrom"&gt;
+{ signal: [
+  { name: "clk_i",     wave: 'P...' },
+  { name: 'add_i',     wave: '010.', phase: -0.5 },
+  { name: 'data_i',    wave: 'x=x.', data:["data"], phase: -0.5 },
+  { name: 'upEmpty_o', wave: 'x.0.' },
+  { name: 'upFull_o',  wave: '0.x.' },
+  { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+  ],
+  config: {hscale: 2},
+  head: {text: 'Up FIFO Push Example', tick:0}
+}
+&lt;/script&gt;
+&lt;br&gt;
+
+Moving over to the PC-facing side, the FIFOs connect to a 
+[HostIoToRam module](https://github.com/xesscorp/VHDL_Lib/blob/master/HostIo.vhd)
+through a piece of *shim logic*.
+
+&lt;img alt="Host interface to FPGA application logic." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-24/Host_Interface.jpg" 
+style="width: 80%; box-shadow: none"/&gt;
+
+The shim logic maps the FIFO interfaces into a set of 
+read/write registers with the following functions:
+
+&lt;div class="center-it"&gt;
+&lt;table class="table-bordered table-striped" style="width:60%"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th style="width:10%"&gt;Address&lt;/th&gt;
+            &lt;th style="width:5%"&gt;R/W&lt;/th&gt;
+            &lt;th style="width:45%"&gt;Function&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+           &lt;td&gt;0&lt;/td&gt;
+           &lt;td&gt;R&lt;/td&gt;
+           &lt;td&gt;Pop and return data from the upload FIFO&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;0&lt;/td&gt;
+           &lt;td&gt;W&lt;/td&gt;
+           &lt;td&gt;Push data onto the download FIFO&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;1&lt;/td&gt;
+           &lt;td&gt;R&lt;/td&gt;
+           &lt;td&gt;
+                Read the empty/full status of both FIFOs:&lt;br&gt;
+                &lt;ul&gt;
+                &lt;li&gt;Bit 0: Download FIFO is empty when set&lt;/li&gt;
+                &lt;li&gt;Bit 1: Download FIFO is full when set&lt;/li&gt;
+                &lt;li&gt;Bit 2: Upload FIFO is empty when set&lt;/li&gt;
+                &lt;li&gt;Bit 3: Upload FIFO is full when set&lt;/li&gt;
+                &lt;/ul&gt;
+           &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;1&lt;/td&gt;
+           &lt;td&gt;W&lt;/td&gt;
+           &lt;td&gt;Reset both FIFOs to the empty state&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;2&lt;/td&gt;
+           &lt;td&gt;R&lt;/td&gt;
+           &lt;td&gt;Get the # of words in the download FIFO&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;3&lt;/td&gt;
+           &lt;td&gt;R&lt;/td&gt;
+           &lt;td&gt;Get the # of words in the upload FIFO&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;4&lt;/td&gt;
+           &lt;td&gt;W&lt;/td&gt;
+           &lt;td&gt;Outputs an active-high signal to indicate a BREAK condition to the FPGA application logic.&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+To make it easier to use, the VHDL for the HostIoToRam module, shim logic and FIFOs are 
+packaged together as the 
+[HostIoComm module](https://github.com/xesscorp/VHDL_Lib/blob/master/HostIoComm.vhd).
+Included in the VHDL file is an example FPGA design that accepts characters from a host PC and
+echoes them back.
+The section of the EchoTest design that interacts with the HostIoComm module
+is reproduced below:
+
+      -- Instantiate the HostIoComm communication interface.
+      u2 : HostIoComm
+        generic map(
+          SIMPLE_G  =&gt; true
+          )
+        port map(
+          reset_i   =&gt; reset_s,
+          clk_i     =&gt; clk_s,
+          rmv_i     =&gt; rmv_r, -- Pull high to remove data received from the host.
+          data_o    =&gt; dataFromHost_s, -- Data from the host.
+          dnEmpty_o =&gt; empty_s, -- False if the download FIFO has data from the host.
+          add_i     =&gt; add_r, -- Pull high to add data to FIFO going back to host.
+          data_i    =&gt; std_logic_vector(dataToHost_r), -- Data to host.
+          upFull_o  =&gt; full_s -- False if the upload FIFO has room for more data.
+          );
+
+      -- This process scans the incoming FIFO for characters received from the host.
+      -- When found, it removes the character from the incoming FIFO and places it in the FIFO that
+      -- transmits back to the host. This process works on the falling clock edge
+      -- while the HostIoComm works on the rising clock edge. So the control signals
+      -- for the echo transfer are set up on the falling edge and the actual transfer
+      -- between FIFOs occurs on the next rising edge. The FIFO statuses are also updated
+      -- on the rising edge so they can have an effect on this process on the next falling edge.
+      echoProcess : process(clk_s)
+      begin
+        if falling_edge(clk_s) then
+          -- By default, don't add or remove characters (no echo).
+          rmv_r  &lt;= LO;
+          add_r  &lt;= LO;
+          if (reset_s = LO) and (empty_s = NO) and (full_s = NO) then
+            -- If there is no reset and the incoming FIFO has data while
+            -- the outgoing FIFO has room for it, then transfer the
+            -- character from the incoming to the outgoing FIFO.
+            rmv_r        &lt;= HI; -- Removes char received from host.
+            dataToHost_r &lt;= unsigned(dataFromHost_s);  -- Echo the char.
+            add_r        &lt;= HI; -- Places char on FIFO back to host.
+          end if;
+        end if;
+      end process;
+
+&lt;br&gt;      
+Since USB data transfers are always initiated by the host device (the PC, in this case),
+most of the responsibility for the control of data flowing over the link resides with the
+USB-to-serial server
+Using the [XSTOOLs Python package](https://pypi.python.org/pypi/XsTools), 
+the server performs simple register reads/writes to transfer data to/from the FIFOs in the FPGA.
+The server implements flow control by querying the FIFO status and level registers and
+acting accordingly, i.e. don't send more data if the download FIFO is full or it will be lost,
+and don't read data from the upload FIFO if it is empty or else it will be garbage.
+The FPGA application logic must also abide by these rules when it sends and receives data.
+
+For the null-modem emulator on linux, [socat](http://unix.stackexchange.com/questions/63116/create-null-modem-pair-linux)
+seems to be the most mentioned tool.
+For Windows, I had to try several before eventually settling on 
+[com0com](https://code.google.com/p/powersdr-iq/downloads/detail?name=setup_com0com_W7_x64_signed.exe&amp;can=2&amp;q=)
+because it is:
+
++ Free
++ Compatible with modern versions of Windows
++ Creates persistent null-modem connections that do not disappear after a system reboot.
+
+This video shows how to download the EchoTest bitstream into a XuLa board, create a null-modem interface,
+get the USB-to-serial server running, and then connect PuTTY to it for sending/receiving characters.
+
+&lt;iframe class="center-it" width="420" height="315" src="http://www.youtube.com/embed/IIAG8lZMgRQ" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;br&gt;
+
+Now that terminal-like communications with an FPGA are possible, it should be relatively
+easy to add this feature to the [ZPUino and ditch the FTDI-to-UART cable](http://www.xess.com/blog/ive-never-bought-an-arduino-but-now-i-have-1000-of-them/).
+&lt;br&gt;
+</summary><category term="Blog Post"></category></entry><entry><title>Extending the ZPUino</title><link href="http://www.xess.com/blog/extending-the-zpuino/" rel="alternate"></link><updated>2015-01-06T14:00:00+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/extending-the-zpuino/</id><summary type="html">&lt;img src="/static/media/uploads/blog/devbisme/2015-01-05/ZPUino_Extend.png" class="thumbnail-it float-it-left"/&gt;
+In previous posts, I've 
+[introduced the ZPUino softcore processor](/blog/ive-never-bought-an-arduino-but-now-i-have-1000-of-them/)
+and shown how to [build the base instance for an FPGA](/blog/building-the-zpuino/).
+But the real advantage of the ZPUino is being able to extend it by attaching new peripherals
+to the core processor in the VHDL description.
+The best way to learn something is by doing it, so in this post I'll show how to integrate a 
+simple RGB LED driver peripheral into the ZPUino.
+
+The ZPUino architecture incorporates 16 *slots* that can be populated with peripherals.
+A particular slot is activated when the ZPUino core processor accesses an I/O address within the
+range of addresses assigned to that slot.
+Then  the peripheral in that slot can pass data back-and-forth with the processor through a 
+[Wishbone interface](http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29)
+that consists of parallel address and data buses along with control signals and 
+a handshake synchronization protocol.
+
+The Wishbone interfaces to peripherals are instantiated in the 
+[top-level module of the ZPUino VHDL code](https://github.com/xesscorp/ZPUino-HDL/blob/RGB_LED_Example/zpu/hdl/zpuino/boards/xula2/xula2/xula2_top.vhd).
+Within the module are empty slots like this:
+
+    --
+    -- IO SLOT 9
+    --
+  
+    slot9: zpuino_empty_device
+    port map (
+      wb_clk_i  =&gt; wb_clk_i,          -- Clock to peripheral.
+      wb_rst_i  =&gt; wb_rst_i,          -- Reset to peripheral.
+      wb_dat_o  =&gt; slot_read(9),      -- Data from peripheral.
+      wb_dat_i  =&gt; slot_write(9),     -- Data to peripheral.
+      wb_adr_i  =&gt; slot_address(9),   -- Address to peripheral.
+      wb_we_i   =&gt; slot_we(9),        -- Write-enable to peripheral.
+      wb_cyc_i  =&gt; slot_cyc(9),       -- Cycle handshake to peripheral.
+      wb_stb_i  =&gt; slot_stb(9),       -- Chip-select to peripheral.
+      wb_ack_o  =&gt; slot_ack(9),       -- handshake acknowledge from peripheral.
+      wb_inta_o =&gt; slot_interrupt(9), -- Interrupt from peripheral.
+      id        =&gt; slot_ids(9)        -- Peripheral ID (not part of Wishbone).
+    );
+    
+All the signals are part of the Wishbone interface except for `id` which outputs a peripheral-specific code
+that the ZPUino processor can use to associate a peripheral performing a specific function
+(e.g., a UART) with software drivers for that function.
+
+I constructed the RGB peripheral according to the following block diagram:
+
+&lt;img alt="Block diagram for a Wishbone-compliant RGB LED driver peripheral." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-05/RGB_Peripheral_Blk_Diag.jpg" 
+style="width: 70%; box-shadow: none"/&gt;
+
+The Wishbone interface allows the processor to read or write a single 32-bit register at address 0.
+Each of the lower three bytes of this register controls the duty-cycle of a
+pulse-width modulator (PWM).
+Varying the duty cycles of the PWMs will change the intensities of the red, green and blue components
+which changes the overall color of the RGB LED.
+For the excruciating operational details, check out the VHDL for the [PWM](https://github.com/xesscorp/VHDL_Lib/blob/master/pwm.vhd)
+and the [RGB peripheral](https://github.com/xesscorp/VHDL_Lib/blob/master/RgbLed.vhd).
+
+Next, I instantiated the RGB peripheral in the top-level ZPUino module as follows:
+
+    --
+    -- IO SLOT 9
+    --
+  
+    slot9: WbRgbLed
+    port map (
+      wb_clk_i      =&gt; wb_clk_i,
+      wb_rst_i      =&gt; wb_rst_i,
+      wb_dat_o      =&gt; slot_read(9),
+      wb_dat_i      =&gt; slot_write(9),
+      wb_adr_i      =&gt; slot_address(9),
+      wb_we_i       =&gt; slot_we(9),
+      wb_cyc_i      =&gt; slot_cyc(9),
+      wb_stb_i      =&gt; slot_stb(9),
+      wb_ack_o      =&gt; slot_ack(9),
+      wb_inta_o     =&gt; slot_interrupt(9),
+      id            =&gt; slot_ids(9),
+      redLed_o      =&gt; led_r, -- Output for driving red led.
+      grnLed_o      =&gt; led_g, -- Output for driving green led.
+      bluLed_o      =&gt; led_b  -- Output for driving blue led.
+    );
+    
+The `led_r`, `led_g`, and `led_b` output signals have to be attached to pins of the ZPUino
+in order to connect to the physical RGB LED. I could have made these pin assignments
+statically, but the ZPUino provides a much more flexible solution with its
+*Peripheral Pin Select* (PPS) mechanism. The PPS is basically a collection of 
+multiplexers that allow any one of *N* outputs to be attached to any one of *M* 
+pins under software control. (There is an equivalent PPS block for redirecting the inputs.)
+So with the PPS, I can assign the ZPUino pins that output the RGB PWM signals at run-time.
+
+&lt;img alt="PPS output block diagram." class="center-it" 
+src="/static/media/uploads/blog/devbisme/2015-01-05/PPS_Blk_Diag.jpg" 
+style="width: 70%; box-shadow: none"/&gt;
+
+Within the top-level ZPUino VHDL module, I attached the RGB peripheral outputs to
+the output PPS as follows:
+
+    process(gpio_spp_read, spi_pf_mosi, spi_pf_sck,
+            sigmadelta_spp_data,timers_pwm,
+            spi2_mosi, spi2_sck, led_r, led_g, led_b )
+    begin
+  
+      gpio_spp_data &lt;= (others =&gt; DontCareValue);
+  
+      -- PPS Outputs
+      gpio_spp_data(0)  &lt;= sigmadelta_spp_data(0);   -- PPS0 : SIGMADELTA DATA
+      ppsout_info_slot(0) &lt;= 5; -- Slot 5
+      ppsout_info_pin(0) &lt;= 0;  -- PPS OUT pin 0 (Channel 0)
+      .
+      .
+      .
+      gpio_spp_data(6)  &lt;= uart2_tx;   -- PPS6 : UART2 TX
+      ppsout_info_slot(6) &lt;= 8; -- Slot 8
+      ppsout_info_pin(6) &lt;= 0;  -- PPS OUT pin 0 (Channel 1)
+  
+      -- Attach the RGB LED driver outputs to the PPS outputs. 
+      gpio_spp_data(7)  &lt;= led_r;   -- PPS7 : Red LED driver
+      gpio_spp_data(8)  &lt;= led_g;   -- PPS8 : Green LED driver
+      gpio_spp_data(9)  &lt;= led_b;   -- PPS9 : Blue LED driver
+  
+      -- PPS inputs
+      spi2_miso         &lt;= gpio_spp_read(0);         -- PPS0 : USPI MISO
+      ppsin_info_slot(0) &lt;= 6;                    -- USPI is in slot 6
+      ppsin_info_pin(0) &lt;= 0;                     -- PPS pin of USPI is 0
+  
+      uart2_rx          &lt;= gpio_spp_read(1);         -- PPS1 : UART2 RX
+      ppsin_info_slot(1) &lt;= 8;                    -- USPI is in slot 6
+      ppsin_info_pin(1) &lt;= 0;                     -- PPS pin of USPI is 0
+  
+    end process;
+    
+In order to make room in the PPS for the new outputs, I bumped-up the `PPSCOUNT_OUT` constant in the 
+[`zpuino_config.vhd`](https://github.com/xesscorp/ZPUino-HDL/blob/RGB_LED_Example/zpu/hdl/zpuino/boards/xula2/xula2/zpuino_config.vhd)
+file:
+
+    -- Set this to the max. number of output pps on the system
+    constant PPSCOUNT_OUT: integer := 10; -- Increased to handle RGB LED drivers.
+
+After making these changes, I rebuilt the ZPUino FPGA bitstream with the newly-added RGB peripheral.
+Now it's just a matter of writing the software for accessing the new peripheral.
+I'll demonstrate this by writing an 
+[example program](https://github.com/xesscorp/ZPUino-HDL/blob/RGB_LED_Example/zpu/hdl/zpuino/boards/xula2/xula2/RGB_color_ramp/RGB_color_ramp.ino)
+that ramps-up and then fades an RGB LED over a sequence of colors.
+
+The program starts (as most do) with a set of definitions.
+This is where I tell the program about the decisions I made in the VHDL code:
+the location of the RGB peripheral (slot 9), the address offset of the color register (0),
+and the position of the red, green and blue outputs going into the PPS block (7, 8, and 9).
+I also specify the ZPUino pins that the RGB LED will be connected to (5, 4 and 3).
+
+    // Slot the RGB peripheral is assigned to.
+    #define RGB_SLOT 9
+    // Address of the color register in the RGB peripheral.
+    #define COLOR_REG 0
+    // Position of the red, green and blue PWM outputs
+    // within the PPS output block.
+    #define RED_PPS_POS 7
+    #define GRN_PPS_POS 8
+    #define BLU_PPS_POS 9
+    // ZPUino pins for driving an RGB LED.
+    #define RED_PIN 5
+    #define GRN_PIN 4
+    #define BLU_PIN 3
+    
+Next, I use these definitions in the `setup()` routine.
+The ZPUino pins driving the RGB LED are enabled as outputs,
+and these outputs are driven by the multiplexers from the PPS.
+Then each multiplexer is programmed to output one of the PWM signals
+from the RGB peripheral.
+
+    void setup() {
+      // Enable the outputs to the RGB LED.
+      pinMode(RED_PIN, OUTPUT);
+      pinMode(GRN_PIN, OUTPUT);
+      pinMode(BLU_PIN, OUTPUT);
+      // Enable the peripheral pin multiplexer for the outputs.
+      pinModePPS(RED_PIN, HIGH);
+      pinModePPS(GRN_PIN, HIGH);
+      pinModePPS(BLU_PIN, HIGH);
+      // Map the PWM outputs to the RGB output pins.
+      outputPinForFunction(RED_PIN, RED_PPS_POS);
+      outputPinForFunction(GRN_PIN, GRN_PPS_POS);
+      outputPinForFunction(BLU_PIN, BLU_PPS_POS);
+    }
+
+Then there's the little `set_rgb_color()` subroutine that accepts a 24-bit color value
+and writes it to the color register within the RGB peripheral.
+The `IO_SLOT(RGB_SLOT)` macro-call generates the base address for the RGB peripheral.
+Then the `REGISTER(...)` macro-call adds the offset of the color register 
+to the base address to generate the final address where the new color value is written.
+
+    void set_rgb_color(unsigned int color)
+    {
+      REGISTER(IO_SLOT(RGB_SLOT), COLOR_REG) = color;
+    }
+
+The meat of the example program is contained in the `brighten_then_fade()` subroutine that ramps the RGB LED
+up to its maximum color intensity and then down to zero.
+It accepts a `color_increment` argument that contains either a 0 or a 1
+in each of its eight-bit fields.
+For example, the value `0x000101` would change both the red and green 
+fields while leaving the blue component alone.
+Starting from zero, this argument is added to the RGB color until it reaches
+its maximum intensity (`0x00FFFF`  for the example value of the `color_increment`).
+Then the argument is subtracted from the color until it again reaches zero.
+
+    void brighten_then_fade(unsigned int color_increment)
+    {
+      // Start at black and ramp up color intensity.
+      unsigned int color = 0;
+      for(int i=0; i&lt;256; i++)
+      {
+        set_rgb_color(color);
+        color += color_increment;
+        delay(3);
+      }
+      // Stay at maximum intensity for a while.
+      delay(200);
+      // Ramp back down to black.
+      for(int i=0; i&lt;255; i++)
+      {
+        color -= color_increment;
+        set_rgb_color(color);
+        delay(3);
+      }
+    }
+
+Finally, there's the never-ending `loop()` routine that applies the previous subroutine
+to a sequence of colors:
+
+    void loop() {
+      // Color sequence: red, green, blue, yellow, magenta, cyan and white. 
+      unsigned int color_increment[] = {0x000001, 0x000100, 0x010000, 0x000101, 0x010001, 0x010100, 0x010101};
+      // Brighten and then fade each color in the sequence.
+      for(int i=0; i&lt;sizeof(color_increment)/sizeof(unsigned int); i++)
+        brighten_then_fade(color_increment[i]);
+    }
+    
+When I run the program on the extended ZPUino, I get the expected output on the LED as shown here:
+
+&lt;iframe class="center-it" width="420" height="315" src="//www.youtube.com/embed/VixKPF7m-RI" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+So to recap, I added a new peripheral to the ZPUino by:
+
++ Describing the peripheral using VHDL.
++ Putting a Wishbone interface on it.
++ Instantiating the peripheral in one of the empty slots in the top-level ZPUino module.
++ Adding input and output signals of the peripheral to the PPS blocks.
++ Writing ZPUino code using the `IO_SLOT` and `REGISTER` macros to access the peripheral.
+
+That's it!
+</summary><category term="Blog Post"></category></entry><entry><title>ESP8266: Reflash Dance!</title><link href="http://www.xess.com/blog/esp8266-reflash/" rel="alternate"></link><updated>2014-12-19T19:13:13+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/esp8266-reflash/</id><summary type="html">&lt;img src="http://i.dailymail.co.uk/i/pix/2011/03/15/article-1366374-01E4A6C5000004B0-566_233x338.jpg" class="thumbnail-it float-it-left"/&gt;
+It's been a while since I [connected my ESP8266 board to a ZPUino soft processor running in a XuLA2 board](http://www.xess.com/blog/esp8266-it-dont-come-easy/). I thought I would update the firmware on the ESP8266 to the latest version and see if it still worked.
+
+Since everyone is compiling [new applications for the Espressif chip](http://bbs.espressif.com/viewtopic.php?f=7&amp;t=67) now, merely reprogramming the serial flash on the board should be easy, right? Just download a binary file and you're done! It turned out to be a bit more confusing.
+
+[Note #1: If you would rather watch than read, there is a video at the end of this post that goes through the flash reprogramming process.](#reflash_video)
+
+[Note #2: Here's a newer post about building the hardware and reprogramming an ESP-201 module using the Arduino IDE.](/blog/esp8266-re-reflash-dance/)
+
+Part of the confusion is that there are a lot of different programming tools being used: binary executables, Python scripts, whatever. Some tools require [specifying four different binary files](http://scargill.wordpress.com/2014/11/29/espressif-update-for-esp8266/), one for each particular address range of the flash chip. But the downloadable archives don't usually have four files in them, and if they do, they don't have filenames  matching the ones shown in the examples. I didn't want to brick my modules, even if [they only cost $2.71/each](http://www.aliexpress.com/item/2PCS-ESP8266-Serial-Esp-01-WIFI-Wireless-Transceiver-Module-Send-Receive-LWIP-AP-STA/32232009463.html).
+
+Finally, I settled on using the Espressif's official [`esp8266_flasher.exe` program](https://drive.google.com/file/d/0B3dUKfqzZnlwVGc1YnFyUjgxelE/view?usp=sharing). I also downloaded the [`v0.9.2.2 AT Firmware.bin` file](https://drive.google.com/file/d/0B3dUKfqzZnlwdUJUc2hkZDUyVjA/view?usp=sharing).
+After dumping the contents of both archives into a local directory, I had this:
+
+&lt;img alt="Files found in the downloaded ESP8266 flash programming archives." class="center-it" src="/static/media/uploads/blog/devbisme/2014-12-09/directory_contents.jpg" style="width: 60%;"/&gt;
+
+Double-clicking the `esp8266_flasher.exe` icon brought up the flashing tool:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2014-12-09/esp8266_flash_tool.jpg" class="center-it" style="width:60%;" alt="ESP8266 flashing tool." /&gt;
+
+Clicking the `Bin` button opened a window where I selected the binary file to download into the serial flash of the board:
+
+&lt;img src="/static/media/uploads/blog/devbisme/2014-12-09/select_bin.jpg" class="center-it" style="width:60%;" alt="Flashable binary files." /&gt;
+
+Selecting the `v0.9.2.2 AT Firmware.bin` file and clicking `Open` took me back to the main window with the firmware file displayed in the `Bin` field. 
+
+&lt;img src="/static/media/uploads/blog/devbisme/2014-12-09/ready_to_flash_1.jpg" class="center-it" style="width:60%;" alt="Binary file ready for downloading to the serial flash on the ESP8266 board." /&gt;
+
+Next I needed to put the ESP8266 into its flash programming mode. This is done by resetting the ESP8266 board while holding its GPIO0 pin low. I could do this with a few wires and a breadboard but, since I might be doing this more than once, I decided to build a little programming board. It has a 4 &amp;times; 2 socket for the ESP8266 board that is wired to a header where my C232HM USB-to-serial cable is attached. A couple of 2.2 KOhm pullup resistors for the chip-select and reset pins keep the ESP8266 enabled. `PROG` and `RESET` pushbuttons are provided to momentarily pull the GPIO0 and reset pins input to ground, respectively. 
+
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="ESP8266 flash programming board schematic." src="/static/media/uploads/blog/devbisme/2014-12-09/esp8266_flash_prog_board_sch.png"&gt;
+        &lt;/div&gt;
+        &lt;div class="span1"&gt;&lt;/div&gt;
+        &lt;div class="span4"&gt;
+            &lt;img alt="ESP8266 flash programming board." src="/static/media/uploads/blog/devbisme/2014-12-09/esp8266_flash_prog_board.jpg"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+After inserting my ESP8266 board into the programming board and attaching the C232HM cable, I entered the flash programming mode by holding down the `PROG` button and then pressing and releasing the `RESET` button. In the flashing tool, I changed the serial port from `COM1` to `COM6` because that's where the CH232HM cable resides on my system. Clicking on the `Download` button started the reprogramming of the flash chip. The progress was displayed in the lower pane of the window and, after about a minute, the reprogramming was done.
+
+&lt;img src="/static/media/uploads/blog/devbisme/2014-12-09/flashing_done.jpg" class="center-it" style="width:60%;" alt="Progress pane after the flash programming is done." /&gt;
+
+Note that the progress pane indicated "Failed to leave flash mode". That's probably because the flashing program doesn't have any way to bring the ESP8266 board out of programming mode. But it's not really a problem provided the contents of the flash chip were rewritten.
+
+To verify the flash programming was successful, I needed to talk to the chip and query the firmware version. I closed the flash programming window and pressed the `RESET` button (without pressing the `PROG` button) to place the ESP8266 board in user mode. Then I brought up a PuTTY window and configured it as shown below.
+Note that I set the speed to 9600 bps. The new firmware defaults to this communication rate rather than the 115 Kbps rate used in the factory-installed firmware.
+
+&lt;img src="/static/media/uploads/blog/devbisme/2014-12-09/putty_config.jpg" class="center-it" style="width:60%;" alt="PuTTY configuration." /&gt;
+
+After opening the PuTTY terminal window, I sent the ESP8266 the reset command (`AT+RST`) and then had it print the firmware version (`AT+GMR`). The version was shown to be 0018000902 rather than the 00160901 version that originally came loaded in the board. So the firmware update appeared to have worked.
+
+&lt;img src="/static/media/uploads/blog/devbisme/2014-12-09/show_fmw_version.jpg" class="center-it" style="width:60%;" alt="PuTTY configuration." /&gt;
+
+In order to push the transfer speed of the board back up to 115 Kbps (since the ZPUino can handle that speed, there's no need to cripple the interface), I used the `AT+CIOBAUD=115200` command. Then I checked that the change took using the `AT+CIOBAUD?` command. (Observe that it required two attempts to change the baud rate, so don't be put off if that happens to you.) The baud rate is stored in nonvolatile memory so it will remain in effect from then on, even if the power is interrupted or a reset occurs.
+
+&lt;img src="/static/media/uploads/blog/devbisme/2014-12-09/change_speed.jpg" class="center-it" style="width:60%;" alt="PuTTY configuration." /&gt;
+
+With the new firmware in place and the baud rate back at 115Kbps, I took the ESP8266 module from the programming jig and put it back into [my ZPUino development board](/blog/esp8266-lets-get-physical/). Now it was just a matter of running [my existing program](https://gist.github.com/xesscorp/3f791cdec611db3eb400#file-esp8266-ino) that downloads the contents of a web page over the wireless link, right?
+
+&lt;img alt="Attachment of prototyping board with ESP8266 Wifi module to StickIt! board with XuLA2 FPGA board" class="center-it" src="/static/media/uploads/blog/devbisme/2014-10-11/ready_to_program.jpg" style="width: 40%;"&gt;
+
+Wrong! It turned out the update of the ESP8266 firmware is sufficiently different that the following minor changes were needed:
+
++ AT commands to the ESP8266 had to be terminated with "\015\012" (ctrl-M, ctrl-J or carriage-return, linefeed) instead of "\n".
++ After initiating a reset using the AT+RST command, the string the ESP8266 uses to terminate its response changed from "ready" to "ai-thinker.com]".
+
+While making those changes, I also had to fix my code for timing-out if no characters were received from the ESP8266. The updated program can be found [here](https://gist.github.com/xesscorp/0f3546c674fb7e1d34ac).
+
+So after all that, I finally had an updated Wifi module and a working example. I hope this procedure helps if you decide to update your own ESP8266.
+
+&lt;a name="reflash_video"&gt;&lt;/a&gt;Finally, if you're someone who would rather watch than read, then here's a video showing the entire process of updating the ESP8266 firmware:
+
+&lt;iframe class="center-it" width="420" height="315" src="//www.youtube.com/embed/cOnPWltYtQs" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&amp;nbsp;
+</summary><category term="Blog Post"></category></entry><entry><title>New US Distributor!</title><link href="http://www.xess.com/blog/new-us-distributor/" rel="alternate"></link><updated>2014-12-09T05:52:19+00:00</updated><author><name>Dave Vandenbout</name><uri>/blog/author/devbisme/</uri></author><id>http://www.xess.com/blog/new-us-distributor/</id><summary type="html">As of now, you can buy the [XuLA2-LX9](http://store.hackaday.com/products/xula2-lx9) board in the [HACKADAY General Store](http://store.hackaday.com)! As for the rest of our product line, well, you'll just have to deal with us.</summary><category term="Announcements"></category></entry></feed>

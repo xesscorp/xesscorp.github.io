@@ -1,0 +1,1728 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="When the XuLA2 was released, I still didn&#39;t have an easy-to-use controller module to interface the FPGA with the SD Flash card. But now I do and you can get it here.">
+<title>Accessing the XuLA2 MicroSD Card  | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li class="active">Accessing the XuLA2 MicroSD Card </li>
+</ul>
+
+<h1>
+Accessing the XuLA2 MicroSD Card 
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="../author/devbisme/index.html">Dave Vandenbout</a>
+    
+    7 years, 8 months ago
+</h6>
+
+
+
+<p>
+    
+        (<a href="index.html#comments">5 comments</a>)
+        
+    
+</p>
+
+
+
+
+
+
+
+
+
+
+<div class="field-item even"><p>When the <a href="../../prods/prod055.php">XuLA2</a> was released, I still didn't have an easy-to-use controller module to interface the FPGA with the SD Flash card. But now I do and you can get it <a href="https://github.com/xesscorp/XuLA2/blob/master/FPGA/XuLA_lib/SDCard.vhd">here</a>.</p>
+<p>Here's a block diagram that shows the various control signals and datapaths for the SD card controller module.</p>
+<p><img alt="FPGA-Based SD Card Controller Block Diagram" class="center-it" src="../../static/media/uploads/blog/devbisme/2012-10-17/SD_Card_Controller.png" style="width: 500px;"></p>
+<p>After looking at the diagram, maybe you're thinking that "easy-to-use" isn't the best adjective to apply to this module. But it's really pretty simple:</p>
+<dl><dt>Set-up:</dt>
+<dd>
+<p>First of all, you have to give the controller a clock signal on the <code>clk_i</code> input with a higher frequency than the serial clock sent to the SD card through the <code>sclk_o</code> output. You can set generic parameters for the controller to tell it the master clock frequency (100 MHz), the SCLK frequency for initialization (400 KHz), the SCLK frequency for normal operation (25 MHz), the size of data sectors in the Flash memory (512 bytes), and the type of card (either SD or SDHC). I typically use a 100 MHz clock if I'm running an SD card with a 25 Mbps serial data stream.</p>
+</dd>
+<dt>Initialize it:</dt>
+<dd>
+<p>Pulsing the <code>reset_i</code> input high and then bringing it low again will make the controller initialize the SD card so it will work in SPI mode. Basically, it sends the card the commands <code>CMD0</code>, <code>CMD8</code>, and then <code>ACMD41</code> (which is <code>CMD55</code> followed by <code>CMD41</code>). The <code>busy_o</code> output will be high during the initialization and will go low once it is done.</p>
+<p>After the initialization command sequence, the SD card will send back an <code>R1</code> response byte. If only the <code>IDLE</code> bit of the <code>R1</code> response is set, then the controller will repeatedly re-try the <code>ACMD41</code> command while <code>busy_o</code> remains high.</p>
+<p>If any other bit of the <code>R1</code> response is set, then an error occurred. The controller will stall, lower <code>busy_o</code>, and output the <code>R1</code> response code on the <code>error_o</code> bus. You'll have to pulse <code>reset_i</code> to unfreeze the controller.</p>
+<p>If the <code>R1</code> response is all zeroes (i.e., no errors occurred during the initialization), then the controller will lower <code>busy_o</code> and wait for a read or write operation from the host. The controller will only accept new operations when <code>busy_o</code> is low.</p>
+</dd>
+<dt>Write data:</dt>
+<dd>
+<p>To write a data block to the SD card, the address of a block is placed on the <code>addr_i</code> input bus and the <code>wr_i</code> input is raised. The address and write strobe can be removed once <code>busy_o</code> goes high to indicate the write operation is underway. The data to be written to the SD card is passed as follows:</p>
+<ol style=""><li>The controller requests a byte of data by raising the <code>hndShk_o</code> output.</li>
+<li>The host applies the next byte to the <code>data_i</code> input bus and raises the <code>hndShk_i</code> input.</li>
+<li>The controller accepts the byte and lowers the <code>hndShk_o</code> output.</li>
+<li>The host lowers the <code>hndShk_i</code> input.</li>
+</ol><p>This sequence of steps is repeated until all <code>BLOCK_SIZE_G</code> bytes of the data block are passed from the host to the controller. Once all the data is passed, the sector on the SD card will be written and the <code>busy_o</code> output will be lowered.</p>
+</dd>
+<dt>Read data:</dt>
+<dd>
+<p>To read a block of data from the SD card, the address of a block is placed on the <code>addr_i</code> input bus and the <code>rd_i</code> input is raised. The address and read strobe can be removed once <code>busy_o</code> goes high to indicate the read operation is underway. The data read from the SD card is passed to the host as follows:</p>
+<ol style=""><li>The controller raises the <code>hndShk_o</code> output when the next data byte is available.</li>
+<li>The host reads the byte from the <code>data_o</code> output bus and raises the <code>hndShk_i</code> input.</li>
+<li>The controller lowers the <code>hndShk_o</code> output.</li>
+<li>The host lowers the <code>hndShk_i</code> input.</li>
+</ol><p>This sequence of steps is repeated until all <code>BLOCK_SIZE_G</code> bytes of the data block are passed from the controller to the host. Once all the data is read, the <code>busy_o</code> output will be lowered.</p>
+</dd>
+<dt>Handle errors:</dt>
+<dd>
+<p>If an error is detected during either a read or write operation, then the controller will stall, lower <code>busy_o</code>, and output an error code on the <code>error_o</code> bus. You'll have to pulse <code>reset_i</code> to unfreeze the controller. That may seem a bit excessive, but it does guarantee that you can't ignore any errors that occur.</p>
+</dd>
+</dl><p>The SD card controller was successfully tested with a 2GB Sandisk SD card, a 4GB Sandisk SDHC card, and a 4GB Kingston SDHC card. The controller module was also <a href="https://github.com/xesscorp/XuLA/blob/master/FPGA/XuLA_lib/SDCard.vhd">ported</a> to the original <a href="../../prods/prod048.php">XuLA</a> and tested using the setup shown below.</p>
+<p><img alt="Setup for XuLA - SD Card Test" class="center-it" src="../../static/media/uploads/blog/devbisme/2012-10-17/XuLA_SD_Test.png" style="width: 450px;"></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="panel rating">
+
+<p id="rating-4">
+    
+    Current rating: 3
+    
+</p>
+
+
+<form method="post" action="http://www.xess.com/rating/">
+    
+    <input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+    
+    <ul><li> <ul>
+<li><label for="id_value_0"><input id="id_value_0" name="value" type="radio" value="1" /> 1</label></li>
+<li><label for="id_value_1"><input id="id_value_1" name="value" type="radio" value="2" /> 2</label></li>
+<li><label for="id_value_2"><input id="id_value_2" name="value" type="radio" value="3" /> 3</label></li>
+<li><label for="id_value_3"><input id="id_value_3" name="value" type="radio" value="4" /> 4</label></li>
+<li><label for="id_value_4"><input id="id_value_4" name="value" type="radio" value="5" /> 5</label></li>
+</ul><input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" /><input id="id_object_pk" name="object_pk" type="hidden" value="4" /><input id="id_timestamp" name="timestamp" type="hidden" value="1593966841" /><input id="id_security_hash" name="security_hash" type="hidden" value="2b364c84c2856517fb8fe2f179924fad562c3d73" /></li></ul>
+    <input type="submit" class="btn" value="Rate"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+
+
+<br style="clear:both">
+
+</div>
+
+
+
+
+<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status=http%3A//www.xess.com/blog/accessing-the-xula2-microsd-card/%20Accessing%20the%20XuLA2%20MicroSD%20Card%20">Share on Twitter</a>
+<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u=http://www.xess.com/blog/accessing-the-xula2-microsd-card/&amp;t=Accessing%20the%20XuLA2%20MicroSD%20Card%20">Share on Facebook</a>
+<a class="btn small primary share-reddit" target="_blank" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">Share on Reddit</a>
+
+
+
+<ul class="pager">
+
+
+<li class="previous">
+    <a href="../2012-ohs-makers-toolbox/index.html">&larr; 2012 OHS Maker&#39;s Toolbox </a>
+</li>
+
+
+
+
+<li class="next">
+    <a href="../a-python-package-for-xess-fpga-boards/index.html">A Python Package for XESS FPGA Boards  &rarr;</a>
+</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+<div id="comments">
+<h3>Comments</h3>
+
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.reply-form').hide();
+        $(this).next('.reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+
+
+<ul class="unstyled">
+    
+
+    <li id="comment-242"
+        >
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/c6cd1c52bca4a6d307847b0c854e881a?s=32&amp;d=identicon&amp;r=PG">
+            Alex
+            
+        </strong>
+        <span class="timespan">5 years, 2 months ago</span>
+        <p>Hello Dave,<br />i have a question regarding the Xula2-LX9 board and the SD Card. I&#39;m a beginner with VHDL and FPGAs and i want to test the SD Card on this board. I&#39;m not sure how to do that. I downloaded the following files from this homepage:<br />- SDCard.vhd<br />- ClkGen.vhd<br />- Common.vhd<br />- SyncToClk.vhd<br />- HostIo.vhd<br />If i import these files with Xilinx ISE, i am able to synthesize. So far, so good. How can i test the functionality now? Do i need a special Programm on Windows 7 to set the Read/Write commands? <br />Another point is, when i open the RTL Schematic, i recognize that many I/O&#39;s from HostToDut are not connected. I will upload some Screenshots in the next time.<br />I would be glad if you could help me.<br />Thank you<br /><br />best regards<br /><br />Alex</p>
+
+        <a href="index.html#comment-242">Link</a> /
+        <a href="index.html#reply-242" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-242"
+            action="http://www.xess.com/comment/#reply-242"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2012/10/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="4" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966841" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="2b364c84c2856517fb8fe2f179924fad562c3d73" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="242">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+
+    <li id="comment-243"
+        class="comment-author">
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/14b5f0d9e68fbad88c585a366eb00f08?s=32&amp;d=identicon&amp;r=PG">
+            Dave Vandenbout
+            
+        </strong>
+        <span class="timespan">5 years, 2 months ago</span>
+        <p>Hi, Alex.<br /><br />Yes, you need a Python script that loads files from the PC to the microSD card and can read them back. Unfortunately, I lost this script and I&#39;ll have to recreate it! **Give me a few days to do that.**<br /><br />Yes, the HostIoToDut does have a lot of unused I/O&#39;s. I put those in so that it could be easily expanded. Any unused I/O is removed during synthesis so it shouldn&#39;t affect anything.</p>
+
+        <a href="index.html#comment-243">Link</a> /
+        <a href="index.html#reply-243" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-243"
+            action="http://www.xess.com/comment/#reply-243"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2012/10/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="4" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966841" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="2b364c84c2856517fb8fe2f179924fad562c3d73" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="243">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+
+    <li id="comment-244"
+        class="comment-author">
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/14b5f0d9e68fbad88c585a366eb00f08?s=32&amp;d=identicon&amp;r=PG">
+            Dave Vandenbout
+            
+        </strong>
+        <span class="timespan">5 years, 2 months ago</span>
+        <p>Hi, Alex. I added a Python script (<a href="https://github.com/xesscorp/XuLA2/blob/master/FPGA/SdcardCtrlTest/SdcardTest.py" rel="nofollow">https://github.com/xesscorp/XuLA2/blob/master/FPGA/SdcardCtrlTest/SdcardTest.py</a>) to transfer a block of data to/from the SD card.<br /><br />It&#39;s a slow interface that&#39;s only intended to test the SD card controller. For a faster transfer, I&#39;d create a memio interface in the FPGA so the PC could just do block reads and writes without messing with the individual read, write, handshake and busy signals.</p>
+
+        <a href="index.html#comment-244">Link</a> /
+        <a href="index.html#reply-244" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-244"
+            action="http://www.xess.com/comment/#reply-244"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2012/10/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="4" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966841" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="2b364c84c2856517fb8fe2f179924fad562c3d73" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="244">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+    </li>
+    
+
+    <li id="comment-245"
+        >
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/c6cd1c52bca4a6d307847b0c854e881a?s=32&amp;d=identicon&amp;r=PG">
+            Alex
+            
+        </strong>
+        <span class="timespan">5 years, 2 months ago</span>
+        <p>Hi Dave,<br />thank you very much for your help. It works really good with your Python script. I wanted to read out the SD Card Information from Windows directly but this does not work. Windows wants to format the SD Card because he can&#39;t see any file system. Do i destroy the current file system if i write the sd Card via the Xula board?<br />Is it complicate to read out data from a file system?<br /><br />best regards<br /><br />Alex</p>
+
+        <a href="index.html#comment-245">Link</a> /
+        <a href="index.html#reply-245" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-245"
+            action="http://www.xess.com/comment/#reply-245"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2012/10/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="4" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966841" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="2b364c84c2856517fb8fe2f179924fad562c3d73" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="245">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+
+    <li id="comment-246"
+        class="comment-author">
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/14b5f0d9e68fbad88c585a366eb00f08?s=32&amp;d=identicon&amp;r=PG">
+            Dave Vandenbout
+            
+        </strong>
+        <span class="timespan">5 years, 2 months ago</span>
+        <p>Hi, Alex.<br /><br />The Python utility just reads or writes a 512-byte block of the SD card. This is the lowest level of file I/O. Windows FAT or NTFS file systems add more layers above this to implement arbitrary-sized files built from non-contiguous blocks. At the very least, this involves storing file names, sizes and link pointers in addition to the data blocks. When you just over-write a block of the SD card with raw data, you destroy a lot of this metadata and Windows can&#39;t understand the file organization on the card any more.<br /><br />You could build a finite-state machine or small processor in the FPGA that creates a file system when it writes data to the card. I&#39;ve never investigated how hard this might be, but I would assume it&#39;s non-trivial for the general case. Maybe there is an easy way to do it by introducing enough simplifications or restrictions on the data you want to store.<br /><br /></p>
+
+        <a href="index.html#comment-246">Link</a> /
+        <a href="index.html#reply-246" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-246"
+            action="http://www.xess.com/comment/#reply-246"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2012/10/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="4" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966841" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="2b364c84c2856517fb8fe2f179924fad562c3d73" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="246">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+<h3>New Comment</h3>
+<form method="post" id="comment" action="http://www.xess.com/comment/#comment">
+    
+    
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2012/10/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="4" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966841" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="2b364c84c2856517fb8fe2f179924fad562c3d73" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+    
+    <div class="form-actions">
+        <input class="btn btn-primary btn-large" type="submit" value="Comment">
+    </div>
+</form>
+
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fblog%252Faccessing-the-xula2-microsd-card%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fblog%252Faccessing-the-xula2-microsd-card%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="../are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="../walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="../colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="../extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="../esp8266-re-reflash-dance/index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="../archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="../archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="../archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="../archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="../archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="../archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="../archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="../archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="../category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="../category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="../author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="../feeds/rss/index.html">RSS</a> /
+    <a href="../feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>

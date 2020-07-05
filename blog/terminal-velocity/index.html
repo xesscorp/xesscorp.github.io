@@ -1,0 +1,2211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="With processor-based systems, many of us like the simplicity and flexibilityof communicating with our software applications through a terminal(like PuTTY).">
+<title>Terminal Velocity! | XESS Corp.</title>
+<link rel="shortcut icon" href="../../static/img/xess.ico?v=2">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../feeds/rss/index.html">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feeds/atom/index.html">
+
+
+<link rel="stylesheet" href="../../static/CACHE/css/ef03ed7fabaf.css" type="text/css" />
+
+<script type="text/javascript" src="../../static/CACHE/js/1d575eb4744b.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-765812-5']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body id="body">
+
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <a href="../../index.html"><img class="logo" src="../../static/img/xess-logo-3.png"></a>
+    <!--
+    <a class="brand" href="/">XESS Corp.</a>
+    
+    -->
+    <div class="nav-collapse" style="position: relative; top: 5px;">
+        
+<form action="http://www.xess.com/search/" class="navbar-search pull-right input-append">
+
+<input class="search-query" placeholder="Search" type="text" name="q" value="">
+<input type="submit" class="icon-search" value="">
+
+
+
+<!-- <input type="submit" class="btn" value="Go!"> -->
+
+</form>
+
+        
+
+<ul class="nav nav-collapse"><li class="" id="dropdown-menu-learn"><a href="../../index.html" class="btn">Home</a></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-learn"><a href="../../learn/index.html" class="dropdown-toggle active btn">
+                                    Learn <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu-tutorials"><a href="../../tutorials/index.html">Tutorials</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-appnotes"><a href="../../appnotes/index.html">Application Notes</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects"><a href="../../design_examples.php">Design Examples</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--projects-"><a href="../../design_examples.php">XESS</a></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-projects-others-"><a href="../../projects/others/index.html">Others</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-manuals"><a href="../../manuals/index.html">Product Manuals</a><ul class="dropdown-menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu--manuals-"><a href="../../manuals/index.html">Active</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--manuals-old-"><a href="../../manuals/old/index.html">Discontinued</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-software"><a href="../../downloads.php">Software Tools</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                
+                                id="dropdown-menu--software-"><a href="../../downloads.php">XESS</a><ul class="dropdown-menu"><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-xess-old-"><a href="../../software/xess/old/index.html">Old</a></li></ul></li><li
+                                    
+                                        class="dropdown-submenu"
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--software-others-"><a href="../../software/others/index.html">Others</a></li></ul></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-store"><a href="../../store/index.html" class="dropdown-toggle active btn">
+                                    Buy <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                
+                                id="dropdown-menu-store-fpga-boards"><a href="../../store/fpga-boards/index.html">FPGA Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-add-on-boards"><a href="../../store/add-on-boards/index.html">Add-On Boards</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-miscellaneous"><a href="../../store/miscellaneous/index.html">Miscellaneous</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-store-distributors"><a href="../../distributors.php">Distributors</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-purchasing-policies"><a href="../../store/purchasing-policies/index.html">Sales Policies</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-store-discontinued"><a href="../../store/discontinued/index.html">Discontinued Products</a></li></ul></li><!-- <li class="divider-vertical"></li> --><li class="dropdown"
+                                id="dropdown-menu-interact"><a href="../../interact/index.html" class="dropdown-toggle active btn">
+                                    Interact <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu--blog-category-announcements"><a href="../category/announcements">Announcements</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--blog-"><a href="../index.html">Blog</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu-interact-rss-feeds"><a href="../../interact/rss-feeds/index.html">RSS Feeds</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 4px solid #ddd"
+                                
+                                id="dropdown-menu-interact-contact"><a href="../../interact/contact/index.html">Contact</a></li><li
+                                    
+                                
+                                 
+                                    style="border-top: 1px solid #ddd"
+                                
+                                id="dropdown-menu--organizations-xess-"><a href="../../organizations/xess/index.html">About</a></li></ul></li><!-- <li class="divider-vertical"></li> --></ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+
+
+
+
+
+<ul class="breadcrumb">
+<li class="active">Terminal Velocity!</li>
+</ul>
+
+<h1>
+Terminal Velocity!
+</h1>
+
+</div>
+
+<div class="container">
+
+<div class="row">
+
+<!--
+<div class="span2 left">
+    
+    <div class="panel tree">
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+             
+             
+             "
+      id="tree-menu-learn"><a href="/learn/">Learn</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+             
+             "
+      id="tree-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li class="
+             
+             
+             "
+      id="tree-menu-store"><a href="/store/">Buy</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li class="
+             
+             
+             "
+      id="tree-menu--"><a href="/">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li class="
+             
+             
+             "
+      id="tree-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li class="
+             
+             
+              last"
+      id="tree-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li class="
+             
+             
+              last"
+      id="tree-menu-interact"><a href="/interact/">Interact</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+             
+              first
+             "
+      id="tree-menu---3"><a href="/-3">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li class="
+             
+             
+             "
+      id="tree-menu--blog-"><a href="/blog/">Blog</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li class="
+             
+             
+             "
+      id="tree-menu---1"><a href="/-1">***menu-divider***</a></li><li class="
+             
+             
+             "
+      id="tree-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li class="
+             
+             
+              last"
+      id="tree-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+</div>
+    
+</div>
+-->
+
+<!-- <div class="span7 middle"> -->
+<div class="span9 middle">
+
+    <!-- This is a section that shows up on product pages with pictures, features, price, quantity, etc. -->
+    <div class="container">
+        <div class="row">
+            <div class="span4 left">
+                
+            </div>
+            <div class="span5 right">
+                <div class="container">
+                    <div class="row">
+                        <div class="span3 left">
+                            
+                        </div>
+                        <div class="span2">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This is the main content block. -->
+    
+
+
+
+<h6>
+    Posted by:
+    
+    <a href="../author/devbisme/index.html">Dave Vandenbout</a>
+    
+    5 years, 5 months ago
+</h6>
+
+
+
+<p>
+    
+        (<a href="index.html#comments">7 comments</a>)
+        
+    
+</p>
+
+
+
+
+
+
+
+
+
+
+<p><img alt="Terminal communication with an application." class="float-it-left" src="../../static/media/uploads/blog/devbisme/2015-01-24/goal.jpg" style="width: 40%;">
+With processor-based systems, many of us like the simplicity and flexibility
+of communicating with our software applications through a terminal
+(like <a href="http://en.wikipedia.org/wiki/PuTTY">PuTTY</a>).</p>
+<p>Taken to an extreme, some of us even want to communicate with our 
+<em>FPGA applications</em> through a terminal.
+But that can be difficult with something like the <a href="../../store/fpga-boards/index.html">XuLA FPGA board</a>,
+which doesn't even have a serial port.
+So what do you do?</p>
+<p>For the XuLA, I've beaten problems like this before by building a data pipeline 
+that goes through the USB link to talk with application logic in the FPGA as shown 
+<a href="../test-results-for-my-first-kicad-board/index.html">here</a> 
+and <a href="../playing-around-with-sound/index.html">here</a>.
+But those examples use a Python API on the host computer side and any data 
+buffering in the FPGA is implemented using the SDRAM, which is "complicated".</p>
+<p>Sometimes I'd like a simpler system with a couple of FIFOs: one that the 
+application logic can dump data into so that it will eventually appear 
+back at the PC, and another that receives data from the PC which
+the application logic can read.</p>
+<p><img alt="FIFO communication with an application." class="center-it" src="../../static/media/uploads/blog/devbisme/2015-01-24/fifos.jpg" style="width: 55%;"></p>
+<p>Of course, the PC needs a way to access the FIFOs, so I can just add
+a HostIoToRam interface on that side. 
+While technically not RAMs, the FIFOs can be read and written using 
+a RAM-like interface. 
+A write from the PC over the USB link will push data into the download FIFO, while a read will 
+pop data from the upload FIFO.</p>
+<p><img alt="PC communication with the FIFOs." class="center-it" src="../../static/media/uploads/blog/devbisme/2015-01-24/hostiotoram.jpg" style="width: 70%;"></p>
+<p>That still leaves the problem of providing a terminal-like interface on the PC side.
+For that, I'll build a server in Python that mirrors any data coming or going 
+through the USB link onto a serial link.</p>
+<p><img alt="USB to serial mirroring." class="center-it" src="../../static/media/uploads/blog/devbisme/2015-01-24/usb2serial.jpg" style="width: 40%;"></p>
+<p>But how does that help?
+Sending data to a serial interface on a PC typically means sending it to
+an external serial port.
+(Do PCs even have those anymore?) 
+But my server is running as software inside the PC. 
+How do I get access to the serial stream of data using PuTTY?</p>
+<p>The answer is to use a <em>null modem emulator</em> 
+(also called a <a href="http://en.wikipedia.org/wiki/Null_modem">virtual null modem</a>)
+which is a software process that mimics two connected, physical serial I/O ports.
+So my server transfers data from the USB link to one serial port while 
+the PuTTY talks to the other serial port.
+The end result is that PuTTY thinks it it talking directly to the 
+application on the FPGA through a serial interface.</p>
+<p><img alt="Null modem." class="center-it" src="../../static/media/uploads/blog/devbisme/2015-01-24/null_modem.jpg" style="width: 70%;"></p>
+<p>Putting it all together, this is what the complete link looks like.</p>
+<p><img alt="Complete communication link." class="center-it" src="../../static/media/uploads/blog/devbisme/2015-01-24/complete_link.jpg" style="width: 100%;"></p>
+<p>This is all great in theory, but how do you actually do it? 
+There are a few issues that need more explanation:</p>
+<ul>
+<li>What does the FIFO interface look like to the application logic?</li>
+<li>How is data transferred between the PC and the FIFOs?</li>
+<li>How does flow control work?</li>
+<li>What null modem emulator will work with this?</li>
+</ul>
+<p>The application logic hooks to the 
+<a href="https://github.com/xesscorp/VHDL_Lib/blob/master/fifo.vhd">FIFOs</a>
+as follows:</p>
+<p><img alt="FIFO interface to FPGA application logic." class="center-it" src="../../static/media/uploads/blog/devbisme/2015-01-24/FPGA_App_Interface.jpg" style="width: 70%;"></p>
+<p>The current piece of data received from the PC (call it <code>data[T]</code>) is always available on
+the <code>data_o</code> bus of the download FIFO.
+To pop <code>data[T]</code> from the FIFO and get the next data word, the <code>rmv_i</code> input is raised.
+On the next rising edge of <code>clk_i</code> (edge #2 in the example below),
+the new data (<code>data[T+1]</code>) appears on the <code>data_o</code> bus and the 
+<code>dnEmpty_o</code>, <code>dnFull_o</code>, and <code>dnLevel_o</code> outputs are updated to
+reflect the empty, full and occupancy level status of the FIFO, respectively.</p>
+<script type="WaveDrom">
+{ signal: [
+  { name: "clk_i",     wave: 'P...' },
+  { name: 'rmv_i',     wave: '010.', phase: -0.5 },
+  { name: 'data_o',    wave: '=.=.', data:["data[T]", "data[T+1]"] },
+  { name: 'dnEmpty_o', wave: '0.x.' },
+  { name: 'dnFull_o',  wave: 'x.0.' },
+  { name: 'dnLevel_o', wave: '=.=.', data:["N","N-1"] },
+  ],
+  config: {hscale: 2},
+  head: {text: 'Down FIFO Pop Example', tick:0}
+}
+</script>
+
+<p><br></p>
+<p>For sending data to the PC, a new data word is placed on the <code>data_i</code> bus
+of the upload FIFO and the <code>add_i</code> input is raised.
+The new data is accepted on the next rising edge (edge #2 in the example below)
+and the status outputs are updated.</p>
+<script type="WaveDrom">
+{ signal: [
+  { name: "clk_i",     wave: 'P...' },
+  { name: 'add_i',     wave: '010.', phase: -0.5 },
+  { name: 'data_i',    wave: 'x=x.', data:["data"], phase: -0.5 },
+  { name: 'upEmpty_o', wave: 'x.0.' },
+  { name: 'upFull_o',  wave: '0.x.' },
+  { name: 'upLevel_o', wave: '=.=.', data:["N","N+1"] },
+  ],
+  config: {hscale: 2},
+  head: {text: 'Up FIFO Push Example', tick:0}
+}
+</script>
+
+<p><br></p>
+<p>Moving over to the PC-facing side, the FIFOs connect to a 
+<a href="https://github.com/xesscorp/VHDL_Lib/blob/master/HostIo.vhd">HostIoToRam module</a>
+through a piece of <em>shim logic</em>.</p>
+<p><img alt="Host interface to FPGA application logic." class="center-it" src="../../static/media/uploads/blog/devbisme/2015-01-24/Host_Interface.jpg" style="width: 80%;"></p>
+<p>The shim logic maps the FIFO interfaces into a set of 
+read/write registers with the following functions:</p>
+<div class="center-it">
+<table class="table-bordered table-striped" style="width: 60%;">
+    <thead>
+        <tr>
+            <th style="width: 10%;">Address</th>
+            <th style="width: 5%;">R/W</th>
+            <th style="width: 45%;">Function</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+           <td>0</td>
+           <td>R</td>
+           <td>Pop and return data from the upload FIFO</td>
+        </tr>
+        <tr>
+           <td>0</td>
+           <td>W</td>
+           <td>Push data onto the download FIFO</td>
+        </tr>
+        <tr>
+           <td>1</td>
+           <td>R</td>
+           <td>
+                Read the empty/full status of both FIFOs:<br>
+                <ul>
+                <li>Bit 0: Download FIFO is empty when set</li>
+                <li>Bit 1: Download FIFO is full when set</li>
+                <li>Bit 2: Upload FIFO is empty when set</li>
+                <li>Bit 3: Upload FIFO is full when set</li>
+                </ul>
+           </td>
+        </tr>
+        <tr>
+           <td>1</td>
+           <td>W</td>
+           <td>Reset both FIFOs to the empty state</td>
+        </tr>
+        <tr>
+           <td>2</td>
+           <td>R</td>
+           <td>Get the # of words in the download FIFO</td>
+        </tr>
+        <tr>
+           <td>3</td>
+           <td>R</td>
+           <td>Get the # of words in the upload FIFO</td>
+        </tr>
+        <tr>
+           <td>4</td>
+           <td>W</td>
+           <td>Outputs an active-high signal to indicate a BREAK condition to the FPGA application logic.</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p><br>
+To make it easier to use, the VHDL for the HostIoToRam module, shim logic and FIFOs are 
+packaged together as the 
+<a href="https://github.com/xesscorp/VHDL_Lib/blob/master/HostIoComm.vhd">HostIoComm module</a>.
+Included in the VHDL file is an example FPGA design that accepts characters from a host PC and
+echoes them back.
+The section of the EchoTest design that interacts with the HostIoComm module
+is reproduced below:</p>
+<pre><code>  -- Instantiate the HostIoComm communication interface.
+  u2 : HostIoComm
+    generic map(
+      SIMPLE_G  =&gt; true
+      )
+    port map(
+      reset_i   =&gt; reset_s,
+      clk_i     =&gt; clk_s,
+      rmv_i     =&gt; rmv_r, -- Pull high to remove data received from the host.
+      data_o    =&gt; dataFromHost_s, -- Data from the host.
+      dnEmpty_o =&gt; empty_s, -- False if the download FIFO has data from the host.
+      add_i     =&gt; add_r, -- Pull high to add data to FIFO going back to host.
+      data_i    =&gt; std_logic_vector(dataToHost_r), -- Data to host.
+      upFull_o  =&gt; full_s -- False if the upload FIFO has room for more data.
+      );
+
+  -- This process scans the incoming FIFO for characters received from the host.
+  -- When found, it removes the character from the incoming FIFO and places it in the FIFO that
+  -- transmits back to the host. This process works on the falling clock edge
+  -- while the HostIoComm works on the rising clock edge. So the control signals
+  -- for the echo transfer are set up on the falling edge and the actual transfer
+  -- between FIFOs occurs on the next rising edge. The FIFO statuses are also updated
+  -- on the rising edge so they can have an effect on this process on the next falling edge.
+  echoProcess : process(clk_s)
+  begin
+    if falling_edge(clk_s) then
+      -- By default, don't add or remove characters (no echo).
+      rmv_r  &lt;= LO;
+      add_r  &lt;= LO;
+      if (reset_s = LO) and (empty_s = NO) and (full_s = NO) then
+        -- If there is no reset and the incoming FIFO has data while
+        -- the outgoing FIFO has room for it, then transfer the
+        -- character from the incoming to the outgoing FIFO.
+        rmv_r        &lt;= HI; -- Removes char received from host.
+        dataToHost_r &lt;= unsigned(dataFromHost_s);  -- Echo the char.
+        add_r        &lt;= HI; -- Places char on FIFO back to host.
+      end if;
+    end if;
+  end process;
+</code></pre>
+<p><br>    <br>
+Since USB data transfers are always initiated by the host device (the PC, in this case),
+most of the responsibility for the control of data flowing over the link resides with the
+USB-to-serial server
+Using the <a href="https://pypi.python.org/pypi/XsTools">XSTOOLs Python package</a>, 
+the server performs simple register reads/writes to transfer data to/from the FIFOs in the FPGA.
+The server implements flow control by querying the FIFO status and level registers and
+acting accordingly, i.e. don't send more data if the download FIFO is full or it will be lost,
+and don't read data from the upload FIFO if it is empty or else it will be garbage.
+The FPGA application logic must also abide by these rules when it sends and receives data.</p>
+<p>For the null-modem emulator on linux, <a href="http://unix.stackexchange.com/questions/63116/create-null-modem-pair-linux">socat</a>
+seems to be the most mentioned tool.
+For Windows, I had to try several before eventually settling on 
+<a href="https://code.google.com/p/powersdr-iq/downloads/detail?name=setup_com0com_W7_x64_signed.exe&amp;can=2&amp;q=">com0com</a>
+because it is:</p>
+<ul>
+<li>Free</li>
+<li>Compatible with modern versions of Windows</li>
+<li>Creates persistent null-modem connections that do not disappear after a system reboot.</li>
+</ul>
+<p>This video shows how to download the EchoTest bitstream into a XuLa board, create a null-modem interface,
+get the USB-to-serial server running, and then connect PuTTY to it for sending/receiving characters.</p>
+<iframe class="center-it" height="315" src="http://www.youtube.com/embed/IIAG8lZMgRQ" width="420"></iframe>
+
+<p><br></p>
+<p>Now that terminal-like communications with an FPGA are possible, it should be relatively
+easy to add this feature to the <a href="../ive-never-bought-an-arduino-but-now-i-have-1000-of-them/index.html">ZPUino and ditch the FTDI-to-UART cable</a>.
+<br></p>
+
+
+
+
+
+
+
+
+
+
+<div class="panel rating">
+
+<p id="rating-73">
+    
+    Currently unrated
+    
+</p>
+
+
+<form method="post" action="http://www.xess.com/rating/">
+    
+    <input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+    
+    <ul><li> <ul>
+<li><label for="id_value_0"><input id="id_value_0" name="value" type="radio" value="1" /> 1</label></li>
+<li><label for="id_value_1"><input id="id_value_1" name="value" type="radio" value="2" /> 2</label></li>
+<li><label for="id_value_2"><input id="id_value_2" name="value" type="radio" value="3" /> 3</label></li>
+<li><label for="id_value_3"><input id="id_value_3" name="value" type="radio" value="4" /> 4</label></li>
+<li><label for="id_value_4"><input id="id_value_4" name="value" type="radio" value="5" /> 5</label></li>
+</ul><input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" /><input id="id_object_pk" name="object_pk" type="hidden" value="73" /><input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" /><input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" /></li></ul>
+    <input type="submit" class="btn" value="Rate"
+        onclick="return $(this.form).find('input:checked').length == 1;">
+</form>
+
+
+<br style="clear:both">
+
+</div>
+
+
+
+
+<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status=http%3A//www.xess.com/blog/terminal-velocity/%20Terminal%20Velocity%21">Share on Twitter</a>
+<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u=http://www.xess.com/blog/terminal-velocity/&amp;t=Terminal%20Velocity%21">Share on Facebook</a>
+<a class="btn small primary share-reddit" target="_blank" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">Share on Reddit</a>
+
+
+
+<ul class="pager">
+
+
+<li class="previous">
+    <a href="../extending-the-zpuino/index.html">&larr; Extending the ZPUino</a>
+</li>
+
+
+
+
+<li class="next">
+    <a href="../multi-year-z80-build/index.html">Multi-Year Z80 Build &rarr;</a>
+</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+<div id="comments">
+<h3>Comments</h3>
+
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.reply-form').hide();
+        $(this).next('.reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+
+
+<ul class="unstyled">
+    
+
+    <li id="comment-217"
+        >
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/f348c4002ef1d67df76a9dcc25ba131d?s=32&amp;d=identicon&amp;r=PG">
+            William Tambe
+            
+        </strong>
+        <span class="timespan">5 years, 5 months ago</span>
+        <p>Thank you Dave for documenting this; are we restricted to ZPUino; I wished to use this feature with a different SOC system.<br /><br />Can you share the UCF file ? and how to instantiate the module that interface the PC to the FPGA application logic ?<br /><br />For now, I will use the com0com and python script, but it would be nice if the installation of the XSTOOLs also installed drivers that would automatically create the COM port when the Xula is plugged in.</p>
+
+        <a href="index.html#comment-217">Link</a> /
+        <a href="index.html#reply-217" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-217"
+            action="http://www.xess.com/comment/#reply-217"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="217">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+
+    <li id="comment-218"
+        class="comment-author">
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/14b5f0d9e68fbad88c585a366eb00f08?s=32&amp;d=identicon&amp;r=PG">
+            Dave Vandenbout
+            
+        </strong>
+        <span class="timespan">5 years, 5 months ago</span>
+        <p>William, the VHDL for the HostIoComm module is all available so you can use it with anything you want.<br /><br />There isn&#39;t any specific UCF file for this module. It&#39;s all internal to the FPGA and communicates through the JTAG port out to the USB link. The only pin assignments you&#39;ll need are for whatever I/O your application logic has.<br /><br />I&#39;m not sure about creating a COMx port whenever the XuLA is plugged in. Many people will never use the HostIoComm module, so that would be a waste for them. And for those that do, a single execution of com0com will setup a virtual null modem that they can use forever until they manually delete it using the Device Manager.</p>
+
+        <a href="index.html#comment-218">Link</a> /
+        <a href="index.html#reply-218" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-218"
+            action="http://www.xess.com/comment/#reply-218"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="218">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+    </li>
+    
+
+    <li id="comment-219"
+        >
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/2559c8336067c3e8838576961438ed40?s=32&amp;d=identicon&amp;r=PG">
+            Francois Charbonneau
+            
+        </strong>
+        <span class="timespan">5 years, 5 months ago</span>
+        <p>Interesting concept indeed. How does you python module behave with this constant polling of the USB port and checking for the availability of data? I mean, CPU usage....because from what I can see you&#39;re just looping around and around waiting for data. For the serial port, that&#39;s not a problem since the kernel handles it, but I&#39;m wondering how efficient the rest of it is.<br /><br />Your idea got me to think about implementing a fake serial interface for the ZPUino where I could write a functions similar to serial.print() and serial.read() that talk to a fifo over wishbone. Then, by pushing and pulling data back via your jtag user interface to a terminal python script, I could void the need for serial communication altogether. Anyway, it wouldn&#39;t be that different from your project but i&#39;d prefer to bypass the whole putty and null-modem situation.<br /><br />I&#39;m just still not entirely sure it&#39;s a good idea.<br /><br />By the way, I will start posting some of my work soon too, I just got a website going pretty much just for that purpose.<br /><br />Thanks<br /><br /><br /></p>
+
+        <a href="index.html#comment-219">Link</a> /
+        <a href="index.html#reply-219" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-219"
+            action="http://www.xess.com/comment/#reply-219"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="219">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+
+    <li id="comment-220"
+        class="comment-author">
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/14b5f0d9e68fbad88c585a366eb00f08?s=32&amp;d=identicon&amp;r=PG">
+            Dave Vandenbout
+            
+        </strong>
+        <span class="timespan">5 years, 5 months ago</span>
+        <p>Francois, I don&#39;t know how efficient the looping on the USB port is, but I don&#39;t know any way to avoid it. I&#39;m not aware of any USB control structures that alert the host when a peripheral device has data it wants to offload.<br /><br />It&#39;s definitely possible to implement your fake serial interface. All you would need to do add a Wishbone interface to the HostIoComm (that&#39;s already been done), set the device id to the same one used by ZPUino UART modules, and then use the serial.* routines already in the library.<br /><br />Within the PC, you can use the USB-to-serial server and strip-off the serial link interface. Then insert your Python code to work with the data directly.<br /><br />Looking forward to seeing more of your work!</p>
+
+        <a href="index.html#comment-220">Link</a> /
+        <a href="index.html#reply-220" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-220"
+            action="http://www.xess.com/comment/#reply-220"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="220">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+    </li>
+    
+
+    <li id="comment-247"
+        >
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/8e65ef8bcac5fe4287af832d8d561b19?s=32&amp;d=identicon&amp;r=PG">
+            Garry
+            
+        </strong>
+        <span class="timespan">5 years, 1 month ago</span>
+        <p>Hi Dave! I want to do the echo test on my XuLa2 LX9 board so I downloaded the EchoTest project file you made on GitHub. I followed the procedure to install the VHDL_Lib but somehow I&#39;m still getting error &#39;&lt;ctrl_i&gt; is not declared&#39; when I try to synthesize the project. Can you tell me to fix this error, please?</p>
+
+        <a href="index.html#comment-247">Link</a> /
+        <a href="index.html#reply-247" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-247"
+            action="http://www.xess.com/comment/#reply-247"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="247">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+
+    <li id="comment-248"
+        class="comment-author">
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/14b5f0d9e68fbad88c585a366eb00f08?s=32&amp;d=identicon&amp;r=PG">
+            Dave Vandenbout
+            
+        </strong>
+        <span class="timespan">5 years, 1 month ago</span>
+        <p>Garry, I&#39;ve cloned the VHDL_Lib repo and re-built the EchoTest design without any problems. I can&#39;t even find a ctrl_i signal in the top-level module so I suspect it is buried in a lower-level module. I don&#39;t know why you would get an error about that if the library is installed correctly.<br /><br />Make sure you create the XESS library in your project. Then set the EchoTest module as your top-level module. Then add the XuLA2.vhd and XuLA2.ucf files to your project. Check the option that allows unmatched LOC constraints or else the XuLA2.ucf file will create a lot of errors. Make sure the pullups are off on the TCK pin. Set JTAG clock for the startup clock. Then you should be able to compile it.</p>
+
+        <a href="index.html#comment-248">Link</a> /
+        <a href="index.html#reply-248" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-248"
+            action="http://www.xess.com/comment/#reply-248"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="248">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+
+    <li id="comment-249"
+        >
+        
+        
+
+        <strong>
+            
+            <img src="http://www.gravatar.com/avatar/8e65ef8bcac5fe4287af832d8d561b19?s=32&amp;d=identicon&amp;r=PG">
+            Garry
+            
+        </strong>
+        <span class="timespan">5 years, 1 month ago</span>
+        <p>Thank you very much, Dave. Now it&#39;s working perfectly.. :)</p>
+
+        <a href="index.html#comment-249">Link</a> /
+        <a href="index.html#reply-249" class="reply">Reply</a>
+        <form class="reply-form" method="post" id="reply-249"
+            action="http://www.xess.com/comment/#reply-249"
+            style="display:none;">
+            
+            
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+            
+            <input type="hidden" name="replied_to" value="249">
+            <input class="btn btn-primary btn-large" type="submit" value="Reply">
+        </form>
+
+        
+        
+        
+        
+
+<ul class="unstyled">
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+    </li>
+    
+    
+</ul>
+
+
+<h3>New Comment</h3>
+<form method="post" id="comment" action="http://www.xess.com/comment/#comment">
+    
+    
+
+
+
+
+<input type="hidden" name="referrer" value="http://www.xess.com/blog/archive/2015/2/">
+<input type='hidden' name='csrfmiddlewaretoken' value='6b1VE9U0elkvk2ULdzSg74n8Zb3IQATQ' />
+
+
+
+
+<input id="id_content_type" name="content_type" type="hidden" value="blog.blogpost" />
+
+
+
+<input id="id_object_pk" name="object_pk" type="hidden" value="73" />
+
+
+
+<input id="id_timestamp" name="timestamp" type="hidden" value="1593966801" />
+
+
+
+<input id="id_security_hash" name="security_hash" type="hidden" value="5e5914f046b2af0cf84fd9df22c31834bad0bc00" />
+
+
+
+<div class="control-group input_id_name 
+    ">
+    <label class="control-label" for="id_name">
+        Name
+    </label>
+    <div class="controls">
+        <input id="id_name" maxlength="50" name="name" type="text" />
+        
+        <span class="help-inline">required</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_email 
+    ">
+    <label class="control-label" for="id_email">
+        Email
+    </label>
+    <div class="controls">
+        <input id="id_email" name="email" type="text" />
+        
+        <span class="help-inline">required (not published)</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_url 
+    ">
+    <label class="control-label" for="id_url">
+        Website
+    </label>
+    <div class="controls">
+        <input id="id_url" name="url" type="text" />
+        
+        <span class="help-inline">optional</span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_comment 
+    ">
+    <label class="control-label" for="id_comment">
+        Comment
+    </label>
+    <div class="controls">
+        <textarea cols="40" id="id_comment" name="comment" rows="10">
+</textarea>
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+<div class="control-group input_id_honeypot 
+    ">
+    <label class="control-label" for="id_honeypot">
+        If you enter anything in this field your comment will be treated as spam
+    </label>
+    <div class="controls">
+        <input id="id_honeypot" name="honeypot" type="text" />
+        
+        <span class="help-inline"></span>
+        
+    </div>
+</div>
+
+
+
+    
+    <div class="form-actions">
+        <input class="btn btn-primary btn-large" type="submit" value="Comment">
+    </div>
+</form>
+
+</div>
+
+
+
+
+    
+</div>
+
+<div class="span3 right">
+    
+    
+<div class="panel">
+    <a href="../../shop/cart/index.html">
+    0 items
+    in cart:
+    $0.00</a><br><br><a href="../../accounts/login/index.html?next=%252Fblog%252Fterminal-velocity%252F"
+        class="btn btn-small btn-account">Log in</a>
+    or
+    <a href="../../account/signup/index.html?next=%252Fblog%252Fterminal-velocity%252F"
+        class="btn btn-small btn-account">Sign up</a>
+</div>
+
+    
+    <div class="panel">
+    
+
+
+
+
+
+<h3>Recent Posts</h3>
+<ul class="unstyled recent-posts">
+
+<li><a href="../are-you-in-an-abusive-relationship-with-your-schematic-editor/index.html"
+    >Are You In An Abusive Relationship With Your Schematic Editor?</a></li>
+
+<li><a href="../walk-in-walk-out/index.html"
+    >Walk In, Walk Out</a></li>
+
+<li><a href="../colossus-al/index.html"
+    >Colossus-al!</a></li>
+
+<li><a href="../extinction-level-event/index.html"
+    >Extinction Level Event</a></li>
+
+<li><a href="../esp8266-re-reflash-dance/index.html"
+    >ESP8266: Re-Reflash Dance!</a></li>
+
+</ul>
+
+
+
+
+
+
+<h3>Archive</h3>
+
+    
+        
+        <h6>2016</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2016/9/index.html"
+        >September</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2016/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2016/2/index.html"
+        >February</a> (1)</li>
+
+    
+        </ul>
+        <h6>2015</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2015/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/5/index.html"
+        >May</a> (2)</li>
+
+    
+    <li><a href="../archive/2015/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2015/2/index.html"
+        >February</a> (3)</li>
+
+    
+    <li><a href="../archive/2015/1/index.html"
+        >January</a> (2)</li>
+
+    
+        </ul>
+        <h6>2014</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2014/12/index.html"
+        >December</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/10/index.html"
+        >October</a> (4)</li>
+
+    
+    <li><a href="../archive/2014/7/index.html"
+        >July</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/6/index.html"
+        >June</a> (2)</li>
+
+    
+    <li><a href="../archive/2014/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/4/index.html"
+        >April</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/3/index.html"
+        >March</a> (3)</li>
+
+    
+    <li><a href="../archive/2014/2/index.html"
+        >February</a> (1)</li>
+
+    
+    <li><a href="../archive/2014/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2013</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2013/10/index.html"
+        >October</a> (1)</li>
+
+    
+    <li><a href="../archive/2013/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/2/index.html"
+        >February</a> (2)</li>
+
+    
+    <li><a href="../archive/2013/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2012</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2012/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/8/index.html"
+        >August</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/7/index.html"
+        >July</a> (3)</li>
+
+    
+    <li><a href="../archive/2012/6/index.html"
+        >June</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/5/index.html"
+        >May</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/4/index.html"
+        >April</a> (2)</li>
+
+    
+    <li><a href="../archive/2012/3/index.html"
+        >March</a> (1)</li>
+
+    
+    <li><a href="../archive/2012/1/index.html"
+        >January</a> (1)</li>
+
+    
+        </ul>
+        <h6>2011</h6><ul class="unstyled">
+    
+    <li><a href="../archive/2011/12/index.html"
+        >December</a> (4)</li>
+
+    
+    <li><a href="../archive/2011/11/index.html"
+        >November</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/10/index.html"
+        >October</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/9/index.html"
+        >September</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/8/index.html"
+        >August</a> (1)</li>
+
+    
+    <li><a href="../archive/2011/7/index.html"
+        >July</a> (2)</li>
+
+    
+    <li><a href="../archive/2011/6/index.html"
+        >June</a> (5)</li>
+
+    
+    <li><a href="../archive/2011/5/index.html"
+        >May</a> (1)</li>
+
+</ul>
+
+
+
+
+
+
+<h3>Categories</h3>
+<ul class="unstyled">
+
+<li><a href="../category/announcements"
+    >Announcements</a> (3)</li>
+
+<li><a href="../category/blog-post/index.html"
+    >Blog Post</a> (69)</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>Authors</h3>
+<ul class="unstyled">
+
+    <li><a href="../author/devbisme/index.html"
+        >Dave Vandenbout</a>
+        (72)</li>
+
+</ul>
+
+
+
+
+<h3>Feeds</h3>
+
+
+
+
+    <a href="../feeds/rss/index.html">RSS</a> /
+    <a href="../feeds/atom/index.html">Atom</a>
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<div class="container">
+<!-- 
+
+<ul class="clearfix"><li><ul><li 
+            id="footer-menu-learn"><a href="/learn/">Learn</a></li><li 
+            id="footer-menu---2"><a href="/-2">***menu-divider***</a></li></ul></li><li><ul><li 
+            id="footer-menu-store"><a href="/store/">Buy</a></li><li 
+            id="footer-menu-store-fpga-boards"><a href="/store/fpga-boards/">FPGA Boards</a></li><li 
+            id="footer-menu-store-add-on-boards"><a href="/store/add-on-boards/">Add-On Boards</a></li><li 
+            id="footer-menu-store-miscellaneous"><a href="/store/miscellaneous/">Miscellaneous</a></li><li 
+            id="footer-menu--"><a href="/">***menu-divider***</a></li><li 
+            id="footer-menu-store-distributors"><a href="/store/distributors/">Distributors</a></li><li 
+            id="footer-menu-store-purchasing-policies"><a href="/store/purchasing-policies/">Sales Policies</a></li><li 
+            id="footer-menu-store-discontinued"><a href="/store/discontinued/">Discontinued Products</a></li></ul></li><li><ul><li 
+            id="footer-menu-interact"><a href="/interact/">Interact</a></li><li 
+            id="footer-menu---3"><a href="/-3">***menu-divider***</a></li><li 
+            id="footer-menu--blog-category-announcements"><a href="/blog/category/announcements">Announcements</a></li><li 
+            id="footer-menu--blog-"><a href="/blog/">Blog</a></li><li 
+            id="footer-menu-interact-rss-feeds"><a href="/interact/rss-feeds/">RSS Feeds</a></li><li 
+            id="footer-menu---1"><a href="/-1">***menu-divider***</a></li><li 
+            id="footer-menu-interact-contact"><a href="/interact/contact/">Contact</a></li><li 
+            id="footer-menu--organizations-xess-"><a href="/organizations/xess/">About</a></li></ul></li></ul>
+ -->
+<p>
+    <a href="mailto:webmaster@xess.com">webmaster@xess.com</a>
+    <span class="separator">|</span>
+    &copy; 2013 by XESS Corp. All rights reserved.
+    
+</p>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+var _gaq = _gaq || [['_trackPageview']];
+_gaq.unshift(['_setAccount', 'UA-765812-5']);
+(function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+})(document, 'script');
+
+
+// This is for rendering digital waveforms.
+(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();
+
+// This is for drop-down menus.
+$('ul.nav li.dropdown').hover(function() {
+    $(this).closest('.dropdown-menu').stop(true, true).show();
+    $(this).addClass('open'); 
+} , function() { 
+    $(this).closest('.dropdown-menu').stop(true, true).hide(); 
+    $(this).removeClass('open'); 
+});
+</script>
+
+
+</body>
+</html>
